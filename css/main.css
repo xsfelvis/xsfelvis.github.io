@@ -1255,7 +1255,7 @@ pre .javascript .function {
   margin-top: 20px;
   padding-left: 0;
   text-align: center;
-  background: rgba(255,255,255,0.65);
+  background: rgba(255,255,255,0.8);
   margin-left: auto;
   margin-right: auto;
   width: 450px;
@@ -1901,7 +1901,7 @@ pre .javascript .function {
 .site-state-item-count {
   display: block;
   text-align: center;
-  color: inherit;
+  color: #fc6423;
   font-weight: 600;
   font-size: 18px;
 }
@@ -1949,7 +1949,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff1c6c;
+  background: #124fff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2849,7 +2849,7 @@ body {
 .content {
   border-radius: 20px;
   padding: 30px 60px 30px 60px;
-  background: rgba(255,255,255,0.8) none repeat scroll !important;
+  background: #fff none repeat scroll !important;
 }
 #sidebar {
   background: url("/images/sidebar.jpg");
