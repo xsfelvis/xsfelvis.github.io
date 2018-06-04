@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta name="baidu-site-verification" content="UqlC4pwKIm" />
+  <meta name="baidu-site-verification" content="d3U0dGeqGw" />
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="权限," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="云来" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="1、在给app升级动态权限之前需要注意搞清楚一下几个概念1.1、版本号对应的api等级查阅官网可以看出  1.2、minSdkVersion、targetSdkVersion和 compileSdkVersion这几个属性通常在gradle defaultConfig中去配置，作用如下 （1）minSdkVersion指明应用程序运行所需的最小API level，如果系统的API level低于">
+<meta name="keywords" content="权限">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态权限">
+<meta property="og:url" content="https://xsfelvis.github.io/2018/04/06/动态权限1/index.html">
+<meta property="og:site_name" content="云来">
+<meta property="og:description" content="1、在给app升级动态权限之前需要注意搞清楚一下几个概念1.1、版本号对应的api等级查阅官网可以看出  1.2、minSdkVersion、targetSdkVersion和 compileSdkVersion这几个属性通常在gradle defaultConfig中去配置，作用如下 （1）minSdkVersion指明应用程序运行所需的最小API level，如果系统的API level低于">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/15/16364387f6eeb9fc?w=1714&h=1262&f=png&s=192923">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/15/1636438febbcbeb9?w=894&h=494&f=png&s=66186">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/15/163643a25ce67cd9?w=1010&h=766&f=png&s=122723">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/15/163643a66ad3eb69?w=1100&h=522&f=png&s=49564">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/15/163643b31c161434?w=1064&h=1200&f=png&s=235446">
+<meta property="og:updated_time" content="2018-06-04T08:51:08.819Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="动态权限">
+<meta name="twitter:description" content="1、在给app升级动态权限之前需要注意搞清楚一下几个概念1.1、版本号对应的api等级查阅官网可以看出  1.2、minSdkVersion、targetSdkVersion和 compileSdkVersion这几个属性通常在gradle defaultConfig中去配置，作用如下 （1）minSdkVersion指明应用程序运行所需的最小API level，如果系统的API level低于">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/5/15/16364387f6eeb9fc?w=1714&h=1262&f=png&s=192923">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://xsfelvis.github.io/2018/04/06/动态权限1/"/>
+
+
+
+
+
+  <title>动态权限 | 云来</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-120283281-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2a3365c396bc1892919405bfc6ea04a8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">云来</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">不积跬步，无以至千里；不积小流，无以成江海</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xsfelvis.github.io/2018/04/06/动态权限1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="云来">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云来">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">动态权限</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-06T00:00:00+08:00">
+                2018-04-06
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-04T16:51:08+08:00">
+                2018-06-04
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/04/06/动态权限1/" class="leancloud_visitors" data-flag-title="动态权限">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,749
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><h2 id="1、在给app升级动态权限之前需要注意搞清楚一下几个概念"><a href="#1、在给app升级动态权限之前需要注意搞清楚一下几个概念" class="headerlink" title="1、在给app升级动态权限之前需要注意搞清楚一下几个概念"></a>1、在给app升级动态权限之前需要注意搞清楚一下几个概念</h2><h3 id="1-1、版本号对应的api等级"><a href="#1-1、版本号对应的api等级" class="headerlink" title="1.1、版本号对应的api等级"></a>1.1、版本号对应的api等级</h3><p>查阅官网可以看出</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/15/16364387f6eeb9fc?w=1714&amp;h=1262&amp;f=png&amp;s=192923" alt=""></p>
+<h3 id="1-2、minSdkVersion、targetSdkVersion和-compileSdkVersion"><a href="#1-2、minSdkVersion、targetSdkVersion和-compileSdkVersion" class="headerlink" title="1.2、minSdkVersion、targetSdkVersion和 compileSdkVersion"></a>1.2、minSdkVersion、targetSdkVersion和 compileSdkVersion</h3><p>这几个属性通常在gradle defaultConfig中去配置，作用如下</p>
+<p>（1）minSdkVersion<br>指明应用程序运行所需的最小API level，如果系统的API level低于minSdkVersion设定的值，那么android系统会阻止用户安装这个应用，如果不指明的话，默认是1，如果指明这个属性，并在项目中使用了改与这个API level的API的话，那么将会在编译时报错。<br>可见该属性不仅在程序安装时起作用，而且会在项目构建时起作用</p>
+<p>（2）targetSdkVersion</p>
+<p>指明应用程序目标API level的一个整数，如果不设置就默认和minSdkVersion相同。这个属性通知系统，已经针对这个目标版本测试过程序，系统不必使用兼容模式来让你的应用程序向前兼容这个目标版本。<br>如果targetSdkVersion为19（对应为Android4.4），应用运行时，最高只能使用API 19的新特性。即使代码中使用了API 23的新特性，实际运行时，也不会使用该新特性；<br>可见targetSdkVersion这个属性是在程序运行时期起作用的，系统根据这个属性决定要不要以兼容模式运行这个程序<br>例如，Android6.0系统增加了动态权限机制，如果为了追时髦，盲目把你的targetSDKVersion设置为23(6.0)，那么在需要使用权限的地方将会出现异常。为此，在你做好动态权限申请之前，为保障APP正常运行，你需要将目标版本设置低于23。</p>
+<p>（3）complieSdkVersion</p>
+<p>compileSdkVersion仅仅是告诉Gradle使用哪个版本的SDK编译应用，不会被包含到apk中，完全不影响应用的运行结果；虽然没有影响但是</p>
+<p>即 ：compileSDKVersion是和编译器打交道的，而minSDKVersion和targetSDKVersion是和系统打交道的。</p>
+<h2 id="2、如何升级app的动态权限"><a href="#2、如何升级app的动态权限" class="headerlink" title="2、如何升级app的动态权限"></a>2、如何升级app的动态权限</h2><p>首先需要了解动态权限这个概念</p>
+<h3 id="2-1-动态权限"><a href="#2-1-动态权限" class="headerlink" title="2.1 动态权限"></a>2.1 动态权限</h3><p>这个是在android 6.0提出的，从该版本开始，用户实在运行时而不是应用安装时授予或者撤销应用权限，对应API23,这个版本最重要的变化就是权限动态管理，任何未被授予权限的逻辑都可能引起后续运行的崩溃，可以通过adb 工具从命令行获取权限</p>
+<p>按组列出权限和状态： </p>
+<blockquote>
+<p>$ adb shell pm list permissions -d -g</p>
+</blockquote>
+<p>授予或撤销一项或多项权限：</p>
+<blockquote>
+<p>$ adb shell pm [grant|revoke] <permission-name> …</permission-name></p>
+</blockquote>
+<p>6.0之前的权限在AndroidMenifest声明之后即可获取所有权限，这样会造成用户会默默忍受一些不必要的权限，特别是通讯录，位置短信之类的比较敏感的权限，在6.0之后我们只有在需要权限的时候才会向用户请求，用户可以选择拒绝，新的机制较好的保护的用户的隐私。<br>谷歌将权限分为两大类<br>Normal Permissions<br>这类权限一般不涉及用户隐私是不需要用户进行授权的，比如网络访问、蓝牙（详细权限见附录）<br>Dangenerous Permission<br>这类涉及到用户隐私，需要用户进行授权，比如读取sdcard、开启照相机、访问通讯录等，其中危险权限是分组的，用户之前如果已经选择通过该组某个危险权限，主要有以下几组（详细权限见附录）</p>
+<ol>
+<li>身体传感器</li>
+<li>日历 摄像头</li>
+<li>通讯录</li>
+<li>地理位置</li>
+<li>麦克风</li>
+<li>电话</li>
+<li>短信</li>
+<li>存储空间  </li>
+</ol>
+<h3 id="2-2-权限相关API"><a href="#2-2-权限相关API" class="headerlink" title="2.2 权限相关API"></a>2.2 权限相关API</h3><p>为了方便开发者实现权限管理，谷歌给出下面4个API</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/15/1636438febbcbeb9?w=894&amp;h=494&amp;f=png&amp;s=66186" alt=""></p>
+<p>一般权限检查需要以下三个步骤配合</p>
+<p>1、检查权限是否授予</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//Activity.java</span><br><span class="line">&gt; public int checkSelfPermission(permission)</span><br></pre></td></tr></table></figure>
+<p>这个是在ContextCompat类中用来判断是否app已经获取到某一个权限的使用权。如果返回android.content.pm.PackageManager#PERMISSION_GRANTED，则说明app被授予权限，如果返回android.content.pm.PackageManager#PERMISSION_DENIED 则说明权限被禁止授予</p>
+<p>2、申请权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//Activity.java</span><br><span class="line">public final void requestPermissions( new String[permission1,permission2,...], requestCode)</span><br></pre></td></tr></table></figure>
+<p>这个是在ActivityCompat类以及FragmentCompat类中用来申请权限的方法</p>
+<p>3、权限回调<br>用户在系统弹窗里面选择以后结果会通过Activity的onRequestPermissionsResult<br>方法回调</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)</span><br><span class="line">&#123;</span><br><span class="line">    //继续执行逻辑或者提示权限获取失败</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这些方法可以封装在BaseActvity中</p>
+<p>4、是否显示权限对话框<br>这个是作为辅助类</p>
+<blockquote>
+<p>public static boolean shouldShowRequestPermissionRationale(@NonNull Activity activity, @NonNull String permission)<br>这个是在ActivityCompat类以及FragmentCompat类中用来判断是否显示权限询问对话框。在权限申请的过程中，如果用户选择允许权限使用或者在拒绝的同时又勾选了不再询问对话框，这2种情况下该api就会返回false，表示不再弹出权限询问对话框，其中授权弹窗是不支持自定义的</p>
+</blockquote>
+<p>这个辅助函数十分重要，当动态权限申请时候如果用户如果用户勾选了“不再询问”，那么在执行requestPermissions( )后，onRequestPermissionsResult( )会永远返回PERMISSION_DENIED，这样应用原本的操作将永远无法执行，这是我们不希望看到的</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/15/163643a25ce67cd9?w=1010&amp;h=766&amp;f=png&amp;s=122723" alt=""><br>谷歌还是给我们留了一手，就是<br>shouldShowRequestPermissionRationale，如果返回true，应用应该弹出dialog说明申请权限的缘由比如下面这种</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/15/163643a66ad3eb69?w=1100&amp;h=522&amp;f=png&amp;s=49564" alt=""></p>
+<p>其中第一次申请权限时候该函数默认返回false，无需告知用户申请该权限的理由;当第一次申请被拒绝，再次申请时该函数会返回true，并且弹出的系统dialog上会有一个选择“不再询问”，要是用户勾选了该选项，则以后该函数一直会返回false。</p>
+<h3 id="2-3-如何适配"><a href="#2-3-如何适配" class="headerlink" title="2.3 如何适配"></a>2.3 如何适配</h3><p>如果项目的targetSdkVersion &lt; 23 运行在android 6.0及以上的系统上，会默认给与AndroidManifest.xml中申请的权限，是不是这样就万事大吉了呢？显然是想多了，如果用户在应用的权限页面手动回收权限，将会导致应用crash</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/15/163643b31c161434?w=1064&amp;h=1200&amp;f=png&amp;s=235446" alt=""></p>
+<p>虽然系统提醒了用户，但是还是要取决用户心情，因此稳妥的适配动态还是有必要的事情。</p>
+<p>首先targetSdkVersion小于23的应用默认授予了所申请的所有权限，所以如果你以前的APP设置的targetSdkVersion低于23，也能正常使用。等于或者大于23，则必须 request permission,否则会崩溃闪退。<br>下面将大致阐述一下升级动态权限步骤</p>
+<p>（1）声明目标版本sdk<br>修改build.gradle中targetSdkVersion为23以上</p>
+<p>（2）检查权限申请地方并request权限<br>在我们需要使用到权限的地方，检查是否已经拥有权限，比如读写外置SD卡权限，我们在写入之前检车是否有权限，没有权限则申请权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">private void requestContactPermission() &#123;</span><br><span class="line">        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_CONTACTS)</span><br><span class="line">                != PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">            //申请 WRITE_CONTACTS 权限</span><br><span class="line">            ActivityCompat.requestPermissions(this, new String[]&#123;Manifest.permission.WRITE_CONTACTS&#125;,</span><br><span class="line">                    REQUEST_CODE_WRITE_CONTACTS);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line"> ```  </span><br><span class="line"></span><br><span class="line">（3）响应用户权限回调</span><br><span class="line"></span><br><span class="line">用户可以选择allow或者deny，可能deny。回调onRequestPermissionsResult方法, 该方法类似于onActivityResult。如果是fragment，最好是使用父fragment，但不是使用ActivityCompat。建议使用getParentFragment().requestPermissions方法。  </span><br><span class="line"></span><br><span class="line">（4）根据requestCode和grandResult（授权结果）做相应处理</span><br></pre></td></tr></table></figure>
+<p>private void handleGrantResults(int requestCode, int[] grantResults) {<br>      if (requestCode == WRITE_EXTERNAL_STORAGE_REQUEST_CODE) {<br>          if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {<br>              // Permission Granted 获得权限后执行xxx<br>          } else {<br>              // Permission Denied 拒绝后xx的操作。<br>          }<br>      }<br>  }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## 3、后话</span><br><span class="line"></span><br><span class="line">### 3.1、权限申请如果用户拒绝怎么处理</span><br><span class="line">如果用户拒绝了核心权限一次，下次再次申请会出现不再提醒的选项，要是选择不再提醒，核心权限不给获取一些功能就无法使用，你可以选择直接退出应用，或者可以优雅点，我们自己检测一下是否拒绝了两次或者以上，自己给个提示向用户做一个交互</span><br></pre></td></tr></table></figure></p>
+<p>private void handleContactPermission() {<br>        if (Integer.parseInt(Build.VERSION.SDK)&gt;=23) {<br>            int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.WRITE_CONTACTS);<br>            if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED) {<br>                if (!shouldShowRequestPermissionRationale(Manifest.permission.WRITE_CONTACTS)) {<br>                    showMessageOKCancel(“You need to allow access to Contacts”,<br>                            new DialogInterface.OnClickListener() {<br>                                @Override<br>                                public void onClick(DialogInterface dialog, int which) {<br>                                    requestContactPermission();//确定后申请权限。<br>                                }<br>                            });<br>                    return;<br>                }<br>                requestContactPermission();//没有权限的话，申请。<br>            }<br>        }<br>```<br>或者记录用户勾选了不再询问<br>Google提供了一个非常好的思路，详见EasyPermissions .<br>EasyPermissions并没有存储上一次shouldShowRequestPermissionRationale( )的返回值，而是在申请权限被拒后调用shouldShowRequestPermissionRationale( )方法，如果此时返回false则说明用户勾选了“不再询问”。</p>
+<p>两种方式都可以作为参考方式。</p>
+<h3 id="3-2-取消支持Apache-http-客户端"><a href="#3-2-取消支持Apache-http-客户端" class="headerlink" title="3.2 取消支持Apache http 客户端"></a>3.2 取消支持Apache http 客户端</h3><p>Android 6.0 版移除了对 Apache HTTP 客户端的支持。如果您的应用使用该客户端，并以 Android 2.3（API 级别 9）或更高版本为目标平台，请改用HttpURLConnection 类。此 API 效率更高，因为它可以通过透明压缩和响应缓存减少网络使用，并可最大限度降低耗电量。要继续使用 Apache HTTP API，您必须先在 build.gradle 文件中声明以下编译时依赖项：<br>  android {<br>      useLibrary ‘org.apache.http.legacy’<br>  }</p>
+<h3 id="3-3-升级到7-0-api-24及以上"><a href="#3-3-升级到7-0-api-24及以上" class="headerlink" title="3.3 升级到7.0 api 24及以上"></a>3.3 升级到7.0 api 24及以上</h3><p>对于面向 Android 7.0 的应用，Android 框架执行的 StrictMode API 政策禁止在您的应用外部公开 file:// URI。如果一项包含文件 URI 的 intent 离开您的应用，则应用出现故障，并出现 FileUriExposedException 异常，常见的是访问升级下载到内部sd卡，访问手机相册等。<br>网上有很多解决方案</p>
+<h3 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h3><blockquote>
+<p>Normal Permissions</p>
+</blockquote>
+<p>ACCESS_LOCATION_EXTRA_COMMANDS</p>
+<p>ACCESS_NETWORK_STATE</p>
+<p>ACCESS_NOTIFICATION_POLICY</p>
+<p>ACCESS_WIFI_STATE</p>
+<p>BLUETOOTH</p>
+<p>BLUETOOTH_ADMIN</p>
+<p>BROADCAST_STICKY</p>
+<p>CHANGE_NETWORK_STATE</p>
+<p>CHANGE_WIFI_MULTICAST_STATE</p>
+<p>CHANGE_WIFI_STATE</p>
+<p>DISABLE_KEYGUARD</p>
+<p>EXPAND_STATUS_BAR</p>
+<p>GET_PACKAGE_SIZE</p>
+<p>INSTALL_SHORTCUT</p>
+<p>INTERNET</p>
+<p>KILL_BACKGROUND_PROCESSES</p>
+<p>MODIFY_AUDIO_SETTINGS</p>
+<p>NFC</p>
+<p>READ_SYNC_SETTINGS</p>
+<p>READ_SYNC_STATS</p>
+<p>RECEIVE_BOOT_COMPLETED</p>
+<p>REORDER_TASKS</p>
+<p>REQUEST_INSTALL_PACKAGES</p>
+<p>SET_ALARM</p>
+<p>SET_TIME_ZONE</p>
+<p>SET_WALLPAPER</p>
+<p>SET_WALLPAPER_HINTS</p>
+<p>TRANSMIT_IR</p>
+<p>UNINSTALL_SHORTCUT</p>
+<p>USE_FINGERPRINT</p>
+<p>VIBRATE</p>
+<p>WAKE_LOCK</p>
+<p>WRITE_SYNC_SETTINGS</p>
+<blockquote>
+<p>Dangenerous Permission</p>
+</blockquote>
+<p>group:android.permission-group.CONTACTS<br>  permission:android.permission.WRITE_CONTACTS<br>  permission:android.permission.GET_ACCOUNTS<br>  permission:android.permission.READ_CONTACTS</p>
+<p>group:android.permission-group.PHONE<br>  permission:android.permission.READ_CALL_LOG<br>  permission:android.permission.READ_PHONE_STATE<br>  permission:android.permission.CALL_PHONE<br>  permission:android.permission.WRITE_CALL_LOG<br>  permission:android.permission.USE_SIP<br>  permission:android.permission.PROCESS_OUTGOING_CALLS<br>  permission:com.android.voicemail.permission.ADD_VOICEMAIL</p>
+<p>group:android.permission-group.CALENDAR<br>  permission:android.permission.READ_CALENDAR<br>  permission:android.permission.WRITE_CALENDAR</p>
+<p>group:android.permission-group.CAMERA<br>  permission:android.permission.CAMERA</p>
+<p>group:android.permission-group.SENSORS<br>  permission:android.permission.BODY_SENSORS</p>
+<p>group:android.permission-group.LOCATION<br>  permission:android.permission.ACCESS_FINE_LOCATION<br>  permission:android.permission.ACCESS_COARSE_LOCATION</p>
+<p>group:android.permission-group.STORAGE<br>  permission:android.permission.READ_EXTERNAL_STORAGE<br>  permission:android.permission.WRITE_EXTERNAL_STORAGE</p>
+<p>group:android.permission-group.MICROPHONE<br>  permission:android.permission.RECORD_AUDIO</p>
+<p>group:android.permission-group.SMS<br>  permission:android.permission.READ_SMS<br>  permission:android.permission.RECEIVE_WAP_PUSH<br>  permission:android.permission.RECEIVE_MMS<br>  permission:android.permission.RECEIVE_SMS<br>  permission:android.permission.SEND_SMS<br>  permission:android.permission.READ_CELL_BROADCASTS</p>
+<p>###参考链接</p>
+<ul>
+<li>1、<a href="https://source.android.com/source/build-numbers" target="_blank" rel="noopener">https://source.android.com/source/build-numbers</a> </li>
+<li>2、<a href="https://www.jianshu.com/p/06e55a322f6f" target="_blank" rel="noopener">https://www.jianshu.com/p/06e55a322f6f</a></li>
+<li>3、<a href="https://developer.android.com/about/versions/marshmallow/android-6.0-changes?hl=zh-cn" target="_blank" rel="noopener">Android 6.0变更</a></li>
+<li>4、<a href="https://developer.android.com/about/versions/marshmallow/android-6.0-changes?hl=zh-cn#behavior-runtime-permissions" target="_blank" rel="noopener">运行时权限</a> </li>
+<li>5、<a href="developer.android.com/intl/zh-cn/training/permissions/best-practices.html#testing">Permissions Best Practices</a></li>
+<li>6、<a href="developer.android.com/intl/zh-cn/training/permissions/index.html">Working with System Permissions</a></li>
+<li>7、<a href="https://blog.csdn.net/andrexpert/article/details/53331836" target="_blank" rel="noopener">探讨Android 6.0及以上新权限系统的检测与处理</a></li>
+<li>8、<a href="https://mp.weixin.qq.com/s/ye7RTgPuIbBS4RCH-jDWAA" target="_blank" rel="noopener">Android 权限机制与适配经验</a></li>
+<li>9、<a href="https://blog.csdn.net/dzsw0117/article/details/51212612" target="_blank" rel="noopener">Android 6.0权限管理，sdk&gt;=23请求权限</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    云来
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xsfelvis.github.io/2018/04/06/动态权限1/" title="动态权限">https://xsfelvis.github.io/2018/04/06/动态权限1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/权限/" rel="tag"># 权限</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/31/Service/" rel="next" title="service">
+                <i class="fa fa-chevron-left"></i> service
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/21/动态权限2 几个权限库分析/" rel="prev" title="几个权限库分析">
+                几个权限库分析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzA1My8xMzU4OQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="云来" />
+            
+              <p class="site-author-name" itemprop="name">云来</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+			<!--my custom code begin-->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
+			<script type="text/javascript">
+			  $("#sidebar").hover(function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 1});
+			  },function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 0});
+			  });
+			</script>
+			<div id="mydivshow" class="mydivshow">
+			<!--my custom code end-->
+			
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/xsfelvis" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/XSF50717" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-csdn"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/5643754060b27f7a018bd10d" target="_blank" title="掘金">
+                    
+                      <i class="fa fa-fw fa-juejin"></i>掘金</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:xsfelvis@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://juejin.im/timeline" title="稀土掘金" target="_blank">稀土掘金</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://gank.io/" title="干货集中营" target="_blank">干货集中营</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wanandroid.com/tools" title="玩Android" target="_blank">玩Android</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://tech.meituan.com/" title="美团点评" target="_blank">美团点评</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.androidblog.cn/about/" title="酷站" target="_blank">酷站</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://pingguohe.net/" title="苹果核" target="_blank">苹果核</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <div id="player1" class="aplayer"></div>
+<script src="/js/src/APlayer.min.js"></script>
+<script type="text/javascript">
+var ap = new APlayer({
+    element: document.getElementById('player1'),                       // Optional, player element
+    narrow: false,                                                     // Optional, narrow style
+    autoplay: false,                                                    // Optional, autoplay song(s), not supported by mobile browsers
+    showlrc: 0,                                                        // Optional, show lrc, can be 0, 1, 2, see: ###With lrc
+    mutex: true,                                                       // Optional, pause other players when this player playing
+    theme: '#e6d0b2',                                                  // Optional, theme color, default: #b7daff
+    mode: 'random',                                                    // Optional, play mode, can be `random` `single` `circulation`(loop) `order`(no loop), default: `circulation`
+    preload: 'metadata',                                               // Optional, the way to load music, can be 'none' 'metadata' 'auto', default: 'auto'
+    listmaxheight: '513px',                                             // Optional, max height of play list
+    music: {                                                           // Required, music info, see: ###With playlist
+        title: 'Summertime Sadness',                                          // Required, music title
+        author: 'cover',                          // Required, music author
+        url: 'http://www.170mv.com/kw/other.web.rb01.sycdn.kuwo.cn/resource/n2/71/36/4211820203.mp3',  // Required, music url
+        pic: '/images/music.jpg',  // Optional, music picture
+    }
+});
+</script>
+        </div>
+		<!--my custom code begin-->
+		</div>
+		<!--my custom code end-->
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、在给app升级动态权限之前需要注意搞清楚一下几个概念"><span class="nav-number">1.</span> <span class="nav-text">1、在给app升级动态权限之前需要注意搞清楚一下几个概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1、版本号对应的api等级"><span class="nav-number">1.1.</span> <span class="nav-text">1.1、版本号对应的api等级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2、minSdkVersion、targetSdkVersion和-compileSdkVersion"><span class="nav-number">1.2.</span> <span class="nav-text">1.2、minSdkVersion、targetSdkVersion和 compileSdkVersion</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、如何升级app的动态权限"><span class="nav-number">2.</span> <span class="nav-text">2、如何升级app的动态权限</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-动态权限"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 动态权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-权限相关API"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 权限相关API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-如何适配"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 如何适配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-取消支持Apache-http-客户端"><span class="nav-number">2.4.</span> <span class="nav-text">3.2 取消支持Apache http 客户端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-升级到7-0-api-24及以上"><span class="nav-number">2.5.</span> <span class="nav-text">3.3 升级到7.0 api 24及以上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#附录"><span class="nav-number">2.6.</span> <span class="nav-text">附录</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">云来</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">42.4k</span>
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("QFKdnKcTHhFexYDWSA4tMBzH-gzGzoHsz", "wq2r6eiGoNMmUhgBsA7hAO9a");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.3"></script>
+
+
+  <script src="/js/src/Aplayer-Controler.js"></script>
+<div id="AP-controler"></div>
+<script type="text/javascript">
+var myapc=new APlayer_Controler({
+		APC_dom:$('#AP-controler'),
+		aplayer:ap, //此为绑定的aplayer对象
+		attach_right:false,
+		position:{top:'300px',bottom:''},
+		fixed:true,
+		btn_width:100,
+		btn_height:120,
+		img_src:['http://oty1v077k.bkt.clouddn.com/bukagirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/jumpgirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/pentigirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/%E8%90%8C1.gif'],
+		img_style:{repeat:'no-repeat',position:'center',size:'contain'},
+		ctrls_color:'rgba(173,255,47,0.8)',
+		ctrls_hover_color:'rgba(255,140,0,0.7)',
+		tips_on:true,
+		tips_width:140,
+		tips_height:25,
+		tips_color:'rgba(255,255,255,0.6)',
+		tips_content:{},
+		timeout:30
+	});
+</script>
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+
+
+</body>
+</html>
