@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta name="baidu-site-verification" content="UqlC4pwKIm" />
+  <meta name="baidu-site-verification" content="d3U0dGeqGw" />
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android,Fragment," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="云来" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="介绍 fragment 必须始终嵌入在Actvity中，其生命周期直接受宿主Activity生命周期影响， 例如，当 Activity 暂停时，其中的所有片段也会暂停；当 Activity 被销毁时，所有片段也会被销毁。 不过，当 Activity 正在运行（处于已恢复生命周期状态）时，您可以独立操纵每个片段，如添加或移除它们。 不过，片段并非必须成为 Activity 布局的一部分；您还可以将">
+<meta name="keywords" content="Android,Fragment">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fragment Study">
+<meta property="og:url" content="https://xsfelvis.github.io/2016/10/04/fragment-study/index.html">
+<meta property="og:site_name" content="云来">
+<meta property="og:description" content="介绍 fragment 必须始终嵌入在Actvity中，其生命周期直接受宿主Activity生命周期影响， 例如，当 Activity 暂停时，其中的所有片段也会暂停；当 Activity 被销毁时，所有片段也会被销毁。 不过，当 Activity 正在运行（处于已恢复生命周期状态）时，您可以独立操纵每个片段，如添加或移除它们。 不过，片段并非必须成为 Activity 布局的一部分；您还可以将">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://i.imgur.com/tQqHoSb.png">
+<meta property="og:updated_time" content="2018-06-04T04:44:19.335Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fragment Study">
+<meta name="twitter:description" content="介绍 fragment 必须始终嵌入在Actvity中，其生命周期直接受宿主Activity生命周期影响， 例如，当 Activity 暂停时，其中的所有片段也会暂停；当 Activity 被销毁时，所有片段也会被销毁。 不过，当 Activity 正在运行（处于已恢复生命周期状态）时，您可以独立操纵每个片段，如添加或移除它们。 不过，片段并非必须成为 Activity 布局的一部分；您还可以将">
+<meta name="twitter:image" content="http://i.imgur.com/tQqHoSb.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://xsfelvis.github.io/2016/10/04/fragment-study/"/>
+
+
+
+
+
+  <title>Fragment Study | 云来</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-120283281-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2a3365c396bc1892919405bfc6ea04a8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">云来</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">不积跬步，无以至千里；不积小流，无以成江海</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xsfelvis.github.io/2016/10/04/fragment-study/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="云来">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云来">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Fragment Study</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-04T00:00:00+08:00">
+                2016-10-04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-04T12:44:19+08:00">
+                2018-06-04
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/10/04/fragment-study/" class="leancloud_visitors" data-flag-title="Fragment Study">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,448
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ul>
+<li>fragment 必须始终嵌入在Actvity中，其生命周期直接受宿主Activity生命周期影响， 例如，当 Activity 暂停时，其中的所有片段也会暂停；当 Activity 被销毁时，所有片段也会被销毁。 不过，当 Activity 正在运行（处于已恢复生命周期状态）时，您可以独立操纵每个片段，如添加或移除它们。</li>
+<li>不过，片段并非必须成为 Activity 布局的一部分；您还可以将没有自己 UI 的片段用作 Activity 的不可见工作线程</li>
+</ul>
+<h2 id="onCreateView的两种方式"><a href="#onCreateView的两种方式" class="headerlink" title="onCreateView的两种方式"></a>onCreateView的两种方式</h2><pre><code>` public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    enableLoadHelper(true);
+    if (savedInstanceState != null) {
+        fofItem = (AtlasAssetInfo.FOFItem) savedInstanceState.getSerializable(AtlasAssetDetailActivity.ATLAS_ORDER);
+    }
+    return onCreateView(R.layout.fragment_atlas_asset_detail, inflater, container);
+}`
+</code></pre><p>官方写法：</p>
+<pre><code>` public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    enableLoadHelper(true);
+    if (savedInstanceState != null) {
+        fofItem = (AtlasAssetInfo.FOFItem) savedInstanceState.getSerializable(AtlasAssetDetailActivity.ATLAS_ORDER);
+    }
+    return onCreateView(R.layout.fragment_atlas_asset_detail, inflater, container);
+}`
+</code></pre><p>参考：<br><a href="https://developer.android.com/guide/components/fragments.html?hl=zh-cn#Lifecycle" target="_blank" rel="noopener">https://developer.android.com/guide/components/fragments.html?hl=zh-cn#Lifecycle</a></p>
+<h1 id="Fragemnet的坑"><a href="#Fragemnet的坑" class="headerlink" title="Fragemnet的坑"></a>Fragemnet的坑</h1><p>介绍坑之前先介绍一个概念：内存重启<br>安卓app有一种特殊情况，就是 app运行在后台的时候，系统资源紧张的时候导致把app的资源全部回收（杀死app的进程），这时把app再从后台返回到前台时，app会重启。这种情况下文简称为：“内存重启”。（屏幕旋转等配置变化也会造成当前Activity重启，本质与“内存重启”类似）</p>
+<p>先给出一张fragment详细的生命周期图<br><img src="http://i.imgur.com/tQqHoSb.png" alt=""></p>
+<p>图片来自<a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0605/2996.html" target="_blank" rel="noopener">http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0605/2996.html</a></p>
+<p>下面查阅资料结合自己实际中遇到困难总结了<br>有些场景都是开启了不保留活动</p>
+<h3 id="geActvity-空指针"><a href="#geActvity-空指针" class="headerlink" title="geActvity()空指针"></a>geActvity()空指针</h3><blockquote>
+<p>原因：</p>
+</blockquote>
+<p>能你遇到过getActivity()返回null，或者平时运行完好的代码，在“内存重启”之后，调用getActivity()的地方却返回null，报了空指针异常。<br>大多数情况下的原因：你在调用了getActivity()时，当前的Fragment已经onDetach()了宿主Activity。<br>比如：你在pop了Fragment之后，该Fragment的异步任务仍然在执行，并且在执行完成后调用了getActivity()方法，这样就会空指针。</p>
+<blockquote>
+<p>解决方法：</p>
+</blockquote>
+<p>在Fragment基类里设置一个Activity activity的全局变量，在onAttach(Activity activity)里赋值，使用mActivity代替getActivity()，保证Fragment即使在onDetach后，仍持有Activity的引用（有引起内存泄露的风险，但是相比空指针闪退，这种做法“安全”些）</p>
+<pre><code>`@Override
+public void onAttach(Context context) {
+super.onAttach(context);
+this.mActivity = (Activity)context;
+}`
+</code></pre><p>或者如果该Context需要在Activity被销毁后还存在，则使用getActivity().getApplicationContext()</p>
+<h3 id="臭名昭著的Can-not-perform-this-action-after-onSaveInstanceState"><a href="#臭名昭著的Can-not-perform-this-action-after-onSaveInstanceState" class="headerlink" title="臭名昭著的Can not perform this action after onSaveInstanceState"></a>臭名昭著的Can not perform this action after onSaveInstanceState</h3><blockquote>
+<p>原因：</p>
+</blockquote>
+<p>在你离开当前Activity等情况下，系统会调用onSaveInstanceState()<code>调用时机是onPause之后onStop之前</code>帮你保存当前Activity&amp;Fragment的一些状态、数据等，而在离开后（onSaveInstanceState()已经被执行），你又去执行Fragment的相关事务方法后，就会抛出该异常！</p>
+<blockquote>
+<p>解决方式：</p>
+</blockquote>
+<p>解决方法2个：</p>
+<p>1、（不推荐）该事务使用commitAllowingStateLoss()方法提交，但是有可能导致该次提交无效！</p>
+<p>2、（推荐）在重新回到该Activity的时候（比如onStart里），再执行该事务！</p>
+<p>Note：上次的首页广告MainActivity中需要重新修改</p>
+<p>================================================================================</p>
+<p>The exception was thrown because you attempted to commit a FragmentTransaction after the activity’s state had been saved, resulting in a phenomenon known as Activity state loss</p>
+<p>When the framework calls onSaveInstanceState(), it passes the method a Bundle object for the Activity to use to save its state, and the Activity records in it the state of its dialogs, fragments, and views. When the method returns, the system parcels the Bundle object across a Binder interface to the System Server process, where it is safely stored away. When the system later decides to recreate the Activity, it sends this same Bundle object back to the application, for it to use to restore the Activity’s old state.</p>
+<p>So why then is the exception thrown? Well, the problem stems from the fact that these Bundle objects represent a snapshot of an Activity at the moment onSaveInstanceState() was called, and nothing more. That means when you call FragmentTransaction#commit() after onSaveInstanceState() is called, the transaction won’t be remembered because it was never recorded as part of the Activity’s state in the first place. From the user’s point of view, the transaction will appear to be lost, resulting in accidental UI state loss. In order to protect the user experience, Android avoids state loss at all costs, and simply throws an IllegalStateException whenever it occurs.</p>
+<p>参考<br><a href="http://www.androiddesignpatterns.com/2013/08/fragment-transaction-commit-state-loss.html（已翻译）" target="_blank" rel="noopener">http://www.androiddesignpatterns.com/2013/08/fragment-transaction-commit-state-loss.html（已翻译）</a></p>
+<h3 id="Fragment重叠问题"><a href="#Fragment重叠问题" class="headerlink" title="Fragment重叠问题"></a>Fragment重叠问题</h3><blockquote>
+<p>源码分析：</p>
+<p>Step1:Fragment恢复保存机制</p>
+</blockquote>
+<p>我们知道Activity中有个onSaveInstanceState()方法，该方法在app进入后台、屏幕旋转前、跳转下一个Activity等情况下会被调用，此时系统帮我们保存一个Bundle类型的数据，我们可以根据自己的需求，手动保存一些例如播放进度等数据，而后如果发生了页面重启，我们可以在onRestoreInstanceState()或onCreate()里get该数据，从而恢复播放进度等状态。(关于onSaveInstance参见最后)</p>
+<p>而产生Fragment重叠就是页面保存机制有关，大致原因是在页面重启前，帮我们保存了Fragment的状态，但是在重启恢复时，<code>视图的可见状态并没有帮我们保存</code>，而fragment默认状态是show状态，因此产生了页面重叠</p>
+<pre><code>`public class FragmentActivity extends ... {
+final FragmentController mFragments = FragmentController.createController(new HostCallbacks());
+
+protected void onCreate(@Nullable Bundle savedInstanceState) {
+    ...省略
+    if (savedInstanceState != null) {
+        Parcelable p = savedInstanceState.getParcelable(FRAGMENTS_TAG);
+        mFragments.restoreAllState(p, nc != null ? nc.fragments : null);
+    }
+}
+
+@Override
+protected void onSaveInstanceState(Bundle outState) {
+    super.onSaveInstanceState(outState);
+    Parcelable p = mFragments.saveAllState();
+    ...省略
+}
+}`
+</code></pre><p>可以看出fragmentActvity确实做了fragment的状态的保存，从上面可以看出最终实现还是在mFragments进行restoreAllState、saveAllState()的处理，而mFragments是FragmentController，它是一个Controller，内部通过FragmentHostCallback间接控制FragmentManagerImpl，因此具体实现还是在FragmentManagerImpl中</p>
+<pre><code>`final class FragmentManagerImpl extends FragmentManager {
+Parcelable saveAllState() {
+    ...省略 详细保存过程
+    FragmentManagerState fms = new FragmentManagerState();
+    fms.mActive = active;
+    fms.mAdded = added;
+    fms.mBackStack = backStack;
+    return fms;
+}
+
+void restoreAllState(Parcelable state, List&lt;Fragment&gt; nonConfig) {
+    // 恢复核心代码
+    FragmentManagerState fms = (FragmentManagerState)state;
+    FragmentState fs = fms.mActive[i];
+    if (fs != null) {
+        Fragment f = fs.instantiate(mHost, mParent);
+    ｝
+}
+}`
+</code></pre><p>从源码可以看出通过onSaveAllState可以看出保存状态其实是通过<code>FragmentManager#FragmentManagerState()</code>来保存了fragment的状态、回退栈、下标等，而在restoreAllState中通过<code>Fragment#FragmentState</code>的instantiate方法恢复了fragment的实例,继续看一下这两个类</p>
+<pre><code>`final class FragmentManagerState implements Parcelable {
+FragmentState[] mActive;           // Fragment状态
+int[] mAdded;                      // 所处Fragment栈下标
+BackStackState[] mBackStack;       // 回退栈状态
+...
+}`
+</code></pre><p>我们只看Fragment#FragmentState，它也实现了Parcelable，保存了Fragment的类名、下标、id、Tag、ContainerId以及Arguments等数据：</p>
+<pre><code>`final class FragmentState implements Parcelable {
+final String mClassName;
+final int mIndex;
+final boolean mFromLayout;
+final int mFragmentId;
+final int mContainerId;
+final String mTag;
+final boolean mRetainInstance;
+final boolean mDetached;
+final Bundle mArguments;
+...
+
+//  在FragmentManagerImpl的restoreAllState()里被调用
+public Fragment instantiate(FragmentHostCallback host, Fragment parent) {
+    ...省略
+    mInstance = Fragment.instantiate(context, mClassName, mArguments);
+}
+}`
+</code></pre><p>至此我们就清楚了，FragmentActvity通过FragmentState来保存Fragment实例</p>
+<blockquote>
+<p>Step2 发生重叠的根本原因？？？？？</p>
+</blockquote>
+<p>在Fragment#FragmentState中并没有保存Hidden字段，因此在以add方式加载Fragment的场景下，系统在恢复Fragment时，mHidden＝false，即show状态，这样在页面重启后，Activity内的Fragment都是以show状态显示的，而如果你不进行处理，那么就会发生Fragment重叠现象！</p>
+<blockquote>
+<p>Step3 为什么重复replace|add Fragment 或者 使用show , hide控制Fragment会导致重叠？</p>
+</blockquote>
+<ul>
+<li>重复replace|add Fragment</li>
+</ul>
+<p>一般情况下，我们会在Activity的onCreate()里或者Fragment的onCreateView()里加载根Fragment，如果在这里没有进行页面重启的判断的话，就可能导致重复加载Fragment引起重叠，正确的写法应该是先判断 saveInstanceState是否为空</p>
+<pre><code>`@Override
+ protected void onCreate(@Nullable Bundle savedInstanceState) {
+  ...
+  // 判空， Fragment同理
+  if(saveInstanceState == null){
+        // 这里replace或add 根Fragment
+  }
+}`
+</code></pre><ul>
+<li>使用show , hide控制Fragment</li>
+</ul>
+<p>我们使用show(),hide()时，都是使用add的方式加载Fragment的，add配合hide使Fragment的视图改变为GONE状态；而replace是销毁Fragment 的视图。<br>当页面重启时add的fragment会走全部生命周期，创建生命周期，而repleace的非栈顶的fragment不会走生命周期，只有back时候才会走生命周期，创建视图在使用replace加载Fragment时，页面重启后，Fragment视图都还没创建，所以mHidden没有意义，不会发生重叠现象；<br>而在使用add加载时，视图是存在的并且叠加在一起，页面重启后 mHidden=false，所有的Fragment都会是show状态显示出来（即VISIBLE），从而造成了Fragment重叠！</p>
+<p><a href="http://www.jianshu.com/p/78ec81b42f92" target="_blank" rel="noopener">http://www.jianshu.com/p/78ec81b42f92</a></p>
+<blockquote>
+<p>step4 彻底解决</p>
+</blockquote>
+<p>1、加载根fragment时候需要进行判断</p>
+<pre><code>`public class MainActivity ... {
+
+@Override
+protected void onCreate(@Nullable Bundle savedInstanceState) {
+    ...
+    // 这里一定要在save为null时才加载Fragment，Fragment中onCreateView等生命周里加载根子Fragment同理
+    // 因为在页面重启时，Fragment会被保存恢复，而此时再加载Fragment会重复加载，导致重叠
+    if(saveInstanceState == null){
+          // 这里加载根Fragment
+    }
+}
+}`
+</code></pre><p>2、重写BaseFragment</p>
+<pre><code>`public class BaseFragment extends Fragment {
+private static final String STATE_SAVE_IS_HIDDEN = &quot;STATE_SAVE_IS_HIDDEN&quot;;
+
+@Override
+public void onCreate(@Nullable Bundle savedInstanceState) {
+...
+if (savedInstanceState != null) {
+    boolean isSupportHidden = savedInstanceState.getBoolean(STATE_SAVE_IS_HIDDEN);
+
+    FragmentTransaction ft = getFragmentManager().beginTransaction();
+    if (isSupportHidden) {
+        ft.hide(this);
+    } else {
+        ft.show(this);
+    }
+    ft.commit();
+}
+
+@Override
+public void onSaveInstanceState(Bundle outState) {
+    ...
+    outState.putBoolean(STATE_SAVE_IS_HIDDEN, isHidden());
+}
+}`
+</code></pre><p>参考 <a href="http://www.jianshu.com/p/c12a98a36b2b" target="_blank" rel="noopener">http://www.jianshu.com/p/c12a98a36b2b</a></p>
+<p>一般满足下面2个条件才可能会发生重叠：</p>
+<p>1、发生了页面重启（旋转屏幕、内存不足等情况被强杀重启）。</p>
+<p>2、重复replace｜add Fragment 或者 使用show , hide控制Fragment；</p>
+<p>大致原因就是系统在页面重启前，帮我们保存了Fragment的状态，但是在重启后恢复时，<code>视图的可见状态没帮我们保存</code>，而Fragment默认的是show状态，所以产生了Fragment重叠现象。</p>
+<blockquote>
+<p>解决方式：</p>
+</blockquote>
+<p><a href="http://www.jianshu.com/p/c12a98a36b2b" target="_blank" rel="noopener">http://www.jianshu.com/p/c12a98a36b2b</a></p>
+<p>要是使用fragmentpageAdapter</p>
+<p>核心是FragmentState没帮我们保存Hidden状态，那就我们自己来保存，在页面重启后，我们自己来决定Fragment是否显示！<br>解决思路转变了，由Activity/父Fragment来管理子Fragment的Hidden状态转变为 由Fragment自己来管理自己的Hidden状态！</p>
+<pre><code>`public class BaseFragment extends Fragment {
+private static final String STATE_SAVE_IS_HIDDEN = &quot;STATE_SAVE_IS_HIDDEN&quot;;
+
+@Override
+public void onCreate(@Nullable Bundle savedInstanceState) {
+...
+if (savedInstanceState != null) {
+    boolean isSupportHidden = savedInstanceState.getBoolean(STATE_SAVE_IS_HIDDEN);
+
+    FragmentTransaction ft = getFragmentManager().beginTransaction();
+    if (isSupportHidden) {
+        ft.hide(this);
+    } else {
+        ft.show(this);
+    }
+    ft.commit();
+}
+
+@Override
+public void onSaveInstanceState(Bundle outState) {
+    ...
+    outState.putBoolean(STATE_SAVE_IS_HIDDEN, isHidden());
+}
+}`
+</code></pre><p>其实是因为加载根Fragment时没有经过判断的原因，当在类似onCreate等初始化生命周期里加载根Fragment（即第一个Fragment）时，需要下面的判断，避免重复加载相同的Fragment：</p>
+<pre><code>`public class MainActivity ... {
+
+@Override
+protected void onCreate(@Nullable Bundle savedInstanceState) {
+    ...
+    // 这里一定要在save为null时才加载Fragment，Fragment中onCreateView等生命周里加载根子Fragment同理
+    // 因为在页面重启时，Fragment会被保存恢复，而此时再加载Fragment会重复加载，导致重叠
+    if(saveInstanceState == null){
+          // 这里加载根Fragment
+    }
+}
+}`
+</code></pre><p>解决方式二：</p>
+<pre><code>` @Override
+protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
+    if (savedInstanceState != null) {
+        List&lt;Fragment&gt; fragments = getSupportFragmentManager().getFragments();
+
+        if (fragments != null &amp;&amp; fragments.size() &gt; 0) {
+            boolean showFlag = false;
+
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            for (int i = fragments.size() - 1; i &gt;= 0; i--) {
+                Fragment fragment = fragments.get(i);
+                if (fragment != null) {
+                    if (!showFlag) {
+                        ft.show(fragments.get(i));
+                        showFlag = true;
+                    } else {
+                        ft.hide(fragments.get(i));
+                    }
+                }
+            }
+            ft.commit();
+        }
+    }
+}`
+</code></pre><h3 id="恶心的Activity重建以及恢复其Fragment"><a href="#恶心的Activity重建以及恢复其Fragment" class="headerlink" title="恶心的Activity重建以及恢复其Fragment"></a>恶心的Activity重建以及恢复其Fragment</h3><p>一个思路就是阻止系统恢复Fragment，我们可以自己来加载，因为重建也会走到Activity的onCreate，所以我们有理由重走一遍初始化流程。怎么阻止呢，就是在FragmentActivity保存所有Fragment状态前把Fragment从FragmentManager中移除掉。<br>    <code>@Override
+    public void onSaveInstance(Bundle out) {
+    FragmentTransaction ft = getSupportFragmentManager().benginTransaction();
+    ft.remove(frag);
+    ft.commitAllowStateLoss();
+    super.onSaveInstance(out);
+    }</code><br><a href="http://toughcoder.net/blog/2015/04/30/android-fragment-the-bad-parts/" target="_blank" rel="noopener">http://toughcoder.net/blog/2015/04/30/android-fragment-the-bad-parts/</a></p>
+<p>###FragmentPagerAdapter与FragmentStatePagerAdapter区别</p>
+<p><a href="http://www.cnblogs.com/lianghui66/p/3607091.html(已做总结" target="_blank" rel="noopener">http://www.cnblogs.com/lianghui66/p/3607091.html(已做总结</a>)</p>
+<p>##补充一下InstanceState详解：</p>
+<p><a href="http://www.cnblogs.com/hanyonglu/archive/2012/03/28/2420515.html" target="_blank" rel="noopener">http://www.cnblogs.com/hanyonglu/archive/2012/03/28/2420515.html</a></p>
+<p>##让多个Fragment 切换时不重新实例化</p>
+<p>通常是用repleace方法完成，该方法实际是将remove和add方法合在一起</p>
+<pre><code>`public void switchContent(Fragment fragment) {
+if(mContent != fragment) {
+    mContent = fragment;
+    mFragmentMan.beginTransaction()
+        .setCustomAnimations(android.R.anim.fade_in, R.anim.slide_out)
+        .replace(R.id.content_frame, fragment) // 替换Fragment，实现切换
+        .commit();
+}
+}`
+</code></pre><p>但是这样做有一个问题，每次切换的时候Fragment都会实例化，重新加载一遍数据，这样非常消耗性能和用户的数据流量，如何让多个Fragment彼此切换时不重新实例化？<br>其实replace方法只是在上一个Fragment不再需要时采用的简便方法，正确的切换方式是add(),切换时hide,add另外一个Fragment，再次切换时只需要hide当前，show另外一个，这样就可以做到多个Fragment切换时不重新实例化。</p>
+<pre><code>`public void switchContent(Fragment from, Fragment to) {
+if (mContent != to) {
+    mContent = to;
+    FragmentTransaction transaction = mFragmentMan.beginTransaction().setCustomAnimations(
+            android.R.anim.fade_in, R.anim.slide_out);
+    if (!to.isAdded()) {    // 先判断是否被add过
+        transaction.hide(from).add(R.id.content_frame, to).commit(); // 隐藏当前的fragment，add下一个到Activity中
+    } else {
+        transaction.hide(from).show(to).commit(); // 隐藏当前的fragment，显示下一个
+    }
+}
+}`
+</code></pre><p>参考：<br><a href="https://yrom.net/blog/2013/03/10/fragment-switch-not-restart/" target="_blank" rel="noopener">https://yrom.net/blog/2013/03/10/fragment-switch-not-restart/</a></p>
+<p>##关于Fragment的懒加载</p>
+<p>情景：一个Actvity里面可能会以viewPager(或者其它容器)与多个Fragment来组合使用，而如果每个Fragment都需要去加载数据、或者从本地加载、网络加载，那么在这个activity刚创建的时候就需要初始化大量资源，那么如何做到当切换到这个fragment的时候才去初始化？</p>
+<p>方法：<br>利用<code>setUserVisibleHint</code></p>
+<pre><code>`public abstract class LazyFragment extends Fragment {
+protected boolean isVisible;
+/**
+ * 在这里实现Fragment数据的缓加载.
+ * @param isVisibleToUser
+ */
+@Override
+public void setUserVisibleHint(boolean isVisibleToUser) {
+    super.setUserVisibleHint(isVisibleToUser);
+    if(getUserVisibleHint()) {
+        isVisible = true;
+        onVisible();
+    } else {
+        isVisible = false;
+        onInvisible();
+    }
+}
+protected void onVisible(){
+    lazyLoad();
+}
+protected abstract void lazyLoad();
+protected void onInvisible(){}
+}`
+</code></pre><p>在这里主要增加了3个方法</p>
+<ul>
+<li>onVisible 即fragment被设置为不可见时调用</li>
+<li>lazyLoad抽象方法，在onVisible中调用</li>
+</ul>
+<p>使用如下：<br>    <code>public class OpenResultFragment extends LazyFragment{
+        // 标志位，标志已经初始化完成。
+        private boolean isPrepared;
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            Log.d(LOG_TAG, &quot;onCreateView&quot;);
+            View view = inflater.inflate(R.layout.fragment_open_result, container, false);
+            //XXX初始化view的各控件
+        isPrepared = true;
+            lazyLoad();
+            return view;
+        }
+        @Override
+        protected void lazyLoad() {
+            if(!isPrepared || !isVisible) {
+                return;
+            }
+            //填充各控件的数据
+        }
+    }</code><br>参考：<br><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2014/1021/1813.html" target="_blank" rel="noopener">http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2014/1021/1813.html</a></p>
+<h1 id="Useage"><a href="#Useage" class="headerlink" title="Useage"></a>Useage</h1><p>AtlasAssetDetailActivity#addFragment</p>
+<pre><code>`public class AtlasAssetDetailActivity extends BaseActivity {
+
+public static final String ATLAS_ORDER = &quot;atlas_order&quot;;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_atlas_asset_detail);
+    addFragment(AtlasAssetDetailFragment.newInstance(getIntent().getExtras()));
+}
+
+public void addFragment(Fragment fragment) {
+    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+    Fragment oldFragment = getSupportFragmentManager().findFragmentById(R.id.container);
+    if (oldFragment != null) {
+        transaction.hide(oldFragment);
+        transaction.addToBackStack(null);
+        transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
+    transaction.add(R.id.container, fragment);
+    transaction.commit();
+}
+
+
+public void popFragment() {
+    getSupportFragmentManager().popBackStack();
+
+}
+</code></pre><p>}`</p>
+<p>AtlasAssetDetailFragment#中通过selectTab切换hodler达到这种目的</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    云来
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xsfelvis.github.io/2016/10/04/fragment-study/" title="Fragment Study">https://xsfelvis.github.io/2016/10/04/fragment-study/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/Fragment/" rel="tag"># Fragment</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/01/【译文-Fragment-Transactions-&-Activity-State-Loss/" rel="next" title="《Fragment Transactions & Activity State Loss">
+                <i class="fa fa-chevron-left"></i> 《Fragment Transactions & Activity State Loss
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/10/Andfix学习记录/" rel="prev" title="Andfix学习">
+                Andfix学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzA1My8xMzU4OQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="云来" />
+            
+              <p class="site-author-name" itemprop="name">云来</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+			<!--my custom code begin-->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
+			<script type="text/javascript">
+			  $("#sidebar").hover(function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 1});
+			  },function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 0});
+			  });
+			</script>
+			<div id="mydivshow" class="mydivshow">
+			<!--my custom code end-->
+			
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/xsfelvis" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/XSF50717" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-csdn"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/5643754060b27f7a018bd10d" target="_blank" title="掘金">
+                    
+                      <i class="fa fa-fw fa-juejin"></i>掘金</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:xsfelvis@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://juejin.im/timeline" title="稀土掘金" target="_blank">稀土掘金</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://gank.io/" title="干货集中营" target="_blank">干货集中营</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wanandroid.com/tools" title="玩Android" target="_blank">玩Android</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://tech.meituan.com/" title="美团点评" target="_blank">美团点评</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.androidblog.cn/about/" title="酷站" target="_blank">酷站</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://pingguohe.net/" title="苹果核" target="_blank">苹果核</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <div id="player1" class="aplayer"></div>
+<script src="/js/src/APlayer.min.js"></script>
+<script type="text/javascript">
+var ap = new APlayer({
+    element: document.getElementById('player1'),                       // Optional, player element
+    narrow: false,                                                     // Optional, narrow style
+    autoplay: false,                                                    // Optional, autoplay song(s), not supported by mobile browsers
+    showlrc: 0,                                                        // Optional, show lrc, can be 0, 1, 2, see: ###With lrc
+    mutex: true,                                                       // Optional, pause other players when this player playing
+    theme: '#e6d0b2',                                                  // Optional, theme color, default: #b7daff
+    mode: 'random',                                                    // Optional, play mode, can be `random` `single` `circulation`(loop) `order`(no loop), default: `circulation`
+    preload: 'metadata',                                               // Optional, the way to load music, can be 'none' 'metadata' 'auto', default: 'auto'
+    listmaxheight: '513px',                                             // Optional, max height of play list
+    music: {                                                           // Required, music info, see: ###With playlist
+        title: 'Summertime Sadness',                                          // Required, music title
+        author: 'cover',                          // Required, music author
+        url: 'http://www.170mv.com/kw/other.web.rb01.sycdn.kuwo.cn/resource/n2/71/36/4211820203.mp3',  // Required, music url
+        pic: '/images/music.jpg',  // Optional, music picture
+    }
+});
+</script>
+        </div>
+		<!--my custom code begin-->
+		</div>
+		<!--my custom code end-->
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#onCreateView的两种方式"><span class="nav-number">2.</span> <span class="nav-text">onCreateView的两种方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fragemnet的坑"><span class="nav-number"></span> <span class="nav-text">Fragemnet的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#geActvity-空指针"><span class="nav-number">0.1.</span> <span class="nav-text">geActvity()空指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#臭名昭著的Can-not-perform-this-action-after-onSaveInstanceState"><span class="nav-number">0.2.</span> <span class="nav-text">臭名昭著的Can not perform this action after onSaveInstanceState</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fragment重叠问题"><span class="nav-number">0.3.</span> <span class="nav-text">Fragment重叠问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#恶心的Activity重建以及恢复其Fragment"><span class="nav-number">0.4.</span> <span class="nav-text">恶心的Activity重建以及恢复其Fragment</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Useage"><span class="nav-number"></span> <span class="nav-text">Useage</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">云来</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">29.9k</span>
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("QFKdnKcTHhFexYDWSA4tMBzH-gzGzoHsz", "wq2r6eiGoNMmUhgBsA7hAO9a");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.3"></script>
+
+
+  <script src="/js/src/Aplayer-Controler.js"></script>
+<div id="AP-controler"></div>
+<script type="text/javascript">
+var myapc=new APlayer_Controler({
+		APC_dom:$('#AP-controler'),
+		aplayer:ap, //此为绑定的aplayer对象
+		attach_right:false,
+		position:{top:'300px',bottom:''},
+		fixed:true,
+		btn_width:100,
+		btn_height:120,
+		img_src:['http://oty1v077k.bkt.clouddn.com/bukagirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/jumpgirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/pentigirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/%E8%90%8C1.gif'],
+		img_style:{repeat:'no-repeat',position:'center',size:'contain'},
+		ctrls_color:'rgba(173,255,47,0.8)',
+		ctrls_hover_color:'rgba(255,140,0,0.7)',
+		tips_on:true,
+		tips_width:140,
+		tips_height:25,
+		tips_color:'rgba(255,255,255,0.6)',
+		tips_content:{},
+		timeout:30
+	});
+</script>
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+
+
+</body>
+</html>
