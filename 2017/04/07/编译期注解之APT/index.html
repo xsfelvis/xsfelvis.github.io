@@ -121,7 +121,7 @@
 
 
 
-  <meta name="keywords" content="Annotation,APT," />
+  <meta name="keywords" content="注解,APT," />
 
 
 
@@ -134,18 +134,18 @@
 
 
 
-<meta name="description" content="0x00 概述前一篇介绍了注解的基本知识以及常见用法，由于运行期(RunTime)利用反射去获取信息还是比较损耗性能的，本篇将介绍一种使用注解更加优雅的方式，编译期(Compile time)注解，以及处理编译期注解的手段APT和Javapoet,限于篇幅，本篇着重介绍APT首先你的注解需要声明为CLASS@Retention(RetentionPolicy.CLASS)   编译期解析注解基本">
-<meta name="keywords" content="Annotation,APT">
+<meta name="description" content="注解系列  注解基础 JavaPoet 编译期注解处理之APT  0x00 概述前一篇介绍了注解的基本知识以及常见用法，由于运行期(RunTime)利用反射去获取信息还是比较损耗性能的，本篇将介绍一种使用注解更加优雅的方式，编译期(Compile time)注解，以及处理编译期注解的手段APT和Javapoet,限于篇幅，本篇着重介绍APT首先你的注解需要声明为CLASS@Retention(R">
+<meta name="keywords" content="注解,APT">
 <meta property="og:type" content="article">
 <meta property="og:title" content="编译期注解处理之APT">
 <meta property="og:url" content="https://xsfelvis.github.io/2017/04/07/编译期注解之APT/index.html">
 <meta property="og:site_name" content="渡口一艘船">
-<meta property="og:description" content="0x00 概述前一篇介绍了注解的基本知识以及常见用法，由于运行期(RunTime)利用反射去获取信息还是比较损耗性能的，本篇将介绍一种使用注解更加优雅的方式，编译期(Compile time)注解，以及处理编译期注解的手段APT和Javapoet,限于篇幅，本篇着重介绍APT首先你的注解需要声明为CLASS@Retention(RetentionPolicy.CLASS)   编译期解析注解基本">
+<meta property="og:description" content="注解系列  注解基础 JavaPoet 编译期注解处理之APT  0x00 概述前一篇介绍了注解的基本知识以及常见用法，由于运行期(RunTime)利用反射去获取信息还是比较损耗性能的，本篇将介绍一种使用注解更加优雅的方式，编译期(Compile time)注解，以及处理编译期注解的手段APT和Javapoet,限于篇幅，本篇着重介绍APT首先你的注解需要声明为CLASS@Retention(R">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-04T04:53:44.245Z">
+<meta property="og:updated_time" content="2018-06-05T09:16:05.994Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编译期注解处理之APT">
-<meta name="twitter:description" content="0x00 概述前一篇介绍了注解的基本知识以及常见用法，由于运行期(RunTime)利用反射去获取信息还是比较损耗性能的，本篇将介绍一种使用注解更加优雅的方式，编译期(Compile time)注解，以及处理编译期注解的手段APT和Javapoet,限于篇幅，本篇着重介绍APT首先你的注解需要声明为CLASS@Retention(RetentionPolicy.CLASS)   编译期解析注解基本">
+<meta name="twitter:description" content="注解系列  注解基础 JavaPoet 编译期注解处理之APT  0x00 概述前一篇介绍了注解的基本知识以及常见用法，由于运行期(RunTime)利用反射去获取信息还是比较损耗性能的，本篇将介绍一种使用注解更加优雅的方式，编译期(Compile time)注解，以及处理编译期注解的手段APT和Javapoet,限于篇幅，本篇着重介绍APT首先你的注解需要声明为CLASS@Retention(R">
 
 
 
@@ -382,8 +382,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-04T12:53:44+08:00">
-                2018-06-04
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-05T17:16:05+08:00">
+                2018-06-05
               </time>
             
           </span>
@@ -401,8 +401,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Annotation/" itemprop="url" rel="index">
-                    <span itemprop="name">Annotation</span>
+                  <a href="/categories/注解/" itemprop="url" rel="index">
+                    <span itemprop="name">注解</span>
                   </a>
                 </span>
 
@@ -443,7 +443,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,421
+                  3,439
                 </span>
               
 
@@ -480,7 +480,13 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><h2 id="0x00-概述"><a href="#0x00-概述" class="headerlink" title="0x00 概述"></a>0x00 概述</h2><p>前一篇介绍了注解的基本知识以及常见用法，由于运行期(RunTime)利用反射去获取信息还是比较损耗性能的，本篇将介绍一种使用注解更加优雅的方式，编译期(Compile time)注解，以及处理编译期注解的手段APT和Javapoet,限于篇幅，本篇着重介绍APT<br>首先你的注解需要声明为CLASS<br>@Retention(RetentionPolicy.CLASS)  </p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>注解系列</p>
+<ul>
+<li><a href="https://xsfelvis.github.io/2017/01/06/%E6%B3%A8%E8%A7%A3%E5%9F%BA%E7%A1%80/">注解基础</a></li>
+<li><a href="https://xsfelvis.github.io/2017/03/12/%E7%BC%96%E8%AF%91%E6%9C%9F%E6%B3%A8%E8%A7%A3%E4%B9%8BJavaPoet/">JavaPoet</a></li>
+<li><a href="https://xsfelvis.github.io/2017/04/07/%E7%BC%96%E8%AF%91%E6%9C%9F%E6%B3%A8%E8%A7%A3%E4%B9%8BAPT/">编译期注解处理之APT</a></li>
+</ul>
+<h2 id="0x00-概述"><a href="#0x00-概述" class="headerlink" title="0x00 概述"></a>0x00 概述</h2><p>前一篇介绍了注解的基本知识以及常见用法，由于运行期(RunTime)利用反射去获取信息还是比较损耗性能的，本篇将介绍一种使用注解更加优雅的方式，编译期(Compile time)注解，以及处理编译期注解的手段APT和Javapoet,限于篇幅，本篇着重介绍APT<br>首先你的注解需要声明为CLASS<br>@Retention(RetentionPolicy.CLASS)  </p>
 <p>编译期解析注解基本原理：<br>在某些代码元素上（如类型、函数、字段等）添加注解，在编译时编译器会检查AbstractProcessor的子类，并且调用该类型的process函数，然后将添加了注解的所有元素都传递到process函数中，使得开发人员可以在编译器进行相应的处理，例如，根据注解生成新的Java类，这也就是ButterKnife等开源库的基本原理。</p>
 <h2 id="0x01-APT"><a href="#0x01-APT" class="headerlink" title="0x01 APT"></a>0x01 APT</h2><p>在处理编译器注解的第一个手段就是APT(Annotation Processor Tool),即注解处理器。在java5的时候已经存在，但是java6开始的时候才有可用的API，最近才随着butterknife这些库流行起来。本章将阐述什么是注解处理器，以及如何使用这个强大的工具。</p>
 <blockquote>
@@ -617,7 +623,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Annotation/" rel="tag"># Annotation</a>
+            <a href="/tags/注解/" rel="tag"># 注解</a>
           
             <a href="/tags/APT/" rel="tag"># APT</a>
           

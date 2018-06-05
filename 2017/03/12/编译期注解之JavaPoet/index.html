@@ -121,7 +121,7 @@
 
 
 
-  <meta name="keywords" content="Annotation,JavaPoet," />
+  <meta name="keywords" content="注解,JavaPoet," />
 
 
 
@@ -134,18 +134,18 @@
 
 
 
-<meta name="description" content="0x00 概述上一篇限于篇幅只介绍了APT，这篇来继续介绍javapoet，是square公司的开源库。正如其名，java诗人，通过注解来生成java源文件，通常要使用javapoet这个库与Filer配合使用。主要和注解配合用来干掉那些重复的模板代码(如butterknife和databinding所做的事情)，当然你也可以使用这个技术让你的代码更加的炫酷。 0x01 简单使用使用之前要先引入">
-<meta name="keywords" content="Annotation,JavaPoet">
+<meta name="description" content="注解系列  注解基础 JavaPoet 编译期注解处理之APT  0x00 概述上一篇限于篇幅只介绍了APT，这篇来继续介绍javapoet，是square公司的开源库。正如其名，java诗人，通过注解来生成java源文件，通常要使用javapoet这个库与Filer配合使用。主要和注解配合用来干掉那些重复的模板代码(如butterknife和databinding所做的事情)，当然你也可以使用">
+<meta name="keywords" content="注解,JavaPoet">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaPoet">
 <meta property="og:url" content="https://xsfelvis.github.io/2017/03/12/编译期注解之JavaPoet/index.html">
 <meta property="og:site_name" content="渡口一艘船">
-<meta property="og:description" content="0x00 概述上一篇限于篇幅只介绍了APT，这篇来继续介绍javapoet，是square公司的开源库。正如其名，java诗人，通过注解来生成java源文件，通常要使用javapoet这个库与Filer配合使用。主要和注解配合用来干掉那些重复的模板代码(如butterknife和databinding所做的事情)，当然你也可以使用这个技术让你的代码更加的炫酷。 0x01 简单使用使用之前要先引入">
+<meta property="og:description" content="注解系列  注解基础 JavaPoet 编译期注解处理之APT  0x00 概述上一篇限于篇幅只介绍了APT，这篇来继续介绍javapoet，是square公司的开源库。正如其名，java诗人，通过注解来生成java源文件，通常要使用javapoet这个库与Filer配合使用。主要和注解配合用来干掉那些重复的模板代码(如butterknife和databinding所做的事情)，当然你也可以使用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-04T04:53:52.932Z">
+<meta property="og:updated_time" content="2018-06-05T09:17:26.237Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaPoet">
-<meta name="twitter:description" content="0x00 概述上一篇限于篇幅只介绍了APT，这篇来继续介绍javapoet，是square公司的开源库。正如其名，java诗人，通过注解来生成java源文件，通常要使用javapoet这个库与Filer配合使用。主要和注解配合用来干掉那些重复的模板代码(如butterknife和databinding所做的事情)，当然你也可以使用这个技术让你的代码更加的炫酷。 0x01 简单使用使用之前要先引入">
+<meta name="twitter:description" content="注解系列  注解基础 JavaPoet 编译期注解处理之APT  0x00 概述上一篇限于篇幅只介绍了APT，这篇来继续介绍javapoet，是square公司的开源库。正如其名，java诗人，通过注解来生成java源文件，通常要使用javapoet这个库与Filer配合使用。主要和注解配合用来干掉那些重复的模板代码(如butterknife和databinding所做的事情)，当然你也可以使用">
 
 
 
@@ -382,8 +382,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-04T12:53:52+08:00">
-                2018-06-04
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-05T17:17:26+08:00">
+                2018-06-05
               </time>
             
           </span>
@@ -401,8 +401,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Annotation/" itemprop="url" rel="index">
-                    <span itemprop="name">Annotation</span>
+                  <a href="/categories/注解/" itemprop="url" rel="index">
+                    <span itemprop="name">注解</span>
                   </a>
                 </span>
 
@@ -443,7 +443,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,612
+                  2,630
                 </span>
               
 
@@ -480,7 +480,13 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><h2 id="0x00-概述"><a href="#0x00-概述" class="headerlink" title="0x00 概述"></a>0x00 概述</h2><p>上一篇限于篇幅只介绍了APT，这篇来继续介绍<a href="https://github.com/square/javapoet" target="_blank" rel="noopener">javapoet</a>，是square公司的开源库。正如其名，java诗人，通过注解来生成java源文件，通常要使用javapoet这个库与Filer配合使用。主要和注解配合用来干掉那些重复的模板代码(如butterknife<br>和databinding所做的事情)，当然你也可以使用这个技术让你的代码更加的炫酷。</p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>注解系列</p>
+<ul>
+<li><a href="https://xsfelvis.github.io/2017/01/06/%E6%B3%A8%E8%A7%A3%E5%9F%BA%E7%A1%80/">注解基础</a></li>
+<li><a href="https://xsfelvis.github.io/2017/03/12/%E7%BC%96%E8%AF%91%E6%9C%9F%E6%B3%A8%E8%A7%A3%E4%B9%8BJavaPoet/">JavaPoet</a></li>
+<li><a href="https://xsfelvis.github.io/2017/04/07/%E7%BC%96%E8%AF%91%E6%9C%9F%E6%B3%A8%E8%A7%A3%E4%B9%8BAPT/">编译期注解处理之APT</a></li>
+</ul>
+<h2 id="0x00-概述"><a href="#0x00-概述" class="headerlink" title="0x00 概述"></a>0x00 概述</h2><p>上一篇限于篇幅只介绍了APT，这篇来继续介绍<a href="https://github.com/square/javapoet" target="_blank" rel="noopener">javapoet</a>，是square公司的开源库。正如其名，java诗人，通过注解来生成java源文件，通常要使用javapoet这个库与Filer配合使用。主要和注解配合用来干掉那些重复的模板代码(如butterknife<br>和databinding所做的事情)，当然你也可以使用这个技术让你的代码更加的炫酷。</p>
 <h2 id="0x01-简单使用"><a href="#0x01-简单使用" class="headerlink" title="0x01 简单使用"></a>0x01 简单使用</h2><p>使用之前要先引入这个库 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compile &apos;com.squareup:javapoet:1.7.0&apos;</span><br></pre></td></tr></table></figure>
 <p>javapoet是用来生成代码的，需要借助</p>
@@ -658,7 +664,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Annotation/" rel="tag"># Annotation</a>
+            <a href="/tags/注解/" rel="tag"># 注解</a>
           
             <a href="/tags/JavaPoet/" rel="tag"># JavaPoet</a>
           
