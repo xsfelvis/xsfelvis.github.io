@@ -134,23 +134,23 @@
 
 
 
-<meta name="description" content="1、在给app升级动态权限之前需要注意搞清楚一下几个概念1.1、版本号对应的api等级查阅官网可以看出  1.2、minSdkVersion、targetSdkVersion和 compileSdkVersion这几个属性通常在gradle defaultConfig中去配置，作用如下 （1）minSdkVersion指明应用程序运行所需的最小API level，如果系统的API level低于">
+<meta name="description" content="权限系列  动态权限基础 几个权限库分析  1、在给app升级动态权限之前需要注意搞清楚一下几个概念1.1、版本号对应的api等级查阅官网可以看出  1.2、minSdkVersion、targetSdkVersion和 compileSdkVersion这几个属性通常在gradle defaultConfig中去配置，作用如下 （1）minSdkVersion指明应用程序运行所需的最小API">
 <meta name="keywords" content="权限">
 <meta property="og:type" content="article">
 <meta property="og:title" content="动态权限">
 <meta property="og:url" content="https://xsfelvis.github.io/2018/04/06/动态权限1/index.html">
 <meta property="og:site_name" content="渡口一艘船">
-<meta property="og:description" content="1、在给app升级动态权限之前需要注意搞清楚一下几个概念1.1、版本号对应的api等级查阅官网可以看出  1.2、minSdkVersion、targetSdkVersion和 compileSdkVersion这几个属性通常在gradle defaultConfig中去配置，作用如下 （1）minSdkVersion指明应用程序运行所需的最小API level，如果系统的API level低于">
+<meta property="og:description" content="权限系列  动态权限基础 几个权限库分析  1、在给app升级动态权限之前需要注意搞清楚一下几个概念1.1、版本号对应的api等级查阅官网可以看出  1.2、minSdkVersion、targetSdkVersion和 compileSdkVersion这几个属性通常在gradle defaultConfig中去配置，作用如下 （1）minSdkVersion指明应用程序运行所需的最小API">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/15/16364387f6eeb9fc?w=1714&h=1262&f=png&s=192923">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/15/1636438febbcbeb9?w=894&h=494&f=png&s=66186">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/15/163643a25ce67cd9?w=1010&h=766&f=png&s=122723">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/15/163643a66ad3eb69?w=1100&h=522&f=png&s=49564">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/15/163643b31c161434?w=1064&h=1200&f=png&s=235446">
-<meta property="og:updated_time" content="2018-06-04T08:51:08.819Z">
+<meta property="og:updated_time" content="2018-06-05T09:53:56.166Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动态权限">
-<meta name="twitter:description" content="1、在给app升级动态权限之前需要注意搞清楚一下几个概念1.1、版本号对应的api等级查阅官网可以看出  1.2、minSdkVersion、targetSdkVersion和 compileSdkVersion这几个属性通常在gradle defaultConfig中去配置，作用如下 （1）minSdkVersion指明应用程序运行所需的最小API level，如果系统的API level低于">
+<meta name="twitter:description" content="权限系列  动态权限基础 几个权限库分析  1、在给app升级动态权限之前需要注意搞清楚一下几个概念1.1、版本号对应的api等级查阅官网可以看出  1.2、minSdkVersion、targetSdkVersion和 compileSdkVersion这几个属性通常在gradle defaultConfig中去配置，作用如下 （1）minSdkVersion指明应用程序运行所需的最小API">
 <meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/5/15/16364387f6eeb9fc?w=1714&h=1262&f=png&s=192923">
 
 
@@ -388,8 +388,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-04T16:51:08+08:00">
-                2018-06-04
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-05T17:53:56+08:00">
+                2018-06-05
               </time>
             
           </span>
@@ -449,7 +449,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,749
+                  2,766
                 </span>
               
 
@@ -486,7 +486,12 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><h2 id="1、在给app升级动态权限之前需要注意搞清楚一下几个概念"><a href="#1、在给app升级动态权限之前需要注意搞清楚一下几个概念" class="headerlink" title="1、在给app升级动态权限之前需要注意搞清楚一下几个概念"></a>1、在给app升级动态权限之前需要注意搞清楚一下几个概念</h2><h3 id="1-1、版本号对应的api等级"><a href="#1-1、版本号对应的api等级" class="headerlink" title="1.1、版本号对应的api等级"></a>1.1、版本号对应的api等级</h3><p>查阅官网可以看出</p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>权限系列</p>
+<ul>
+<li><a href="https://xsfelvis.github.io/2018/04/06/%E5%8A%A8%E6%80%81%E6%9D%83%E9%99%901/">动态权限基础</a></li>
+<li><a href="https://xsfelvis.github.io/2018/04/21/%E5%8A%A8%E6%80%81%E6%9D%83%E9%99%902%20%E5%87%A0%E4%B8%AA%E6%9D%83%E9%99%90%E5%BA%93%E5%88%86%E6%9E%90/">几个权限库分析</a></li>
+</ul>
+<h2 id="1、在给app升级动态权限之前需要注意搞清楚一下几个概念"><a href="#1、在给app升级动态权限之前需要注意搞清楚一下几个概念" class="headerlink" title="1、在给app升级动态权限之前需要注意搞清楚一下几个概念"></a>1、在给app升级动态权限之前需要注意搞清楚一下几个概念</h2><h3 id="1-1、版本号对应的api等级"><a href="#1-1、版本号对应的api等级" class="headerlink" title="1.1、版本号对应的api等级"></a>1.1、版本号对应的api等级</h3><p>查阅官网可以看出</p>
 <p><img src="https://user-gold-cdn.xitu.io/2018/5/15/16364387f6eeb9fc?w=1714&amp;h=1262&amp;f=png&amp;s=192923" alt=""></p>
 <h3 id="1-2、minSdkVersion、targetSdkVersion和-compileSdkVersion"><a href="#1-2、minSdkVersion、targetSdkVersion和-compileSdkVersion" class="headerlink" title="1.2、minSdkVersion、targetSdkVersion和 compileSdkVersion"></a>1.2、minSdkVersion、targetSdkVersion和 compileSdkVersion</h3><p>这几个属性通常在gradle defaultConfig中去配置，作用如下</p>
 <p>（1）minSdkVersion<br>指明应用程序运行所需的最小API level，如果系统的API level低于minSdkVersion设定的值，那么android系统会阻止用户安装这个应用，如果不指明的话，默认是1，如果指明这个属性，并在项目中使用了改与这个API level的API的话，那么将会在编译时报错。<br>可见该属性不仅在程序安装时起作用，而且会在项目构建时起作用</p>
@@ -784,7 +789,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -806,7 +811,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -964,7 +969,7 @@ var ap = new APlayer({
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">41.5k</span>
+    <span title="Site words total count">41.9k</span>
   
 </div>
 
