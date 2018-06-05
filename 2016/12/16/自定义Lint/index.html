@@ -127,29 +127,29 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="云来" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="渡口一艘船" type="application/atom+xml" />
 
 
 
 
 
 
-<meta name="description" content="Lint在android studio中内置了大概200个左右的lint检查，比如定义变量未使用，直接Handler报内存泄漏提醒，时时刻刻在监督着我们的代码。自己定制了一些Lint规则，项目开源在GitHub上https://github.com/xsfelvis/LintDemo  为什么需要自定义Lint   原生Lint无法满足团队特有的需求，如：编码规范  原生Lint存在一些检测缺陷">
+<meta name="description" content="Lint在android studio中内置了大概200个左右的lint检查，比如定义变量未使用，直接Handler报内存泄漏提醒，时时刻刻在监督着我们的代码。自己定制了一些Lint规则，项目开源在GitHub上https://github.com/xsfelvis/LintDemo 为什么需要自定义Lint 原生Lint无法满足团队特有的需求，如：编码规范  原生Lint存在一些检测缺陷或者缺">
 <meta name="keywords" content="Lint">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义Lint">
 <meta property="og:url" content="https://xsfelvis.github.io/2016/12/16/自定义Lint/index.html">
-<meta property="og:site_name" content="云来">
-<meta property="og:description" content="Lint在android studio中内置了大概200个左右的lint检查，比如定义变量未使用，直接Handler报内存泄漏提醒，时时刻刻在监督着我们的代码。自己定制了一些Lint规则，项目开源在GitHub上https://github.com/xsfelvis/LintDemo  为什么需要自定义Lint   原生Lint无法满足团队特有的需求，如：编码规范  原生Lint存在一些检测缺陷">
+<meta property="og:site_name" content="渡口一艘船">
+<meta property="og:description" content="Lint在android studio中内置了大概200个左右的lint检查，比如定义变量未使用，直接Handler报内存泄漏提醒，时时刻刻在监督着我们的代码。自己定制了一些Lint规则，项目开源在GitHub上https://github.com/xsfelvis/LintDemo 为什么需要自定义Lint 原生Lint无法满足团队特有的需求，如：编码规范  原生Lint存在一些检测缺陷或者缺">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2016/12/16/d99bffe30fec6ddc7eb08c02afecad0f.png">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2016/12/16/19f5dfe820be8ef2944395f8c2ab72d0.png">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2016/12/16/c90d7bffdc9558febbbeaf6baa5b9cda.png">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2016/12/16/6bd951cd05c7e3b245908b1d6d2dc1aa.png">
-<meta property="og:updated_time" content="2018-06-04T04:57:34.430Z">
+<meta property="og:updated_time" content="2018-06-04T15:26:13.043Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义Lint">
-<meta name="twitter:description" content="Lint在android studio中内置了大概200个左右的lint检查，比如定义变量未使用，直接Handler报内存泄漏提醒，时时刻刻在监督着我们的代码。自己定制了一些Lint规则，项目开源在GitHub上https://github.com/xsfelvis/LintDemo  为什么需要自定义Lint   原生Lint无法满足团队特有的需求，如：编码规范  原生Lint存在一些检测缺陷">
+<meta name="twitter:description" content="Lint在android studio中内置了大概200个左右的lint检查，比如定义变量未使用，直接Handler报内存泄漏提醒，时时刻刻在监督着我们的代码。自己定制了一些Lint规则，项目开源在GitHub上https://github.com/xsfelvis/LintDemo 为什么需要自定义Lint 原生Lint无法满足团队特有的需求，如：编码规范  原生Lint存在一些检测缺陷或者缺">
 <meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2016/12/16/d99bffe30fec6ddc7eb08c02afecad0f.png">
 
 
@@ -186,7 +186,7 @@
 
 
 
-  <title>自定义Lint | 云来</title>
+  <title>自定义Lint | 渡口一艘船</title>
   
 
 
@@ -235,7 +235,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">云来</span>
+        <span class="site-title">渡口一艘船</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -351,7 +351,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="云来">
+      <meta itemprop="name" content="渡口一艘船">
     </span>
 
     
@@ -387,7 +387,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-04T12:57:34+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-04T23:26:13+08:00">
                 2018-06-04
               </time>
             
@@ -486,19 +486,13 @@
 
       
         <script src="/assets/js/APlayer.min.js"> </script><h1 id="Lint"><a href="#Lint" class="headerlink" title="Lint"></a>Lint</h1><p>在android studio中内置了大概200个左右的lint检查，比如定义变量未使用，直接Handler报内存泄漏提醒，时时刻刻在监督着我们的代码。自己定制了一些Lint规则，项目开源在GitHub上<br><a href="https://github.com/xsfelvis/LintDemo" title="项目地址" target="_blank" rel="noopener">https://github.com/xsfelvis/LintDemo</a></p>
-<blockquote>
-<p>为什么需要自定义Lint</p>
-</blockquote>
-<ul>
+<h3 id="为什么需要自定义Lint"><a href="#为什么需要自定义Lint" class="headerlink" title="为什么需要自定义Lint"></a>为什么需要自定义Lint</h3><ul>
 <li><p>原生Lint无法满足团队特有的需求，如：编码规范</p>
 </li>
 <li><p>原生Lint存在一些检测缺陷或者缺少一些我们认为有必要的检测,如new Message等</p>
 </li>
 </ul>
-<blockquote>
-<p>自定义Lint,主要完成了以下功能</p>
-</blockquote>
-<ul>
+<h3 id="自定义Lint-主要完成了以下功能"><a href="#自定义Lint-主要完成了以下功能" class="headerlink" title="自定义Lint,主要完成了以下功能"></a>自定义Lint,主要完成了以下功能</h3><ul>
 <li>Actvity、Fragment布局文件名称前缀为<code>actvity_</code>、<code>fragment_</code>的检查</li>
 <li>Log、System.out.pritln打印必须为工程中自定义的<code>AppLog</code>检查(这个因项目而异)</li>
 <li>检测new Message,提醒使用<code>Message.Obtain()</code>/<code>handler.obtainMessage</code></li>
@@ -690,7 +684,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -712,7 +706,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -836,7 +830,7 @@ var ap = new APlayer({
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lint"><span class="nav-number">1.</span> <span class="nav-text">Lint</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lint"><span class="nav-number">1.</span> <span class="nav-text">Lint</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么需要自定义Lint"><span class="nav-number">1.0.1.</span> <span class="nav-text">为什么需要自定义Lint</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义Lint-主要完成了以下功能"><span class="nav-number">1.0.2.</span> <span class="nav-text">自定义Lint,主要完成了以下功能</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -870,7 +864,7 @@ var ap = new APlayer({
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">42.4k</span>
+    <span title="Site words total count">41.5k</span>
   
 </div>
 
