@@ -144,7 +144,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p927u2n0k.bkt.clouddn.com/arouter-complete.png">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2608779-20192e96ae6f869f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
-<meta property="og:updated_time" content="2018-06-06T15:11:15.606Z">
+<meta property="og:updated_time" content="2018-06-06T15:17:29.155Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ARouter解析之路由的秘密">
 <meta name="twitter:description" content="ARouter解析  ARouter概述  路由的秘密  URL跳转  简介本篇主要介绍ARouter如何进行路由的，比如Activity、Fragment、服务等 路由的秘密基本使用初始化路由之后 1ARouter.init(mApplication); 在需要支持页面路由的页面上添加注解(至少两级) 12@Route(path = &quot;/test/activity2&quot;)public class">
@@ -385,7 +385,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-06T23:11:15+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-06T23:17:29+08:00">
                 2018-06-06
               </time>
             
@@ -446,7 +446,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,916
+                  2,917
                 </span>
               
 
@@ -583,7 +583,8 @@
 <li>仓库查找页面节点</li>
 </ul>
 <p>首先根据路径信息到WareHouse仓库中查找路由节点信息，其实就是几个map，包含节点、拦截器和组别等信息</p>
-<p><code>RouteMeta routeMeta = Warehouse.routes.get(postcard.getPath());</code><br>一开始是没有这个节点信息的，所以需要到WareHouse.groupsIndex中找到组别的信息，这里体现了之前提到的<code>分组加载的策略</code>，这里对应的是test这一组</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RouteMeta routeMeta = Warehouse.routes.get(postcard.getPath());</span><br></pre></td></tr></table></figure>
+<p>一开始是没有这个节点信息的，所以需要到WareHouse.groupsIndex中找到组别的信息，这里体现了之前提到的<code>分组加载的策略</code>，这里对应的是test这一组</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;? extends IRouteGroup&gt; groupMeta = Warehouse.groupsIndex.get(postcard.getGroup());  <span class="comment">// Load route meta.</span></span><br></pre></td></tr></table></figure>
 <p>然后通过反射的方式加载这一组类别的映射关系，就是前面提到的按需加载，然后从仓库中删除这个组别信息节点，防止重复加载</p>
 <pre><code class="java">IRouteGroup iGroupInstance = groupMeta.getConstructor().newInstance();        
@@ -667,8 +668,8 @@ Warehouse.groupsIndex.remove(postcard.getGroup());
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/05/ARouter解析之概述/" rel="next" title="ARouter解析之开篇">
-                <i class="fa fa-chevron-left"></i> ARouter解析之开篇
+              <a href="/2018/05/18/关于clean架构在android中的应用/" rel="next" title="clean架构">
+                <i class="fa fa-chevron-left"></i> clean架构
               </a>
             
           </div>
@@ -677,8 +678,8 @@ Warehouse.groupsIndex.remove(postcard.getGroup());
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/06/ARouter解析之URL跳转/" rel="prev" title="ARouter解析之URL跳转">
-                ARouter解析之URL跳转 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/05/ARouter解析之概述/" rel="prev" title="ARouter解析之开篇">
+                ARouter解析之开篇 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -960,7 +961,7 @@ var ap = new APlayer({
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">47.2k</span>
+    <span title="Site words total count">47.3k</span>
   
 </div>
 
