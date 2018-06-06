@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>https://xsfelvis.github.io/2018/06/05/ARouter%E8%A7%A3%E6%9E%90%E4%B9%8B%E6%A6%82%E8%BF%B0/</loc>
+    <lastmod>2018-06-06T06:54:40.943Z</lastmod>
+    <data>
+        <display>
+        <title>ARouter解析之开篇</title>
+        <pubTime>2018-06-04T16:00:00.000Z</pubTime>
+        
+        <tag>ARouter</tag>
+         
+        <tag>路由</tag>
+         
+         
+           
+             
+              <breadCrumb title="开源学习" url="https://xsfelvis.github.io/categories/%E5%BC%80%E6%BA%90%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://xsfelvis.github.io/2018/06/06/%E8%B0%88%E8%B0%88APT%E5%92%8CJavaPoet%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%80%E5%B7%A7/</loc>
     <lastmod>2018-06-06T06:51:44.236Z</lastmod>
     <data>
@@ -211,28 +233,6 @@
            
              
               <breadCrumb title="注解" url="https://xsfelvis.github.io/categories/%E6%B3%A8%E8%A7%A3/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://xsfelvis.github.io/2018/06/05/ARouter%E8%A7%A3%E6%9E%90%E4%B9%8B%E6%A6%82%E8%BF%B0/</loc>
-    <lastmod>2018-06-05T10:02:12.606Z</lastmod>
-    <data>
-        <display>
-        <title>ARouter解析(1)</title>
-        <pubTime>2018-06-04T16:00:00.000Z</pubTime>
-        
-        <tag>ARouter</tag>
-         
-        <tag>路由</tag>
-         
-         
-           
-             
-              <breadCrumb title="开源学习" url="https://xsfelvis.github.io/categories/%E5%BC%80%E6%BA%90%E5%AD%A6%E4%B9%A0/"/>
           
         </display>
     </data>
