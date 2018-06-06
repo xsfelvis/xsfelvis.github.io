@@ -134,19 +134,19 @@
 
 
 
-<meta name="description" content="ARouter解析之URL跳转在ARouter Demo中，点击通过URL跳转，会通过WebView加载html 1234ARouter.getInstance()        .build(&quot;/test/webview&quot;)        .withString(&quot;url&quot;, &quot;file:///android_asset/schame-test.html&quot;)        .navigatio">
+<meta name="description" content="ARouter解析  ARouter概述  路由的秘密  URL跳转  ARouter解析之URL跳转在ARouter Demo中，点击通过URL跳转，会通过WebView加载html 1234ARouter.getInstance()        .build(&quot;/test/webview&quot;)        .withString(&quot;url&quot;, &quot;file:///android_asset/">
 <meta name="keywords" content="ARouter,路由">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ARouter解析之URL跳转">
 <meta property="og:url" content="https://xsfelvis.github.io/2018/06/06/ARouter解析之URL跳转/index.html">
 <meta property="og:site_name" content="渡口一艘船">
-<meta property="og:description" content="ARouter解析之URL跳转在ARouter Demo中，点击通过URL跳转，会通过WebView加载html 1234ARouter.getInstance()        .build(&quot;/test/webview&quot;)        .withString(&quot;url&quot;, &quot;file:///android_asset/schame-test.html&quot;)        .navigatio">
+<meta property="og:description" content="ARouter解析  ARouter概述  路由的秘密  URL跳转  ARouter解析之URL跳转在ARouter Demo中，点击通过URL跳转，会通过WebView加载html 1234ARouter.getInstance()        .build(&quot;/test/webview&quot;)        .withString(&quot;url&quot;, &quot;file:///android_asset/">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2608779-5104d9c50fcb0553.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/340">
-<meta property="og:updated_time" content="2018-06-06T06:08:45.791Z">
+<meta property="og:updated_time" content="2018-06-06T08:20:03.342Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ARouter解析之URL跳转">
-<meta name="twitter:description" content="ARouter解析之URL跳转在ARouter Demo中，点击通过URL跳转，会通过WebView加载html 1234ARouter.getInstance()        .build(&quot;/test/webview&quot;)        .withString(&quot;url&quot;, &quot;file:///android_asset/schame-test.html&quot;)        .navigatio">
+<meta name="twitter:description" content="ARouter解析  ARouter概述  路由的秘密  URL跳转  ARouter解析之URL跳转在ARouter Demo中，点击通过URL跳转，会通过WebView加载html 1234ARouter.getInstance()        .build(&quot;/test/webview&quot;)        .withString(&quot;url&quot;, &quot;file:///android_asset/">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2608779-5104d9c50fcb0553.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/340">
 
 
@@ -384,7 +384,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-06T14:08:45+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-06T16:20:03+08:00">
                 2018-06-06
               </time>
             
@@ -445,7 +445,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,178
+                  1,192
                 </span>
               
 
@@ -461,7 +461,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  6
                 </span>
               
             </div>
@@ -482,7 +482,15 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><h1 id="ARouter解析之URL跳转"><a href="#ARouter解析之URL跳转" class="headerlink" title="ARouter解析之URL跳转"></a>ARouter解析之URL跳转</h1><p>在ARouter Demo中，点击通过URL跳转，会通过WebView加载html</p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>ARouter解析</p>
+<ul>
+<li><p><a href="https://xsfelvis.github.io/2018/06/05/ARouter%E8%A7%A3%E6%9E%90%E4%B9%8B%E6%A6%82%E8%BF%B0/">ARouter概述</a></p>
+</li>
+<li><p><a href="https://xsfelvis.github.io/2018/06/05/ARouter%E8%A7%A3%E6%9E%90%E4%B9%8B%E8%B7%AF%E7%94%B1%E7%9A%84%E7%A7%98%E5%AF%86/">路由的秘密</a></p>
+</li>
+<li><a href="https://xsfelvis.github.io/2018/06/06/ARouter%E8%A7%A3%E6%9E%90%E4%B9%8BURL%E8%B7%B3%E8%BD%AC/">URL跳转</a></li>
+</ul>
+<h1 id="ARouter解析之URL跳转"><a href="#ARouter解析之URL跳转" class="headerlink" title="ARouter解析之URL跳转"></a>ARouter解析之URL跳转</h1><p>在ARouter Demo中，点击通过URL跳转，会通过WebView加载html</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ARouter.getInstance()</span><br><span class="line">        .build(<span class="string">"/test/webview"</span>)</span><br><span class="line">        .withString(<span class="string">"url"</span>, <span class="string">"file:///android_asset/schame-test.html"</span>)</span><br><span class="line">        .navigation();</span><br></pre></td></tr></table></figure>
 <p> <img src="https://upload-images.jianshu.io/upload_images/2608779-5104d9c50fcb0553.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/340" alt=""></p>
 <h2 id="方案设计"><a href="#方案设计" class="headerlink" title="方案设计"></a>方案设计</h2><p>通常webview上的url跳转会给webview设置一个<code>webviewClient</code>，然后通过shouldOverrideUrlLoading方法，在方法中构造intent进行跳转，简单示意如下：</p>
@@ -580,8 +588,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/05/ARouter解析之路由的秘密/" rel="next" title="ARouter解析之路由的秘密">
-                <i class="fa fa-chevron-left"></i> ARouter解析之路由的秘密
+              <a href="/2018/06/05/ARouter解析之概述/" rel="next" title="ARouter解析之开篇">
+                <i class="fa fa-chevron-left"></i> ARouter解析之开篇
               </a>
             
           </div>
@@ -590,8 +598,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/06/谈谈APT和JavaPoet的一些技巧/" rel="prev" title="谈谈APT和JavaPoet的一些使用技巧">
-                谈谈APT和JavaPoet的一些使用技巧 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/06/谈谈APT和JavaPoet的一些技巧/" rel="prev" title="谈谈APT和JavaPoet的一些使用技巧和要点">
+                谈谈APT和JavaPoet的一些使用技巧和要点 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -873,7 +881,7 @@ var ap = new APlayer({
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">44.0k</span>
+    <span title="Site words total count">47.3k</span>
   
 </div>
 

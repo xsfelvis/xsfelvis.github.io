@@ -134,20 +134,20 @@
 
 
 
-<meta name="description" content="权限系列  动态权限基础 几个权限库分析  有比较多的权限库,由浅入深先看简单的开开胃 1、PermissionGenPermissionGen   该库比较早 看提交是3年前了 通过看该库的readme可以了解这个库的使用方式，通过链式调用比较易于配置 核心类图如下： 将权限涉及到核心api封装到框架之中，干掉冗余函数，使用者只关心功能函数即可。 涉及到的比较核心的一个点就是，通过注解的方式直">
+<meta name="description" content="权限系列  动态权限基础 几个权限库分析  有比较多的权限库,由浅入深先看简单的开开胃 PermissionGen核心源码分析PermissionGen   该库比较早 看提交是3年前了 通过看该库的readme可以了解这个库的使用方式，通过链式调用比较易于配置 核心类图如下： 将权限涉及到核心api封装到框架之中，干掉冗余函数，使用者只关心功能函数即可。 涉及到的比较核心的一个点就是，通过注解">
 <meta name="keywords" content="权限">
 <meta property="og:type" content="article">
 <meta property="og:title" content="几个权限库分析">
 <meta property="og:url" content="https://xsfelvis.github.io/2018/04/21/动态权限2 几个权限库分析/index.html">
 <meta property="og:site_name" content="渡口一艘船">
-<meta property="og:description" content="权限系列  动态权限基础 几个权限库分析  有比较多的权限库,由浅入深先看简单的开开胃 1、PermissionGenPermissionGen   该库比较早 看提交是3年前了 通过看该库的readme可以了解这个库的使用方式，通过链式调用比较易于配置 核心类图如下： 将权限涉及到核心api封装到框架之中，干掉冗余函数，使用者只关心功能函数即可。 涉及到的比较核心的一个点就是，通过注解的方式直">
+<meta property="og:description" content="权限系列  动态权限基础 几个权限库分析  有比较多的权限库,由浅入深先看简单的开开胃 PermissionGen核心源码分析PermissionGen   该库比较早 看提交是3年前了 通过看该库的readme可以了解这个库的使用方式，通过链式调用比较易于配置 核心类图如下： 将权限涉及到核心api封装到框架之中，干掉冗余函数，使用者只关心功能函数即可。 涉及到的比较核心的一个点就是，通过注解">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/15/16364446c046e010">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/15/16364446c11d972d">
-<meta property="og:updated_time" content="2018-06-06T06:36:28.745Z">
+<meta property="og:updated_time" content="2018-06-06T07:33:00.094Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="几个权限库分析">
-<meta name="twitter:description" content="权限系列  动态权限基础 几个权限库分析  有比较多的权限库,由浅入深先看简单的开开胃 1、PermissionGenPermissionGen   该库比较早 看提交是3年前了 通过看该库的readme可以了解这个库的使用方式，通过链式调用比较易于配置 核心类图如下： 将权限涉及到核心api封装到框架之中，干掉冗余函数，使用者只关心功能函数即可。 涉及到的比较核心的一个点就是，通过注解的方式直">
+<meta name="twitter:description" content="权限系列  动态权限基础 几个权限库分析  有比较多的权限库,由浅入深先看简单的开开胃 PermissionGen核心源码分析PermissionGen   该库比较早 看提交是3年前了 通过看该库的readme可以了解这个库的使用方式，通过链式调用比较易于配置 核心类图如下： 将权限涉及到核心api封装到框架之中，干掉冗余函数，使用者只关心功能函数即可。 涉及到的比较核心的一个点就是，通过注解">
 <meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/5/15/16364446c046e010">
 
 
@@ -385,7 +385,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-06T14:36:28+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-06T15:33:00+08:00">
                 2018-06-06
               </time>
             
@@ -446,7 +446,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,449
+                  1,452
                 </span>
               
 
@@ -489,7 +489,7 @@
 <li><a href="https://xsfelvis.github.io/2018/04/21/%E5%8A%A8%E6%80%81%E6%9D%83%E9%99%902%20%E5%87%A0%E4%B8%AA%E6%9D%83%E9%99%90%E5%BA%93%E5%88%86%E6%9E%90/">几个权限库分析</a></li>
 </ul>
 <p>有比较多的权限库,由浅入深先看简单的开开胃</p>
-<h2 id="1、PermissionGen"><a href="#1、PermissionGen" class="headerlink" title="1、PermissionGen"></a>1、PermissionGen</h2><p><a href="https://github.com/lovedise/PermissionGen" target="_blank" rel="noopener">PermissionGen</a>  </p>
+<h2 id="PermissionGen"><a href="#PermissionGen" class="headerlink" title="PermissionGen"></a>PermissionGen</h2><h3 id="核心源码分析"><a href="#核心源码分析" class="headerlink" title="核心源码分析"></a>核心源码分析</h3><p><a href="https://github.com/lovedise/PermissionGen" target="_blank" rel="noopener">PermissionGen</a>  </p>
 <p>该库比较早 看提交是3年前了 通过看该库的readme可以了解这个库的使用方式，通过链式调用比较易于配置</p>
 <p>核心类图如下：<br><img src="https://user-gold-cdn.xitu.io/2018/5/15/16364446c046e010" alt="" title="image.png"></p>
 <p>将权限涉及到核心api封装到框架之中，干掉冗余函数，使用者只关心功能函数即可。</p>
@@ -504,13 +504,12 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">executeMethod</span><span class="params">(Object activity, Method executeMethod)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(executeMethod != <span class="keyword">null</span>)&#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(!executeMethod.isAccessible()) executeMethod.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">        executeMethod.invoke(activity, <span class="keyword">null</span>);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">      &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>可以看出反射函数只能无参函数 其中拿到activity或者fragment的注解方法在Utils的方法中，这里可以学习一下反射的一些用法，比如查找对应注解的方法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;A extends Annotation&gt; <span class="function">Method <span class="title">findMethodWithRequestCode</span><span class="params">(Class clazz,</span></span></span><br><span class="line"><span class="function"><span class="params">      Class&lt;A&gt; annotation, <span class="keyword">int</span> requestCode)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(Method method : clazz.getDeclaredMethods())&#123;</span><br><span class="line">      <span class="keyword">if</span>(method.isAnnotationPresent(annotation))&#123;</span><br><span class="line">        <span class="keyword">if</span>(isEqualRequestCodeFromAnntation(method, annotation, requestCode))&#123;</span><br><span class="line">          <span class="keyword">return</span> method;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>###小结：</p>
-<p>这个库比较简单有一些优缺点：<br>优点：初步封装了权限的核心函数的，省去了冗余代码；可以学习反射的一些用法</p>
+<h3 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h3><p>这个库比较简单有一些优缺点：<br>优点：初步封装了权限的核心函数的，省去了冗余代码；可以学习反射的一些用法</p>
 <p>缺点：</p>
 <p>（1）大量使用反射（可以使用apt），</p>
 <p>（2）api设计不是很合理</p>
 <p> 链式调用往往是平级调用方法，但是现在这个明显是有先后顺序的，一不留神容易写错</p>
-<h2 id="2、MPermissions"><a href="#2、MPermissions" class="headerlink" title="2、MPermissions"></a>2、MPermissions</h2><p><a href="https://github.com/hongyangAndroid/MPermissions" target="_blank" rel="noopener">MPermissions</a></p>
+<h2 id="MPermissions"><a href="#MPermissions" class="headerlink" title="MPermissions"></a>MPermissions</h2><p><a href="https://github.com/hongyangAndroid/MPermissions" target="_blank" rel="noopener">MPermissions</a></p>
 <p>这个是鸿洋在PermissionGen基础上做了一些优化，作者说是使用apt解决了运行时反射的问题，优化了对外提供的api，因为申请只需要三个参数，抛弃了使用原本类库的单例的方式，直接一个几个静态方法，简单整洁暴力。</p>
 <p>看了一下代码，主要是核心类MPermissions操作接口，间接操作实现该接口的APT生成类(依赖翻转，面向接口编程)</p>
 <p><img src="https://user-gold-cdn.xitu.io/2018/5/15/16364446c11d972d" alt="" title="image.png"></p>
@@ -521,11 +520,10 @@
 <p>功能类跟接口层交互即可</p>
 <h4 id="2-2-APT技术"><a href="#2-2-APT技术" class="headerlink" title="2.2 APT技术"></a>2.2 APT技术</h4><p>通过APT生成一些重复的模板代码非常有用，关于APT技术在之前的博客多有提及就不再赘述了。<br>不过APT也有它的弊端就是APT 的工作原理是在编译 class 时，通过 Annotation 生成源代码，而在 Android 构建的过程中，像 滴滴出行乘客端 这样的集成方式，所有的模块都是 AAR 的方式来集成构建的，没有机会去同时编译所有的 class，这时候就需要新的手段来生成代码了，比如构建gradle的task在编译前扫描全局结合javapoet生成代码，在这个库里可以学习一下apt processor的异常处理有助于我们定位代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">private void error(Element element, String message, Object... args) &#123;</span><br><span class="line">    if (args.length &gt; 0) &#123;</span><br><span class="line">        message = String.format(message, args);</span><br><span class="line">    &#125;</span><br><span class="line">    processingEnv.getMessager().printMessage(Diagnostic.Kind.NOTE, message, element);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>###小结</p>
-<p>作者仅仅是通过APT生成了模板代码，但是还是使用到反射生成实现代理接口的实现类</p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>作者仅仅是通过APT生成了模板代码，但是还是使用到反射生成实现代理接口的实现类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> PermissionProxy <span class="title">findPermissionProxy</span><span class="params">(Object activity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Class clazz = activity.getClass();</span><br><span class="line">        Class injectorClazz = Class.forName(clazz.getName() + SUFFIX);</span><br><span class="line">        <span class="keyword">return</span> (PermissionProxy) injectorClazz.newInstance();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (InstantiationException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(String.format(<span class="string">"can not find %s , something when compiler."</span>, activity.getClass().getSimpleName() + SUFFIX));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这个APT代理的思想还是值得我们去借鉴的</p>
-<h2 id="3、PermissionsDispatcher"><a href="#3、PermissionsDispatcher" class="headerlink" title="3、PermissionsDispatcher"></a>3、PermissionsDispatcher</h2><p>这个库目前有7726个start，而且有自己的<a href="https://permissions-dispatcher.github.io/PermissionsDispatcher/" target="_blank" rel="noopener">网站</a>指导说明，俨然是动态权限三方库的一哥，看来这个库需要好好分析一下</p>
+<h2 id="PermissionsDispatcher"><a href="#PermissionsDispatcher" class="headerlink" title="PermissionsDispatcher"></a>PermissionsDispatcher</h2><p>这个库目前有7726个start，而且有自己的<a href="https://permissions-dispatcher.github.io/PermissionsDispatcher/" target="_blank" rel="noopener">网站</a>指导说明，俨然是动态权限三方库的一哥，看来这个库需要好好分析一下</p>
 <p>从官方这个库使用起来也非常简单，仔细看了下代码发现大同小异，跟前面两个库使用的方式很像，通过注解的方式标记 权限申请成功、权限事情失败、权限弹窗说明等函数调用，唯一多的是：</p>
 <p>1、需要使用动态权的 <code>Activity</code> or <code>Fragment</code>(we support both) to handle permissions加上RuntimePermissions注解</p>
 <p>这个库更多是将所有的逻辑处理放在了权限生成类 xxxPermissionDispatcher类，（生成代码承担了很多的逻辑处理）而不像MPermission库中仅仅将用户使用的功能代码，比如权限成功、失败之类的函数规整到生成类中，核心逻辑还是通过开发者自己代码处理，这样更容易写这个库，用户阅读代码也比较方便</p>
@@ -852,7 +850,7 @@ var ap = new APlayer({
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、PermissionGen"><span class="nav-number">1.</span> <span class="nav-text">1、PermissionGen</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、MPermissions"><span class="nav-number">2.</span> <span class="nav-text">2、MPermissions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-APT-编译前找不到类"><span class="nav-number">2.0.1.</span> <span class="nav-text">2.1 APT 编译前找不到类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-APT技术"><span class="nav-number">2.0.2.</span> <span class="nav-text">2.2 APT技术</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、PermissionsDispatcher"><span class="nav-number">3.</span> <span class="nav-text">3、PermissionsDispatcher</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PermissionGen"><span class="nav-number">1.</span> <span class="nav-text">PermissionGen</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#核心源码分析"><span class="nav-number">1.1.</span> <span class="nav-text">核心源码分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结："><span class="nav-number">1.2.</span> <span class="nav-text">小结：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MPermissions"><span class="nav-number">2.</span> <span class="nav-text">MPermissions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-APT-编译前找不到类"><span class="nav-number">2.0.1.</span> <span class="nav-text">2.1 APT 编译前找不到类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-APT技术"><span class="nav-number">2.0.2.</span> <span class="nav-text">2.2 APT技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小结"><span class="nav-number">2.0.3.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PermissionsDispatcher"><span class="nav-number">3.</span> <span class="nav-text">PermissionsDispatcher</span></a></li></ol></div>
             
 
           </div>
@@ -886,7 +884,7 @@ var ap = new APlayer({
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">44.0k</span>
+    <span title="Site words total count">47.3k</span>
   
 </div>
 

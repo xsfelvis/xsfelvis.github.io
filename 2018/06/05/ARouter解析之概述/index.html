@@ -134,21 +134,21 @@
 
 
 
-<meta name="description" content="简介这个库非常值得学习，里面涉及到的技术和编程思想都是不错的  APT 编译器注解处理技术 scheme url的统一管理跳转的方案 ‘服务’的解耦（接口设计）与获取(反射) IoC与依赖注入(服务和参数由框架进行自动赋值) 拦截器思想 （AOP的设计思想） 多线程处理技术 降级策略 分组加载策略 友好的api设计  整体设计如下 使用原作者的抽象图，整个ARouter架构如下:   其实在An">
+<meta name="description" content="ARouter解析  ARouter概述  路由的秘密  URL跳转  简介这个库非常值得学习，里面涉及到的技术和编程思想都是不错的  APT 编译器注解处理技术 URL的统一管理跳转的方案 ‘服务’的解耦（接口设计）与获取(反射) 多线程处理技术 (CountDownLatch的使用)  拦截器思想、降级策略(（AOP的设计思想）)、分组加载策略 友好的api设计  整体设计 使用原作者的抽象">
 <meta name="keywords" content="ARouter,路由">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ARouter解析之开篇">
 <meta property="og:url" content="https://xsfelvis.github.io/2018/06/05/ARouter解析之概述/index.html">
 <meta property="og:site_name" content="渡口一艘船">
-<meta property="og:description" content="简介这个库非常值得学习，里面涉及到的技术和编程思想都是不错的  APT 编译器注解处理技术 scheme url的统一管理跳转的方案 ‘服务’的解耦（接口设计）与获取(反射) IoC与依赖注入(服务和参数由框架进行自动赋值) 拦截器思想 （AOP的设计思想） 多线程处理技术 降级策略 分组加载策略 友好的api设计  整体设计如下 使用原作者的抽象图，整个ARouter架构如下:   其实在An">
+<meta property="og:description" content="ARouter解析  ARouter概述  路由的秘密  URL跳转  简介这个库非常值得学习，里面涉及到的技术和编程思想都是不错的  APT 编译器注解处理技术 URL的统一管理跳转的方案 ‘服务’的解耦（接口设计）与获取(反射) 多线程处理技术 (CountDownLatch的使用)  拦截器思想、降级策略(（AOP的设计思想）)、分组加载策略 友好的api设计  整体设计 使用原作者的抽象">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p927u2n0k.bkt.clouddn.com/ARouter.png">
 <meta property="og:image" content="https://yqfile.alicdn.com/37b723fb660fdfcf7cdc09c194c88a8073d8272d.png">
 <meta property="og:image" content="https://yqfile.alicdn.com/e4d3ec6020479ef2043cfd7e10cfaf33254ac309.png">
-<meta property="og:updated_time" content="2018-06-06T06:54:40.943Z">
+<meta property="og:updated_time" content="2018-06-06T14:54:17.860Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ARouter解析之开篇">
-<meta name="twitter:description" content="简介这个库非常值得学习，里面涉及到的技术和编程思想都是不错的  APT 编译器注解处理技术 scheme url的统一管理跳转的方案 ‘服务’的解耦（接口设计）与获取(反射) IoC与依赖注入(服务和参数由框架进行自动赋值) 拦截器思想 （AOP的设计思想） 多线程处理技术 降级策略 分组加载策略 友好的api设计  整体设计如下 使用原作者的抽象图，整个ARouter架构如下:   其实在An">
+<meta name="twitter:description" content="ARouter解析  ARouter概述  路由的秘密  URL跳转  简介这个库非常值得学习，里面涉及到的技术和编程思想都是不错的  APT 编译器注解处理技术 URL的统一管理跳转的方案 ‘服务’的解耦（接口设计）与获取(反射) 多线程处理技术 (CountDownLatch的使用)  拦截器思想、降级策略(（AOP的设计思想）)、分组加载策略 友好的api设计  整体设计 使用原作者的抽象">
 <meta name="twitter:image" content="http://p927u2n0k.bkt.clouddn.com/ARouter.png">
 
 
@@ -386,7 +386,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-06T14:54:40+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-06T22:54:17+08:00">
                 2018-06-06
               </time>
             
@@ -447,7 +447,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  277
+                  280
                 </span>
               
 
@@ -484,24 +484,36 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>这个库非常值得学习，里面涉及到的技术和编程思想都是不错的</p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>ARouter解析</p>
+<ul>
+<li><p><a href="https://xsfelvis.github.io/2018/06/05/ARouter%E8%A7%A3%E6%9E%90%E4%B9%8B%E6%A6%82%E8%BF%B0/">ARouter概述</a></p>
+</li>
+<li><p><a href="https://xsfelvis.github.io/2018/06/05/ARouter%E8%A7%A3%E6%9E%90%E4%B9%8B%E8%B7%AF%E7%94%B1%E7%9A%84%E7%A7%98%E5%AF%86/">路由的秘密</a></p>
+</li>
+<li><a href="https://xsfelvis.github.io/2018/06/06/ARouter%E8%A7%A3%E6%9E%90%E4%B9%8BURL%E8%B7%B3%E8%BD%AC/">URL跳转</a></li>
+</ul>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>这个库非常值得学习，里面涉及到的技术和编程思想都是不错的</p>
 <ol>
 <li>APT 编译器注解处理技术</li>
-<li>scheme url的统一管理跳转的方案</li>
+<li>URL的统一管理跳转的方案</li>
 <li>‘服务’的解耦（接口设计）与获取(反射)</li>
-<li>IoC与依赖注入(服务和参数由框架进行自动赋值)</li>
-<li>拦截器思想 （AOP的设计思想）</li>
-<li>多线程处理技术</li>
-<li>降级策略</li>
-<li>分组加载策略</li>
+<li>多线程处理技术 (CountDownLatch的使用) </li>
+<li>拦截器思想、降级策略(（AOP的设计思想）)、分组加载策略</li>
 <li>友好的api设计</li>
 </ol>
-<h1 id="整体设计如下"><a href="#整体设计如下" class="headerlink" title="整体设计如下"></a>整体设计如下</h1><p><img src="http://p927u2n0k.bkt.clouddn.com/ARouter.png" alt="ARoute"></p>
+<h1 id="整体设计"><a href="#整体设计" class="headerlink" title="整体设计"></a>整体设计</h1><p><img src="http://p927u2n0k.bkt.clouddn.com/ARouter.png" alt="ARoute"></p>
 <p>使用原作者的抽象图，整个ARouter架构如下:</p>
 <p><img src="https://yqfile.alicdn.com/37b723fb660fdfcf7cdc09c194c88a8073d8272d.png" alt="阿里开源"></p>
 <p><img src="https://yqfile.alicdn.com/e4d3ec6020479ef2043cfd7e10cfaf33254ac309.png" alt="阿里开源"></p>
 <p>其实在Android原生跳转主要是通过intent，主要分为显式和隐式跳转，显示跳转直接导致类之间的耦合，而隐式跳转需要在清单文件中申明，在多模块协作中比较困难,而且二者最终都会调用startActivity，这个环节我们就无法控制了，而ARouter路由可以在跳转中进行如同拦截,跳转失败进行降级的操作。</p>
 <p>下面将分几篇介绍这个开源库</p>
+<ul>
+<li><p><a href="https://xsfelvis.github.io/2018/06/05/ARouter%E8%A7%A3%E6%9E%90%E4%B9%8B%E6%A6%82%E8%BF%B0/">ARouter概述</a></p>
+</li>
+<li><p><a href="https://xsfelvis.github.io/2018/06/05/ARouter%E8%A7%A3%E6%9E%90%E4%B9%8B%E8%B7%AF%E7%94%B1%E7%9A%84%E7%A7%98%E5%AF%86/">路由的秘密</a></p>
+</li>
+<li><a href="https://xsfelvis.github.io/2018/06/06/ARouter%E8%A7%A3%E6%9E%90%E4%B9%8BURL%E8%B7%B3%E8%BD%AC/">URL跳转</a></li>
+</ul>
 
       
     </div>
@@ -567,8 +579,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/18/关于clean架构在android中的应用/" rel="next" title="clean架构">
-                <i class="fa fa-chevron-left"></i> clean架构
+              <a href="/2018/06/05/ARouter解析之路由的秘密/" rel="next" title="ARouter解析之路由的秘密">
+                <i class="fa fa-chevron-left"></i> ARouter解析之路由的秘密
               </a>
             
           </div>
@@ -577,8 +589,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/05/ARouter解析之路由的秘密/" rel="prev" title="ARouter解析之路由的秘密">
-                ARouter解析之路由的秘密 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/06/ARouter解析之URL跳转/" rel="prev" title="ARouter解析之URL跳转">
+                ARouter解析之URL跳转 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -826,7 +838,7 @@ var ap = new APlayer({
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#整体设计如下"><span class="nav-number">2.</span> <span class="nav-text">整体设计如下</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#整体设计"><span class="nav-number">2.</span> <span class="nav-text">整体设计</span></a></li></ol></div>
             
 
           </div>
@@ -860,7 +872,7 @@ var ap = new APlayer({
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">44.0k</span>
+    <span title="Site words total count">47.3k</span>
   
 </div>
 
