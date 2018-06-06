@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta name="baidu-site-verification" content="UqlC4pwKIm" />
+  <meta name="baidu-site-verification" content="d3U0dGeqGw" />
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ARouter,路由," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="渡口一艘船" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="简介本篇主要介绍ARouter如何进行路由的，比如Activity、Fragment、服务等 路由的秘密基本使用初始化路由之后 1ARouter.init(mApplication); 在需要支持页面路由的页面上添加注解(至少两级) 12@Route(path = &quot;/test/activity2&quot;)public class Test2Activity extends AppCompatActi">
+<meta name="keywords" content="ARouter,路由">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ARouter解析之路由的秘密">
+<meta property="og:url" content="https://xsfelvis.github.io/2018/06/05/ARouter解析之路由的秘密/index.html">
+<meta property="og:site_name" content="渡口一艘船">
+<meta property="og:description" content="简介本篇主要介绍ARouter如何进行路由的，比如Activity、Fragment、服务等 路由的秘密基本使用初始化路由之后 1ARouter.init(mApplication); 在需要支持页面路由的页面上添加注解(至少两级) 12@Route(path = &quot;/test/activity2&quot;)public class Test2Activity extends AppCompatActi">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p927u2n0k.bkt.clouddn.com/arouter-complete.png">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2608779-20192e96ae6f869f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
+<meta property="og:updated_time" content="2018-06-06T06:09:59.506Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ARouter解析之路由的秘密">
+<meta name="twitter:description" content="简介本篇主要介绍ARouter如何进行路由的，比如Activity、Fragment、服务等 路由的秘密基本使用初始化路由之后 1ARouter.init(mApplication); 在需要支持页面路由的页面上添加注解(至少两级) 12@Route(path = &quot;/test/activity2&quot;)public class Test2Activity extends AppCompatActi">
+<meta name="twitter:image" content="http://p927u2n0k.bkt.clouddn.com/arouter-complete.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://xsfelvis.github.io/2018/06/05/ARouter解析之路由的秘密/"/>
+
+
+
+
+
+  <title>ARouter解析之路由的秘密 | 渡口一艘船</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-120283281-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2a3365c396bc1892919405bfc6ea04a8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">渡口一艘船</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">不积跬步，无以至千里；不积小流，无以成江海</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xsfelvis.github.io/2018/06/05/ARouter解析之路由的秘密/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="云来">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="渡口一艘船">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">ARouter解析之路由的秘密</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-05T00:00:00+08:00">
+                2018-06-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-06T14:09:59+08:00">
+                2018-06-06
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/开源学习/" itemprop="url" rel="index">
+                    <span itemprop="name">开源学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/06/05/ARouter解析之路由的秘密/" class="leancloud_visitors" data-flag-title="ARouter解析之路由的秘密">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,902
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>本篇主要介绍ARouter如何进行路由的，比如Activity、Fragment、服务等</p>
+<h1 id="路由的秘密"><a href="#路由的秘密" class="headerlink" title="路由的秘密"></a>路由的秘密</h1><h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><p>初始化路由之后</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ARouter.init(mApplication);</span><br></pre></td></tr></table></figure>
+<p>在需要支持页面路由的页面上添加注解(至少两级)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Route</span>(path = <span class="string">"/test/activity2"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test2Activity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span></span></span><br></pre></td></tr></table></figure>
+<p>在路由时候通过建造者模式构建参数，<code>路由页面</code>分为以下几种</p>
+<h3 id="路由页面"><a href="#路由页面" class="headerlink" title="路由页面"></a>路由页面</h3><ul>
+<li>普通跳转</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ARouter.getInstance()</span><br><span class="line">        .build(<span class="string">"/test/activity2"</span>)</span><br><span class="line">        .navigation();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>带参数跳转</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ARouter.getInstance()</span><br><span class="line">    .build(<span class="string">"/test/activity2"</span>)</span><br><span class="line">    .withString(<span class="string">"key1"</span>, <span class="string">"value1"</span>)</span><br><span class="line">    .navigation();</span><br></pre></td></tr></table></figure>
+<p>其中ARouter提供了丰富的参数类型主要有基本类型、Object、Parceable等，核心原理也是通过Bundle携带传递</p>
+<ul>
+<li>startActivityForResult</li>
+</ul>
+<p>比如在TestActivity中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ARouter.getInstance().build(<span class="string">"/test/activity2"</span>)</span><br><span class="line">                     .withString(<span class="string">"key1"</span>, <span class="string">"value1"</span>)</span><br><span class="line">                     .navigation(<span class="keyword">this</span>, <span class="number">999</span>);</span><br></pre></td></tr></table></figure>
+<p>然后在TestActivity中 使用onActivityResult得到数据进行处理，这里跟普通过程一样</p>
+<ul>
+<li>带回调路由</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">ARouter.getInstance().build(<span class="string">"/xxx/xxx"</span>).navigation(<span class="keyword">this</span>, <span class="keyword">new</span> NavCallback() &#123;</span><br><span class="line">                   <span class="meta">@Override</span></span><br><span class="line">                   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFound</span><span class="params">(Postcard postcard)</span> </span>&#123;</span><br><span class="line">                       Log.d(<span class="string">"ARouter"</span>, <span class="string">"找到了"</span>);</span><br><span class="line">                   &#125;</span><br><span class="line"></span><br><span class="line">                   <span class="meta">@Override</span></span><br><span class="line">                   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLost</span><span class="params">(Postcard postcard)</span> </span>&#123;</span><br><span class="line">                       Log.d(<span class="string">"ARouter"</span>, <span class="string">"找不到了"</span>);</span><br><span class="line">                   &#125;</span><br><span class="line"></span><br><span class="line">                   <span class="meta">@Override</span></span><br><span class="line">                   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onArrival</span><span class="params">(Postcard postcard)</span> </span>&#123;</span><br><span class="line">                       Log.d(<span class="string">"ARouter"</span>, <span class="string">"跳转完了"</span>);</span><br><span class="line">                   &#125;</span><br><span class="line"></span><br><span class="line">                   <span class="meta">@Override</span></span><br><span class="line">                   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onInterrupt</span><span class="params">(Postcard postcard)</span> </span>&#123;</span><br><span class="line">                       Log.d(<span class="string">"ARouter"</span>, <span class="string">"被拦截了"</span>);</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="路由Fragment"><a href="#路由Fragment" class="headerlink" title="路由Fragment"></a>路由Fragment</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Fragment fragment = (Fragment) ARouter.getInstance()</span><br><span class="line">                    .build(<span class="string">"/test/fragment"</span>)</span><br><span class="line">                    .navigation();</span><br></pre></td></tr></table></figure>
+<h3 id="路由服务"><a href="#路由服务" class="headerlink" title="路由服务"></a>路由服务</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ARouter.getInstance()</span><br><span class="line">        .navigation(SingleService.class)</span><br><span class="line">        .sayHello(<span class="string">"Mike"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><p>可以看出路由到页面 分为三步</p>
+<ul>
+<li>build 构建 信息邮票(PostCard)</li>
+</ul>
+<p>_ARouter # build</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Build postcard by path and default group</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> Postcard <span class="title">build</span><span class="params">(String path)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (TextUtils.isEmpty(path)) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> HandlerException(Consts.TAG + <span class="string">"Parameter is invalid!"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        PathReplaceService pService = ARouter.getInstance().navigation(PathReplaceService.class);</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> != pService) &#123;</span><br><span class="line">            path = pService.forString(path);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> build(path, extractGroup(path));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>WithXXX 路由参数</p>
+</li>
+<li><p>navagation 导航</p>
+</li>
+</ul>
+<p>_ARouter # navagation</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">navigation</span><span class="params">(Context mContext, Postcard postcard, <span class="keyword">int</span> requestCode, NavigationCallback callback)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> _ARouter.getInstance().navigation(mContext, postcard, requestCode, callback);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>下面将按照上面的提到三个核心过程进行分析</p>
+<ul>
+<li>通过path构建路由信息</li>
+</ul>
+<p>build是在构建路由信息邮票”PostCard”,从名字看来这就是一张路由邮票，跟网络路由协议传递携带的信息作用一样,通过ARouter这个门面类(Facade)调用实际操控着_ARouter</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Build postcard by path and default group</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> Postcard <span class="title">build</span><span class="params">(String path)</span> </span>&#123;</span><br><span class="line">      ……</span><br><span class="line">    <span class="comment">//路径扩展</span></span><br><span class="line">    PathReplaceService pService = ARouter.getInstance().navigation(PathReplaceService.class);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> != pService) &#123;</span><br><span class="line">        path = pService.forString(path);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> build(path, extractGroup(path));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里也体现了作者设计这套框架的扩展性能，这个<code>PathReplaceService</code>就是让使用者自己可以给path添加扩展。extractGroup就是根据path(/test/activity2)提取group(test)，这里就是默认第一个/隔断的字符串，通过这些信息<code>初步</code>构造路由信息，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">protected</span> Postcard <span class="title">build</span><span class="params">(String path, String group)</span> </span>&#123;</span><br><span class="line">       ……</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Postcard(path, group);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样一个具有 <code>path</code>和<code>group</code>简单信息的PostCard对象就被构造出来了</p>
+<ul>
+<li>携带参数</li>
+</ul>
+<p>由于是Builder模式，此时构造出postcard之后之后的<code>.WithXXX</code>实际上实在给PostCard对象填充信息，PostCard对象的Bundle来承载这些信息，<br>其中 序列化对象<code>SerializationService</code>转成json存到Bundle中<br>通过这一步PostCard这个<code>邮票</code>信息进一步丰满了</p>
+<ul>
+<li>navigation 导航</li>
+</ul>
+<p>得到PostCard对象之后回去调用postCard对象的navigation对象,调用函数链如下</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PostCard（Arouter.getInstance.build("test/activity2")）——&gt;PostCard#navigation——&gt;ARouter#navigation</span><br><span class="line">——&gt;_ARouter#navigation`</span><br></pre></td></tr></table></figure>
+<h4 id="ARouter-navigation"><a href="#ARouter-navigation" class="headerlink" title="_ARouter#navigation"></a>_ARouter#navigation</h4><p>来到了核心函数 <code>_ARouter#navigation</code>函数中,这个函数其实是核心路由逻辑的第一道大门,我们越来越接近真相了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> Object <span class="title">navigation</span><span class="params">(<span class="keyword">final</span> Context context, <span class="keyword">final</span> Postcard postcard, <span class="keyword">final</span> <span class="keyword">int</span> requestCode, <span class="keyword">final</span> NavigationCallback callback)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">//完善postCard 核心信息,主要是跳转路径 后面会详细分析</span></span><br><span class="line">        LogisticsCenter.completion(postcard);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (NoRouteFoundException ex) &#123;</span><br><span class="line">        <span class="comment">// 未找到页面的降级处理策略</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> != callback) &#123;</span><br><span class="line">            <span class="comment">//自定义回调高于系统</span></span><br><span class="line">            callback.onLost(postcard);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;    <span class="comment">// No callback for this invoke, then we use the global degrade service.</span></span><br><span class="line">            <span class="comment">//没有自定义回调才使用系统onLost</span></span><br><span class="line">            DegradeService degradeService = ARouter.getInstance().navigation(DegradeService.class);</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">null</span> != degradeService) &#123;</span><br><span class="line">                degradeService.onLost(context, postcard);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> != callback) &#123;</span><br><span class="line">        <span class="comment">//onFound回调</span></span><br><span class="line">        callback.onFound(postcard);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!postcard.isGreenChannel()) &#123;   <span class="comment">// It must be run in async thread, maybe interceptor cost too mush time made ANR.</span></span><br><span class="line">        <span class="comment">//非绿色通道检查拦截器</span></span><br><span class="line">        interceptorService.doInterceptions(postcard, <span class="keyword">new</span> InterceptorCallback() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onContinue</span><span class="params">(Postcard postcard)</span> </span>&#123;</span><br><span class="line">            <span class="comment">//真正核心导航逻辑</span></span><br><span class="line">            _navigation(context, postcard, requestCode, callback);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onInterrupt</span><span class="params">(Throwable exception)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">null</span> != callback) &#123;</span><br><span class="line">                    callback.onInterrupt(postcard);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//真正核心导航逻辑</span></span><br><span class="line">        <span class="keyword">return</span> _navigation(context, postcard, requestCode, callback);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个方法较长 主要分为以下四步</p>
+<ol>
+<li>首先调用LogisticsCenter.completion完成postcard的补充</li>
+<li>NavigationCallBack的处理</li>
+<li>拦截器Interceptions的处理</li>
+<li>开始路由导航</li>
+</ol>
+<p>路由导航之前如何将之前获取的postcard信息进行完善?<br>ARouter.getInstance() .build(“/test/activity2”)时已经返回了一个postcard对象，那么要完善那些信息呢？其实我们可以看出，postcard中只有path和group的信息，目标页面是什么还不明确，因此需要进一步完善信息，核心函数就是上面的LogisticsCenter.completion，这样就体现了框架的重要性，脏活累活交给框架层面，而跟用户打交道的永远都是那么的简洁。</p>
+<h4 id="ARouter-navigationObject-navigation"><a href="#ARouter-navigationObject-navigation" class="headerlink" title="_ARouter#navigationObject navigation("></a>_ARouter#navigationObject navigation(</h4><p>最后会来到_ARouter#navigationObject navigation(final Context context, final Postcard postcard, final int requestCode, final NavigationCallback callback)）</p>
+<p>这个函数负责最终的页面跳转</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Object <span class="title">_navigation</span><span class="params">(<span class="keyword">final</span> Context context, <span class="keyword">final</span> Postcard postcard, <span class="keyword">final</span> <span class="keyword">int</span> requestCode, <span class="keyword">final</span> NavigationCallback callback)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> Context currentContext = <span class="keyword">null</span> == context ? mContext : context;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> (postcard.getType()) &#123;</span><br><span class="line">            <span class="keyword">case</span> ACTIVITY:</span><br><span class="line">                <span class="comment">// Build intent</span></span><br><span class="line">                <span class="keyword">final</span> Intent intent = <span class="keyword">new</span> Intent(currentContext, postcard.getDestination());</span><br><span class="line">                intent.putExtras(postcard.getExtras());</span><br><span class="line"></span><br><span class="line">                <span class="comment">// Set flags.</span></span><br><span class="line">                <span class="keyword">int</span> flags = postcard.getFlags();</span><br><span class="line">                <span class="keyword">if</span> (-<span class="number">1</span> != flags) &#123;</span><br><span class="line">                    intent.setFlags(flags);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!(currentContext <span class="keyword">instanceof</span> Activity)) &#123;    <span class="comment">// Non activity, need less one flag.</span></span><br><span class="line">                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// Navigation in main looper.</span></span><br><span class="line">                <span class="keyword">new</span> Handler(Looper.getMainLooper()).post(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        <span class="keyword">if</span> (requestCode &gt; <span class="number">0</span>) &#123;  <span class="comment">// Need start for result</span></span><br><span class="line">                            ActivityCompat.startActivityForResult((Activity) currentContext, intent, requestCode, postcard.getOptionsBundle());</span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            ActivityCompat.startActivity(currentContext, intent, postcard.getOptionsBundle());</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                        <span class="keyword">if</span> ((-<span class="number">1</span> != postcard.getEnterAnim() &amp;&amp; -<span class="number">1</span> != postcard.getExitAnim()) &amp;&amp; currentContext <span class="keyword">instanceof</span> Activity) &#123;    <span class="comment">// Old version.</span></span><br><span class="line">                            ((Activity) currentContext).overridePendingTransition(postcard.getEnterAnim(), postcard.getExitAnim());</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                        <span class="keyword">if</span> (<span class="keyword">null</span> != callback) &#123; <span class="comment">// Navigation over.</span></span><br><span class="line">                            callback.onArrival(postcard);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> PROVIDER:</span><br><span class="line">                <span class="keyword">return</span> postcard.getProvider();</span><br><span class="line">            <span class="keyword">case</span> BOARDCAST:</span><br><span class="line">            <span class="keyword">case</span> CONTENT_PROVIDER:</span><br><span class="line">            <span class="keyword">case</span> FRAGMENT:</span><br><span class="line">                Class fragmentMeta = postcard.getDestination();</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Object instance = fragmentMeta.getConstructor().newInstance();</span><br><span class="line">                    <span class="keyword">if</span> (instance <span class="keyword">instanceof</span> Fragment) &#123;</span><br><span class="line">                        ((Fragment) instance).setArguments(postcard.getExtras());</span><br><span class="line">                    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (instance <span class="keyword">instanceof</span> android.support.v4.app.Fragment) &#123;</span><br><span class="line">                        ((android.support.v4.app.Fragment) instance).setArguments(postcard.getExtras());</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">return</span> instance;</span><br><span class="line">                &#125; <span class="keyword">catch</span> (Exception ex) &#123;</span><br><span class="line">                    logger.error(Consts.TAG, <span class="string">"Fetch fragment instance error, "</span> + TextUtils.formatStackTrace(ex.getStackTrace()));</span><br><span class="line">                &#125;</span><br><span class="line">            <span class="keyword">case</span> METHOD:</span><br><span class="line">            <span class="keyword">case</span> SERVICE:</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Activity</li>
+</ul>
+<p>来到ACTIVITY分支，从postcard中拿到目标页面TestActivity.class然后组成intent，然后putExtras，如果是startActivityForResult,这里面就有参数。如果context不是activity，那么就需要另起一个栈Intent.FLAG_ACTIVITY_NEW_TASK进行activity的展示。接下来通过handler发送启动activity的任务。终于找到了熟悉的ActivityCompat.startActivity和ActivityCompat.startActivityForResult，</p>
+<ul>
+<li>Fragment</li>
+</ul>
+<p>通过postcard拿到目标页面的Fragment Class，然后实例化这个，还需要兼容fragment，设置Arguments参数之后返回这个Fragment实例</p>
+<ul>
+<li>Provider</li>
+</ul>
+<p>这个是用来提供服务的，由于在 完善postCard 核心信息,<code>LogisticsCenter.completion(postcard);</code>中已经将provider实例化了，这里直接直接get出来就好。后面将会分析<code>LogisticsCenter.completion(postcard)</code>具体做了哪些工作</p>
+<h4 id="LogisticsCenter-completion-postcard"><a href="#LogisticsCenter-completion-postcard" class="headerlink" title="LogisticsCenter.completion(postcard)"></a>LogisticsCenter.completion(postcard)</h4><p>这个函数就是完善PostCard信息的，postcard是路由信息的容器，到这个函数时候postcard中只有path和group的信息，目标页面是什么还不知道，LogisticsCenter.completion就是填充剩余的关键信息的，b并且是通过<code>按需加载的</code>,十分重要</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">completion</span><span class="params">(Postcard postcard)</span> </span>&#123;</span><br><span class="line">    ……</span><br><span class="line">    <span class="comment">//从仓库WareHouse中获取路由元数据，即一些路由基本的数据</span></span><br><span class="line">    RouteMeta routeMeta = Warehouse.routes.get(postcard.getPath());</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> == routeMeta) &#123;    <span class="comment">// Maybe its does't exist, or didn't load.</span></span><br><span class="line">        Class&lt;? extends IRouteGroup&gt; groupMeta = Warehouse.groupsIndex.get(postcard.getGroup());  <span class="comment">// Load route meta.</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == groupMeta) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NoRouteFoundException(TAG + <span class="string">"There is no route match the path ["</span> + postcard.getPath() + <span class="string">"], in group ["</span> + postcard.getGroup() + <span class="string">"]"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// Load route and cache it into memory, then delete from metas.</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                ……</span><br><span class="line">                <span class="comment">//将信息加载进Warehouse.routes中</span></span><br><span class="line">                IRouteGroup iGroupInstance = groupMeta.getConstructor().newInstance();</span><br><span class="line">                iGroupInstance.loadInto(Warehouse.routes);</span><br><span class="line">                Warehouse.groupsIndex.remove(postcard.getGroup());</span><br><span class="line">                ……</span><br><span class="line">            &#125; </span><br><span class="line">            ……</span><br><span class="line">            <span class="comment">//经过上面的处理后，此时可以获取到对应path下的routeMeta，调用本身</span></span><br><span class="line">            completion(postcard);   <span class="comment">// Reload</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//正常获取到routeMeta填充postCard信息</span></span><br><span class="line">        postcard.setDestination(routeMeta.getDestination());</span><br><span class="line">        postcard.setType(routeMeta.getType());</span><br><span class="line">        postcard.setPriority(routeMeta.getPriority());</span><br><span class="line">        postcard.setExtra(routeMeta.getExtra());</span><br><span class="line"></span><br><span class="line">        Uri rawUri = postcard.getUri();</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> != rawUri) &#123;   <span class="comment">// Try to set params into bundle.</span></span><br><span class="line">            Map&lt;String, String&gt; resultMap = TextUtils.splitQueryParameters(rawUri);</span><br><span class="line">            Map&lt;String, Integer&gt; paramsType = routeMeta.getParamsType();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (MapUtils.isNotEmpty(paramsType)) &#123;</span><br><span class="line">                <span class="comment">// Set value by its type, just for params which annotation by @Param</span></span><br><span class="line">                <span class="keyword">for</span> (Map.Entry&lt;String, Integer&gt; params : paramsType.entrySet()) &#123;</span><br><span class="line">                    setValue(postcard,</span><br><span class="line">                            params.getValue(),</span><br><span class="line">                            params.getKey(),</span><br><span class="line">                            resultMap.get(params.getKey()));</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// Save params name which need auto inject.</span></span><br><span class="line">                postcard.getExtras().putStringArray(ARouter.AUTO_INJECT, paramsType.keySet().toArray(<span class="keyword">new</span> String[]&#123;&#125;));</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Save raw uri</span></span><br><span class="line">            postcard.withString(ARouter.RAW_URI, rawUri.toString());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> (routeMeta.getType()) &#123;</span><br><span class="line">            <span class="comment">//完成信息的同时顺便把"服务实例化"，fragment置为无须过滤的绿色通道</span></span><br><span class="line">            <span class="keyword">case</span> PROVIDER:  <span class="comment">// if the route is provider, should find its instance</span></span><br><span class="line">                <span class="comment">// Its provider, so it must implement IProvider</span></span><br><span class="line">                Class&lt;? extends IProvider&gt; providerMeta = (Class&lt;? extends IProvider&gt;) routeMeta.getDestination();</span><br><span class="line">                IProvider instance = Warehouse.providers.get(providerMeta);</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">null</span> == instance) &#123; <span class="comment">// There's no instance of this provider</span></span><br><span class="line">                    IProvider provider;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        provider = providerMeta.getConstructor().newInstance();</span><br><span class="line">                        provider.init(mContext);</span><br><span class="line">                        Warehouse.providers.put(providerMeta, provider);</span><br><span class="line">                        instance = provider;</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                        <span class="keyword">throw</span> <span class="keyword">new</span> HandlerException(<span class="string">"Init provider failed! "</span> + e.getMessage());</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                postcard.setProvider(instance);</span><br><span class="line">                postcard.greenChannel();    <span class="comment">// Provider should skip all of interceptors</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> FRAGMENT:</span><br><span class="line">                postcard.greenChannel();    <span class="comment">// Fragment needn't interceptors</span></span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>流程图如下<br><img src="http://p927u2n0k.bkt.clouddn.com/arouter-complete.png" alt="arouter-complete"></p>
+<p>这个有一个关键点 WearHouse</p>
+<ul>
+<li>仓库查找页面节点</li>
+</ul>
+<p>首先根据路径信息到WareHouse仓库中查找路由节点信息，其实就是几个map，包含节点、拦截器和组别等信息<br><code>RouteMeta routeMeta = Warehouse.routes.get(postcard.getPath());</code><br>一开始是没有这个节点信息的，所以需要到WareHouse.groupsIndex中找到组别的信息，这里体现了之前提到的<code>分组加载的策略</code>，这里对应的是test这一组<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;? extends IRouteGroup&gt; groupMeta = Warehouse.groupsIndex.get(postcard.getGroup());  <span class="comment">// Load route meta.</span></span><br></pre></td></tr></table></figure></p>
+<p>然后通过反射的方式加载这一组类别的映射关系，就是前面提到的按需加载，然后从仓库中删除这个组别信息节点，防止重复加载</p>
+<pre><code class="java">IRouteGroup iGroupInstance = groupMeta.getConstructor().newInstance();        
+    iGroupInstance.loadInto(Warehouse.routes);    
+Warehouse.groupsIndex.remove(postcard.getGroup());
+</code></pre>
+<p>其中编译期间已经组成了RouteMeta这个节点信息，包含有目标页面、类型、路径、组别、参数、优先级等信息。可以看到生成之后的信息表并没有直接加载到内存中，而是在第一次访问该组内一个页面时才去加载该组的信息，然后该groupindex移除，防止重复加载</p>
+<p>生成的<code>ARouter$$Group$$test</code></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2608779-20192e96ae6f869f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="test组"></p>
+<ul>
+<li>填充信息</li>
+</ul>
+<p>当第一次没有查找到路由节点之后，要到组别中找到路由信息 load到warehouse中，再次调用本身<code>completion(postcard)</code>函数.然后执行到else中填充路由信息</p>
+<ul>
+<li>一些初始化</li>
+</ul>
+<p>填充玩信息后，将”服务”实例化，方便后面直接获取，并且将“服务”和fragment设置为绿色通道无需检查，感觉是由于二者本身需要返回一个实例，回调接口NavCallBack只能回调PostCard信息，而且二者近似服务性质，因而不如直接给个绿色通道来的直接。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>路由之间跳转到的分析到此基本上告一段落了，其中众多信息都在PostCard中不断完善，然后在LogisticsCenter.completion进行完全填充，更重要的是整体架构关注点分离的设计是非常棒的，编译期间映射信息都下沉到LogisticsCenter与用户层打交道的API都通过ARouter这个门面友好的暴露给用户，我们平时在开发设计中也可以这样学习一下</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    云来
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xsfelvis.github.io/2018/06/05/ARouter解析之路由的秘密/" title="ARouter解析之路由的秘密">https://xsfelvis.github.io/2018/06/05/ARouter解析之路由的秘密/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ARouter/" rel="tag"># ARouter</a>
+          
+            <a href="/tags/路由/" rel="tag"># 路由</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/18/关于clean架构在android中的应用/" rel="next" title="clean架构">
+                <i class="fa fa-chevron-left"></i> clean架构
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/05/ARouter解析之概述/" rel="prev" title="ARouter解析(1)">
+                ARouter解析(1) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzA1My8xMzU4OQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="云来" />
+            
+              <p class="site-author-name" itemprop="name">云来</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+			<!--my custom code begin-->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
+			<script type="text/javascript">
+			  $("#sidebar").hover(function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 1});
+			  },function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 0});
+			  });
+			</script>
+			<div id="mydivshow" class="mydivshow">
+			<!--my custom code end-->
+			
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/xsfelvis" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/XSF50717" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-csdn"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/5643754060b27f7a018bd10d" target="_blank" title="掘金">
+                    
+                      <i class="fa fa-fw fa-juejin"></i>掘金</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:xsfelvis@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://juejin.im/timeline" title="稀土掘金" target="_blank">稀土掘金</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://gank.io/" title="干货集中营" target="_blank">干货集中营</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wanandroid.com/tools" title="玩Android" target="_blank">玩Android</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://tech.meituan.com/" title="美团点评" target="_blank">美团点评</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.androidblog.cn/about/" title="酷站" target="_blank">酷站</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://pingguohe.net/" title="苹果核" target="_blank">苹果核</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <div id="player1" class="aplayer"></div>
+<script src="/js/src/APlayer.min.js"></script>
+<script type="text/javascript">
+var ap = new APlayer({
+    element: document.getElementById('player1'),                       // Optional, player element
+    narrow: false,                                                     // Optional, narrow style
+    autoplay: false,                                                    // Optional, autoplay song(s), not supported by mobile browsers
+    showlrc: 0,                                                        // Optional, show lrc, can be 0, 1, 2, see: ###With lrc
+    mutex: true,                                                       // Optional, pause other players when this player playing
+    theme: '#e6d0b2',                                                  // Optional, theme color, default: #b7daff
+    mode: 'random',                                                    // Optional, play mode, can be `random` `single` `circulation`(loop) `order`(no loop), default: `circulation`
+    preload: 'metadata',                                               // Optional, the way to load music, can be 'none' 'metadata' 'auto', default: 'auto'
+    listmaxheight: '513px',                                             // Optional, max height of play list
+    music: {                                                           // Required, music info, see: ###With playlist
+        title: 'Summertime Sadness',                                          // Required, music title
+        author: 'cover',                          // Required, music author
+        url: 'http://www.170mv.com/kw/other.web.rb01.sycdn.kuwo.cn/resource/n2/71/36/4211820203.mp3',  // Required, music url
+        pic: '/images/music.jpg',  // Optional, music picture
+    }
+});
+</script>
+        </div>
+		<!--my custom code begin-->
+		</div>
+		<!--my custom code end-->
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#路由的秘密"><span class="nav-number">2.</span> <span class="nav-text">路由的秘密</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本使用"><span class="nav-number">2.1.</span> <span class="nav-text">基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#路由页面"><span class="nav-number">2.1.1.</span> <span class="nav-text">路由页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由Fragment"><span class="nav-number">2.1.2.</span> <span class="nav-text">路由Fragment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由服务"><span class="nav-number">2.1.3.</span> <span class="nav-text">路由服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码分析"><span class="nav-number">2.2.</span> <span class="nav-text">源码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ARouter-navigation"><span class="nav-number">2.2.0.1.</span> <span class="nav-text">_ARouter#navigation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ARouter-navigationObject-navigation"><span class="nav-number">2.2.0.2.</span> <span class="nav-text">_ARouter#navigationObject navigation(</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LogisticsCenter-completion-postcard"><span class="nav-number">2.2.0.3.</span> <span class="nav-text">LogisticsCenter.completion(postcard)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">2.3.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">云来</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">44.0k</span>
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("QFKdnKcTHhFexYDWSA4tMBzH-gzGzoHsz", "wq2r6eiGoNMmUhgBsA7hAO9a");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.3"></script>
+
+
+  <script src="/js/src/Aplayer-Controler.js"></script>
+<div id="AP-controler"></div>
+<script type="text/javascript">
+var myapc=new APlayer_Controler({
+		APC_dom:$('#AP-controler'),
+		aplayer:ap, //此为绑定的aplayer对象
+		attach_right:false,
+		position:{top:'300px',bottom:''},
+		fixed:true,
+		btn_width:100,
+		btn_height:120,
+		img_src:['http://oty1v077k.bkt.clouddn.com/bukagirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/jumpgirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/pentigirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/%E8%90%8C1.gif'],
+		img_style:{repeat:'no-repeat',position:'center',size:'contain'},
+		ctrls_color:'rgba(173,255,47,0.8)',
+		ctrls_hover_color:'rgba(255,140,0,0.7)',
+		tips_on:true,
+		tips_width:140,
+		tips_height:25,
+		tips_color:'rgba(255,255,255,0.6)',
+		tips_content:{},
+		timeout:30
+	});
+</script>
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+
+
+</body>
+</html>

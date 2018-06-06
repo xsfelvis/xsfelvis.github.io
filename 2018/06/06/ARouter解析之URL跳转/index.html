@@ -121,7 +121,7 @@
 
 
 
-  <meta name="keywords" content="Android,Touch," />
+  <meta name="keywords" content="ARouter,路由," />
 
 
 
@@ -134,18 +134,20 @@
 
 
 
-<meta name="description" content="Touch机制概述dispatchTouchEvent(), onTouchEvent(),onInterceptTouchEvent()和OnTouchListener接口。这些内容中，最复杂的莫过于dispatchTouchEvent(),onTouchEvent()和onInterceptTouchEvent()这三者之间的关系。如果你能认真读完本系列文章，相信对它们之间的关系，它们的原理">
-<meta name="keywords" content="Android,Touch">
+<meta name="description" content="ARouter解析之URL跳转在ARouter Demo中，点击通过URL跳转，会通过WebView加载html 1234ARouter.getInstance()        .build(&quot;/test/webview&quot;)        .withString(&quot;url&quot;, &quot;file:///android_asset/schame-test.html&quot;)        .navigatio">
+<meta name="keywords" content="ARouter,路由">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Touch机制">
-<meta property="og:url" content="https://xsfelvis.github.io/2017/10/03/Touch机制/index.html">
+<meta property="og:title" content="ARouter解析之URL跳转">
+<meta property="og:url" content="https://xsfelvis.github.io/2018/06/06/ARouter解析之URL跳转/index.html">
 <meta property="og:site_name" content="渡口一艘船">
-<meta property="og:description" content="Touch机制概述dispatchTouchEvent(), onTouchEvent(),onInterceptTouchEvent()和OnTouchListener接口。这些内容中，最复杂的莫过于dispatchTouchEvent(),onTouchEvent()和onInterceptTouchEvent()这三者之间的关系。如果你能认真读完本系列文章，相信对它们之间的关系，它们的原理">
+<meta property="og:description" content="ARouter解析之URL跳转在ARouter Demo中，点击通过URL跳转，会通过WebView加载html 1234ARouter.getInstance()        .build(&quot;/test/webview&quot;)        .withString(&quot;url&quot;, &quot;file:///android_asset/schame-test.html&quot;)        .navigatio">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-04T08:47:23.996Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2608779-5104d9c50fcb0553.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/340">
+<meta property="og:updated_time" content="2018-06-06T06:08:45.791Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Touch机制">
-<meta name="twitter:description" content="Touch机制概述dispatchTouchEvent(), onTouchEvent(),onInterceptTouchEvent()和OnTouchListener接口。这些内容中，最复杂的莫过于dispatchTouchEvent(),onTouchEvent()和onInterceptTouchEvent()这三者之间的关系。如果你能认真读完本系列文章，相信对它们之间的关系，它们的原理">
+<meta name="twitter:title" content="ARouter解析之URL跳转">
+<meta name="twitter:description" content="ARouter解析之URL跳转在ARouter Demo中，点击通过URL跳转，会通过WebView加载html 1234ARouter.getInstance()        .build(&quot;/test/webview&quot;)        .withString(&quot;url&quot;, &quot;file:///android_asset/schame-test.html&quot;)        .navigatio">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2608779-5104d9c50fcb0553.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/340">
 
 
 
@@ -175,13 +177,13 @@
 
 
 
-  <link rel="canonical" href="https://xsfelvis.github.io/2017/10/03/Touch机制/"/>
+  <link rel="canonical" href="https://xsfelvis.github.io/2018/06/06/ARouter解析之URL跳转/"/>
 
 
 
 
 
-  <title>Touch机制 | 渡口一艘船</title>
+  <title>ARouter解析之URL跳转 | 渡口一艘船</title>
   
 
 
@@ -337,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xsfelvis.github.io/2017/10/03/Touch机制/">
+    <link itemprop="mainEntityOfPage" href="https://xsfelvis.github.io/2018/06/06/ARouter解析之URL跳转/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="云来">
@@ -354,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Touch机制</h2>
+          <h2 class="post-title" itemprop="name headline">ARouter解析之URL跳转</h2>
         
 
         <div class="post-meta">
@@ -366,8 +368,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-03T00:00:00+08:00">
-                2017-10-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-06T00:00:00+08:00">
+                2018-06-06
               </time>
             
 
@@ -382,8 +384,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-04T16:47:23+08:00">
-                2018-06-04
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-06T14:08:45+08:00">
+                2018-06-06
               </time>
             
           </span>
@@ -401,8 +403,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/categories/开源学习/" itemprop="url" rel="index">
+                    <span itemprop="name">开源学习</span>
                   </a>
                 </span>
 
@@ -418,7 +420,7 @@
 
           
           
-             <span id="/2017/10/03/Touch机制/" class="leancloud_visitors" data-flag-title="Touch机制">
+             <span id="/2018/06/06/ARouter解析之URL跳转/" class="leancloud_visitors" data-flag-title="ARouter解析之URL跳转">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -443,7 +445,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,125
+                  1,178
                 </span>
               
 
@@ -459,7 +461,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8
+                  5
                 </span>
               
             </div>
@@ -480,75 +482,39 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><h1 id="Touch机制"><a href="#Touch机制" class="headerlink" title="Touch机制"></a>Touch机制</h1><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>dispatchTouchEvent(), onTouchEvent(),onInterceptTouchEvent()和OnTouchListener接口。这些内容中，最复杂的莫过于dispatchTouchEvent(),onTouchEvent()和onInterceptTouchEvent()这三者之间的关系。如果你能认真读完本系列文章，相信对它们之间的关系，它们的原理和用法，很有很清晰的认识</p>
-<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><ol>
-<li><p>Activity中的触摸事件API<br>public boolean dispatchTouchEvent(MotionEvent ev)；<br>public boolean onTouchEvent(MotionEvent ev);</p>
-</li>
-<li><p>ViewGroup中的触摸事件API<br>public boolean dispatchTouchEvent(MotionEvent ev)；<br>public boolean onTouchEvent(MotionEvent ev);<br>public boolean onInterceptTouchEvent(MotionEvent ev);</p>
-</li>
-<li><p>View中的触摸事件API<br>public boolean dispatchTouchEvent(MotionEvent ev)；<br>public boolean onTouchEvent(MotionEvent ev);</p>
-</li>
-</ol>
-<p>下面简单的说明一下涉及到的三个API的作用。</p>
-<p>dispatchTouchEvent：它是传递触摸事件的接口。<br>(01) Activity将触摸事件传递给ViewGroup，ViewGroup将触摸事件传递给另一个ViewGroup，以及ViewGroup将触摸事件传递给View；这些都是通过dispatchTouchEvent()来传递的。<br>(02) dispatchTouchEvent(), onInterceptTouchEvent(), onTouchEvent()以及onTouch()它们之间的联系，都是通过dispatchTouchEvent()体现的。它们都是在dispatchTouchEvent()中调度的！因此，理解dispatchTouchEvent()是理解Android事件机制的关机；而其中，最关机的就是ViewGroup中的dispatchTouchEvent()<br>(03) 返回值：true，表示触摸事件被消费了；false，则表示触摸事件没有被消费。<br>onTouchEvent：它是处理触摸事件的接口。<br>(01) 无论是Activity, ViewGroup还是View，对触摸事件的处理，基本上都是在onTouchEvent()中进行的。因此，我们说它是处理触摸事件的接口。<br>(02) 返回值：返回true，表示触摸事件被它处理过了；或者，换句话说，表示它消费了触摸事件。否则，表示它没有消费该触摸事件。<br>onInterceptTouchEvent：它是拦截触摸事件的接口。<br>(01) 只有ViewGroup中才有该接口。如果ViewGroup不想将触摸事件传递给它的子View，则可以在onInterceptTouchEvent中进行拦截。<br>(02) 返回值：true，表示ViewGroup拦截了该触摸事件；那么，该事件就不会分发给它的子View或者子ViewGroup。否则，表示ViewGroup没有拦截该事件，该事件就会分发给它的子View和子ViewGroup。</p>
-<h1 id="OnTouchListener接口"><a href="#OnTouchListener接口" class="headerlink" title="OnTouchListener接口"></a>OnTouchListener接口</h1><p>OnTouchListener一个interface接口，它是在View中声明的。OnTouchListener中只包含了onTouch()函数。<br>那么，onTouch()和onTouchEvent()有什么相同和不同点呢？</p>
-<blockquote>
-<p>相同点</p>
-</blockquote>
-<p>onTouch()与onTouchEvent()都是用户处理触摸事件的API。</p>
-<blockquote>
-<p>不同点</p>
-</blockquote>
+        <script src="/assets/js/APlayer.min.js"> </script><h1 id="ARouter解析之URL跳转"><a href="#ARouter解析之URL跳转" class="headerlink" title="ARouter解析之URL跳转"></a>ARouter解析之URL跳转</h1><p>在ARouter Demo中，点击通过URL跳转，会通过WebView加载html</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ARouter.getInstance()</span><br><span class="line">        .build(<span class="string">"/test/webview"</span>)</span><br><span class="line">        .withString(<span class="string">"url"</span>, <span class="string">"file:///android_asset/schame-test.html"</span>)</span><br><span class="line">        .navigation();</span><br></pre></td></tr></table></figure>
+<p> <img src="https://upload-images.jianshu.io/upload_images/2608779-5104d9c50fcb0553.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/340" alt=""></p>
+<h2 id="方案设计"><a href="#方案设计" class="headerlink" title="方案设计"></a>方案设计</h2><p>通常webview上的url跳转会给webview设置一个<code>webviewClient</code>，然后通过shouldOverrideUrlLoading方法，在方法中构造intent进行跳转，简单示意如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">webview.setWebViewClient(<span class="keyword">new</span> WebViewClient()&#123;    </span><br><span class="line"><span class="meta">@Override</span>    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">shouldOverrideUrlLoading</span><span class="params">(WebView view, String url)</span> </span>&#123;    </span><br><span class="line">        <span class="keyword">if</span> (url != <span class="keyword">null</span> &amp;&amp; url.contains(<span class="string">"arouter"</span>))&#123;    </span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(TestWebview.<span class="keyword">this</span>, Test1Activity.class);    </span><br><span class="line">        startActivity(intent);    </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;    </span><br><span class="line">        &#125;    </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.shouldOverrideUrlLoading(view, url);    </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这种做法往往会有很多缺陷</p>
 <ol>
-<li>onTouch()是View专门提供给用户的接口，目的是为了方便用户自己处理触摸事件。而onTouchEvent()是Android系统自己实现的接口。</li>
-<li>onTouch()的优先级比onTouchEvent()的优先级更高。<br>dispatchTouchEvent()中分发事件的时候，会先将事件分配给onTouch()进行处理，然后才分配给onTouchEvent()进行处理。 如果onTouch()对触摸事件进行了处理，并且返回true；那么，该触摸事件就不会分配在分配给onTouchEvent()进行处理了。只有当onTouch()没有处理，或者处理了但返回false时，才会分配给onTouchEvent()进行处理。</li>
+<li>硬编码，业务复杂时候webview变得很臃肿，耦合严重不利于维护</li>
+<li>当外不应用打开链接需要跳转到我们的App某个Activity中时候，此时就不在自己App的webview环境中，这样就无法满足跳转需求的，因此这种方式也不够强大</li>
 </ol>
-<h1 id="Activity中触摸事件分析"><a href="#Activity中触摸事件分析" class="headerlink" title="Activity中触摸事件分析"></a>Activity中触摸事件分析</h1><p>Activity中的dispatchTouchEvent会将触摸事件传递给Activity所包含的视图。具体实现方式通过调用到Activity所属Windows的superDispatchTouchEvent,进而调用Windows的DecorView的superDispatchTouchEvent</p>
-<p>1.如果Activity所包含的视图拦截或者消费了该触摸事件的话，就不会再执行Activity的onTouchEvent()；<br>2.如果Activity所包含的视图没有拦截或者消费该触摸事件的话，则会执行Activity的onTouchEvent()。</p>
-<p>Activity中的onTouchEvent是Activity对自身对触摸事件的处理，如果该Activity的android:windowCloseOnTouchOutside属性为true，并且当前触摸事件是ACTION_DOWN，而且该触摸事件的坐标在Activity之外，同时Activity还包含了视图的话；就会导致Activity被结束。</p>
-<h1 id="view中触摸事件分析"><a href="#view中触摸事件分析" class="headerlink" title="view中触摸事件分析"></a>view中触摸事件分析</h1><p>View中与触摸事件相关的内容可以分为两部分。</p>
-<blockquote>
-<p>第一部分 dispatchTouchEvent()和onTouchEvent()这两个API</p>
-</blockquote>
-<p>dispatchTouchEvent()是传递触摸事件的API，而onTouchEvent()则是View处理触摸事件的API。<br>View中dispatchTouchEvent()将事件传递给”自己的onTouch()“, “自己的onTouchEvent()“进行处理。 onTouch()是OnTouchListener接口中API，属于View提供的，让用户自己处理触摸事件的接口。而onTouchEvent()是Android系统提供的，用于处理触摸事件的接口；在onTouchEvent()中会进行一系列的动作，例如获取焦点、设置按下状态，调用onClick()等。</p>
-<blockquote>
-<p>第二部分 OnTouchListener, OnClickListener, OnLongClickListener等接口</p>
-</blockquote>
-<p>这部分主要是接口。但本文主要介绍的是OnTouchListener接口中的onTouch()。为什么呢？<br>这是因为，onTouch()与onTouchEvent()都是用户处理触摸事件的API。<br>但不同的是：<br>(01), onTouch()是View提供给用户，让用户自己处理触摸事件的接口。而onTouchEvent()是Android系统自己实现的接口。<br>(02)，onTouch()的优先级比onTouchEvent()的优先级更高。dispatchTouchEvent()中分发事件的时候，会先将事件分配给onTouch()进行处理，然后才分配给onTouchEvent()进行处理。 如果onTouch()对触摸事件进行了处理，并且返回true；那么，该触摸事件就不会分配在分配给onTouchEvent()进行处理了。只有当onTouch()没有处理，或者处理了但返回false时，才会分配给onTouchEvent()进行处理。</p>
-<p><code>public interface OnTouchListener {  
-    boolean onTouch(View v, MotionEvent event);  
-}</code></p>
-<blockquote>
-<p>第三部分 关键函数分析</p>
-</blockquote>
-<p>View中的dispatchTouchEvent，涉及onFilterTouchEventForSecurity()</p>
-<p>onFilterTouchEventForSecurity()返回true，表示可以分发该触摸事件；否则，不能分发该触摸事件。不能分发事件的情况，只有mViewFlags&amp;FILTER_TOUCHES_WHEN_OBSCURED!=0，并且event.getFlags()&amp;MotionEvent.FLAG_WINDOW_IS_OBSCURED!=0同时成立。<br>(01) FILTER_TOUCHES_WHEN_OBSCURED是android:filterTouchesWhenObscured属性所对应的位。android:filterTouchesWhenObscured是true的话，则表示其他视图在该视图之上，导致该视图被隐藏时，该视图就不再响应触摸事件。<br>(02) MotionEvent.FLAG_WINDOW_IS_OBSCURED为true的话，则表示该视图的窗口是被隐藏的。</p>
-<p>View中的onTouchEvent<br>onTouchEvent()是Android系统实现的View对触摸事件的处理。<br>(01) 如果View被禁用的话，则返回它是否可以点击。当我们调用了setEnabled(false)时，View就被禁用了；默认情况下，View是可用的。当调用setClickable(true)或者android:clickable为true时，View就是可点击状态；默认情况下，View是不可点击的。<br>(02) 如果该View的mTouchDelegate不为null的话，将触摸消息分发给mTouchDelegate。例如，假设有两个视图v1和v2，它们的布局相互之间不重叠；如果设置了v1.setTouchDelegate(v2)的话，v1的触摸事件就会分发给v2。 注意：mTouchDelegate的默认值是null。<br>(03) 如果View可以被点击的话，则执行if里面的内容。if里面涉及的内容很多，这里与本文的主题关联不大，暂且不表；如果要细将的话，估计得好几篇文章。例如，setPressed()是设置View的按下状态，如果用户有设置View在不同状态的图片时，setPressed()时会导致View的图片的更新。</p>
-<blockquote>
-<p>第四部分总结</p>
-</blockquote>
-<ol>
-<li>View中的dispatchTouchEvent()会将事件传递给”自己的onTouch()“, “自己的onTouchEvent()“进行处理。而且onTouch()的优先级比onTouchEvent()的优先级要高。</li>
-<li>onTouch()与onTouchEvent()都是View中用户处理触摸事件的API。onTouch是OnTouchListener接口中的函数，OnTouchListener接口需要用户自己实现。onTouchEvent()是View自带的接口，Android系统提供了默认的实现；当然，用户可以重载该API。</li>
-<li>onTouch()与onTouchEvent()有两个不同之处：<br>(01), onTouch()是View提供给用户，让用户自己处理触摸事件的接口。而onTouchEvent()是Android系统自己实现的接口。<br>(02)，onTouch()的优先级比onTouchEvent()的优先级更高。dispatchTouchEvent()中分发事件的时候，会先将事件分配给onTouch()进行处理，然后才分配给onTouchEvent()进行处理。如果onTouch()对触摸事件进行了处理，并且返回true；那么，该触摸事件就不会分配在分配给onTouchEvent()进行处理了。只有当onTouch()没有处理，或者处理了但返回false时，才会分配给onTouchEvent()进行处理。</li>
-</ol>
-<h1 id="ViewGroup中触摸事件分析"><a href="#ViewGroup中触摸事件分析" class="headerlink" title="ViewGroup中触摸事件分析"></a>ViewGroup中触摸事件分析</h1><p>ViewGroup继承于View，它中对触摸事件的处理，很多都继承于View。但是，ViewGroup又有自己对触摸事件的特定处理。  </p>
-<ol>
-<li>ViewGroup重载了dispatchTouchEvent()接口。  </li>
-<li>ViewGroup新增了onInterceptTouchEvent()接口。</li>
-</ol>
-<blockquote>
-<p>总结</p>
-</blockquote>
-<ol>
-<li>ViewGroup中的dispatchTouchEvent()会将触摸事件进行递归遍历传递。ViewGroup会遍历它的所有孩子，对每个孩子都递归的调用dispatchTouchEvent()来分发触摸事件。</li>
-<li>如果ViewGroup的某个孩子没有接受(消费或者拦截)ACTION_DOWN事件；那么，ACTION_MOVE和ACTION_UP等事件也一定不会分发给这个孩子！</li>
-<li>ViewGroup的onInterceptTouchEvent()默认返回false。</li>
-</ol>
-<p>参考：</p>
+<p>ARouter就是通过<code>注册一个没有UI的界面</code>作为跳板来统一处理,scheme是arouter的跳转请求。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name=<span class="string">".SchemeFilterActivity"</span>&gt;</span><br><span class="line">    &lt;!-- Schame --&gt;</span><br><span class="line">    &lt;intent-filter&gt;</span><br><span class="line">        &lt;data</span><br><span class="line">            android:host=<span class="string">"m.aliyun.com"</span></span><br><span class="line">            android:scheme=<span class="string">"arouter"</span>/&gt;</span><br><span class="line">        &lt;action android:name=<span class="string">"android.intent.action.VIEW"</span>/&gt;</span><br><span class="line">        &lt;category android:name=<span class="string">"android.intent.category.DEFAULT"</span>/&gt;</span><br><span class="line">        &lt;category android:name=<span class="string">"android.intent.category.BROWSABLE"</span>/&gt;</span><br><span class="line">    &lt;/intent-filter&gt;</span><br><span class="line">    &lt;!-- App Links --&gt;</span><br><span class="line">    &lt;intent-filter android:autoVerify=<span class="string">"true"</span>&gt;</span><br><span class="line">        &lt;action android:name=<span class="string">"android.intent.action.VIEW"</span>/&gt;</span><br><span class="line">        &lt;category android:name=<span class="string">"android.intent.category.DEFAULT"</span>/&gt;</span><br><span class="line">        &lt;category android:name=<span class="string">"android.intent.category.BROWSABLE"</span>/&gt;</span><br><span class="line">        &lt;data</span><br><span class="line">            android:host=<span class="string">"m.aliyun.com"</span></span><br><span class="line">            android:scheme=<span class="string">"http"</span>/&gt;</span><br><span class="line">        &lt;data</span><br><span class="line">            android:host=<span class="string">"m.aliyun.com"</span></span><br><span class="line">            android:scheme=<span class="string">"https"</span>/&gt;</span><br><span class="line">    &lt;/intent-filter&gt;</span><br><span class="line">&lt;/activity&gt;</span><br></pre></td></tr></table></figure>
+<p>在清单文件中注册了SchemeFilterActivity这个activity</p>
 <ul>
-<li><a href="http://wangkuiwu.github.io/2015/01/01/TouchEvent-Introduce/" target="_blank" rel="noopener">http://wangkuiwu.github.io/2015/01/01/TouchEvent-Introduce/</a></li>
+<li>scheme就是arouter, </li>
+<li>host就是m.aliyun.com，</li>
+<li>其中有个category是 android.intent.category.BROWSABLE，</li>
 </ul>
+<p>其中 <code>android.intent.category.BROWSABLE</code>就是让浏览器可以打这个Actvity，当然要符合host和scheme,这样就可以在WebView中跳转SchemeFilterActivity这个界面了。</p>
+<p>这种方式的优点：</p>
+<ol>
+<li><p>首先是页面跳转的灵活性，<br>比如需要和H5中进行通信，H5需要跳转到App本地的页面，Native和H5只需要统一一个path文档即可，H5可以通过path构造一个url就可以实现跳转到对应页面的功能，很类似浏览器，实现很好的解耦</p>
+</li>
+<li><p>更加的安全<br>相比较于隐式的intent，每一个从外面跳转进来的页面都需要注册上intent-filter，每个页面都需要设置export=true，也就是需要让每一个页面都可以导出，在外部可以访问到。这样做会带来非常严重的安全风险，就像是一个房子有十个门还是只有一个门，看门的成本是不同的。而现在使用的这种场景只需要对外暴露出一个activity，然后在这个activity中注册一个intent-filter，这样之后所有的外部路由请求都会经过这唯一的门，然后在这个activity中获取到URL并将其交给ARouter，剩下的就由路由框架做分发了。</p>
+</li>
+<li><p>携带参数注入<br>另外一个好处就是隐式intent跳转无法将参数自动注入，ARouter可以在url中携带参数然后自动注入</p>
+</li>
+</ol>
+<p>这里也需要H5链接需要按照<code>约定的scheme来</code>，</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>跳转测试<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>自定义Scheme[通常来说都是这样的]<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"arouter://m.aliyun.com/test/activity1"</span>&gt;</span>arouter://m.aliyun.com/test/activity1<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"arouter://m.aliyun.com/test/activity1?url=https%3a%2f%2fm.abc.com%3fa%3db%26c%3dd"</span>&gt;</span>测试URL Encode情况<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"arouter://m.aliyun.com/test/activity1?name=alex&amp;age=18&amp;boy=true&amp;high=180&amp;obj=%7b%22name%22%3a%22jack%22%2c%22id%22%3a666%7d"</span>&gt;</span>arouter://m.aliyun.com/test/activity1?name=alex&amp;age=18&amp;boy=true&amp;high=180&amp;obj=&#123;"name":"jack","id":"666"&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"arouter://m.aliyun.com/test/activity2"</span>&gt;</span>arouter://m.aliyun.com/test/activity2<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"arouter://m.aliyun.com/test/activity2?key1=value1"</span>&gt;</span>arouter://m.aliyun.com/test/activity2?key1=value1<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"arouter://m.aliyun.com/test/activity3?name=alex&amp;age=18&amp;boy=true&amp;high=180"</span>&gt;</span>arouter://m.aliyun.com/test/activity3?name=alex&amp;age=18&amp;boy=true&amp;high=180<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>App Links[防止被App屏蔽]<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://m.aliyun.com/test/activity1"</span>&gt;</span>http://m.aliyun.com/test/activity1<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://m.aliyun.com/test/activity2"</span>&gt;</span>http://m.aliyun.com/test/activity2<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="URL中转SchemeFilterActivity"><a href="#URL中转SchemeFilterActivity" class="headerlink" title="URL中转SchemeFilterActivity"></a>URL中转SchemeFilterActivity</h2><p>点击url之后通过清单文件的匹配intent-filter中的data, action, category的标签，其中category匹配任意一个即可。接着就来到SchemeFilterActivity</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SchemeFilterActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line"></span><br><span class="line"><span class="comment">//        直接通过ARouter处理外部Uri</span></span><br><span class="line">        Uri uri = getIntent().getData();</span><br><span class="line">        ARouter.getInstance().build(uri).navigation(<span class="keyword">this</span>, <span class="keyword">new</span> NavCallback() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onArrival</span><span class="params">(Postcard postcard)</span> </span>&#123;</span><br><span class="line">                finish();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>后续处理就跟之前路由逻辑一致了,这里就不赘述了</p>
 
       
     </div>
@@ -569,7 +535,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://xsfelvis.github.io/2017/10/03/Touch机制/" title="Touch机制">https://xsfelvis.github.io/2017/10/03/Touch机制/</a>
+    <a href="https://xsfelvis.github.io/2018/06/06/ARouter解析之URL跳转/" title="ARouter解析之URL跳转">https://xsfelvis.github.io/2018/06/06/ARouter解析之URL跳转/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -584,9 +550,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android/" rel="tag"># Android</a>
+            <a href="/tags/ARouter/" rel="tag"># ARouter</a>
           
-            <a href="/tags/Touch/" rel="tag"># Touch</a>
+            <a href="/tags/路由/" rel="tag"># 路由</a>
           
         </div>
       
@@ -614,8 +580,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/22/仿知乎创新广告/" rel="next" title="仿知乎创新广告">
-                <i class="fa fa-chevron-left"></i> 仿知乎创新广告
+              <a href="/2018/06/06/谈谈APT和JavaPoet的一些技巧/" rel="next" title="谈谈APT和JavaPoet的一些使用技巧">
+                <i class="fa fa-chevron-left"></i> 谈谈APT和JavaPoet的一些使用技巧
               </a>
             
           </div>
@@ -623,10 +589,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/31/Service/" rel="prev" title="service">
-                service <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -727,7 +689,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -749,7 +711,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -873,7 +835,7 @@ var ap = new APlayer({
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Touch机制"><span class="nav-number">1.</span> <span class="nav-text">Touch机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">2.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#API"><span class="nav-number">3.</span> <span class="nav-text">API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OnTouchListener接口"><span class="nav-number">4.</span> <span class="nav-text">OnTouchListener接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Activity中触摸事件分析"><span class="nav-number">5.</span> <span class="nav-text">Activity中触摸事件分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#view中触摸事件分析"><span class="nav-number">6.</span> <span class="nav-text">view中触摸事件分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ViewGroup中触摸事件分析"><span class="nav-number">7.</span> <span class="nav-text">ViewGroup中触摸事件分析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ARouter解析之URL跳转"><span class="nav-number">1.</span> <span class="nav-text">ARouter解析之URL跳转</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方案设计"><span class="nav-number">1.1.</span> <span class="nav-text">方案设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL中转SchemeFilterActivity"><span class="nav-number">1.2.</span> <span class="nav-text">URL中转SchemeFilterActivity</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -907,7 +869,7 @@ var ap = new APlayer({
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">41.9k</span>
+    <span title="Site words total count">44.0k</span>
   
 </div>
 

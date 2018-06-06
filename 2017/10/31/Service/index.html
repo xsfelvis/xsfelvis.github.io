@@ -147,7 +147,7 @@
 <meta property="og:image" content="https://i.imgur.com/YrN3X1w.png">
 <meta property="og:image" content="https://i.imgur.com/u6dBylu.png">
 <meta property="og:image" content="https://i.imgur.com/cbwBY5P.png">
-<meta property="og:updated_time" content="2018-06-04T08:39:57.734Z">
+<meta property="og:updated_time" content="2018-06-06T06:38:15.719Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="service">
 <meta name="twitter:description" content="service本篇博文主要介绍Service相关知识，具体目录如下  0x00 什么是Service Service是一个应用程序组件，可以在后台长时间运行的操作，不提供用户界面； 一个应用程序可以启动一个服务，它将继续在后台运行，即使用户切换到另外一个应用 一个组件可以绑定到一个服务与它交互，甚至执行进程间通信(IPC)，如处理网络传输、音乐播放、执行文件I/O，与content provid">
@@ -388,8 +388,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-04T16:39:57+08:00">
-                2018-06-04
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-06T14:38:15+08:00">
+                2018-06-06
               </time>
             
           </span>
@@ -449,7 +449,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,966
+                  4,059
                 </span>
               
 
@@ -690,33 +690,8 @@
 <p>step 3 构建用于启动Service的intent对象</p>
 <p>step 4 调用startService启动，调用stopService/stopSelf停止服务</p>
 </blockquote>
-<pre><code>@Override
-public void onCreate() {
-    //这里配置一些信息
-    //启动运行服务的线程。
-    //请记住我们要创建一个单独的线程，因为服务通常运行于进程的主线程中，可我们不想阻塞主线程。
-    //我们还要赋予它后台运行的优先级，以便计算密集的工作不会干扰我们的UI。
-    HandlerThread handlerThread = new HandlerThread(TAG);
-    handlerThread.start();
-    //获取handlerThread的loop队列并用于Handler
-    mServiceLooper = handlerThread.getLooper();
-    mServiceHandler = new ServiceHandler(mServiceLooper);
-    Log.d(TAG, &quot;onCreate&quot;);
-}
-
-@Override
-public int onStartCommand(Intent intent, int flags, int startId) {
-    msgStr = intent.getStringExtra(&quot;startService&quot;);
-    Log.d(TAG, &quot;onStartCommand getExtraString = &quot; + msgStr);
-    //对于每一个启动请求，都发送一个消息来启动一个处理
-    //同时传入启动ID，以便任务完成后我们知道该终止哪一个请求。
-    Message message = mServiceHandler.obtainMessage();
-    message.arg1 = 1;
-    mServiceHandler.sendMessage(message);
-    //如果我们被杀死了，那从这里返回之后被重启
-    return START_STICKY;
-}
-</code></pre><p>由于Service也是运行在主线程中，如果需要执行一些耗时操作需要放到相应的子线程中处理，谷歌内置了一个<code>IntentService(异步处理服务)</code>，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//这里配置一些信息</span></span><br><span class="line">    <span class="comment">//启动运行服务的线程。</span></span><br><span class="line">    <span class="comment">//请记住我们要创建一个单独的线程，因为服务通常运行于进程的主线程中，可我们不想阻塞主线程。</span></span><br><span class="line">    <span class="comment">//我们还要赋予它后台运行的优先级，以便计算密集的工作不会干扰我们的UI。</span></span><br><span class="line">    HandlerThread handlerThread = <span class="keyword">new</span> HandlerThread(TAG);</span><br><span class="line">    handlerThread.start();</span><br><span class="line">    <span class="comment">//获取handlerThread的loop队列并用于Handler</span></span><br><span class="line">    mServiceLooper = handlerThread.getLooper();</span><br><span class="line">    mServiceHandler = <span class="keyword">new</span> ServiceHandler(mServiceLooper);</span><br><span class="line">    Log.d(TAG, <span class="string">"onCreate"</span>);</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">onStartCommand</span><span class="params">(Intent intent, <span class="keyword">int</span> flags, <span class="keyword">int</span> startId)</span> </span>&#123;</span><br><span class="line">    msgStr = intent.getStringExtra(<span class="string">"startService"</span>);</span><br><span class="line">    Log.d(TAG, <span class="string">"onStartCommand getExtraString = "</span> + msgStr);</span><br><span class="line">    <span class="comment">//对于每一个启动请求，都发送一个消息来启动一个处理</span></span><br><span class="line">    <span class="comment">//同时传入启动ID，以便任务完成后我们知道该终止哪一个请求。</span></span><br><span class="line">    Message message = mServiceHandler.obtainMessage();</span><br><span class="line">    message.arg1 = <span class="number">1</span>;</span><br><span class="line">    mServiceHandler.sendMessage(message);</span><br><span class="line">    <span class="comment">//如果我们被杀死了，那从这里返回之后被重启</span></span><br><span class="line">    <span class="keyword">return</span> START_STICKY;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于Service也是运行在主线程中，如果需要执行一些耗时操作需要放到相应的子线程中处理，谷歌内置了一个<code>IntentService(异步处理服务)</code>，</p>
 <p>它会新开一个线程：handlerThread在线程中发消息，然后接受处理完成后，会清理线程，并且关掉服务。</p>
 <p>IntentService有以下特点：</p>
 <p>（1） 它创建了一个独立的工作线程来处理所有的通过onStartCommand()传递给服务的intents。</p>
@@ -726,28 +701,8 @@ public int onStartCommand(Intent intent, int flags, int startId) {
 <p>（5） 默认实现的onStartCommand()的目的是将intent插入到工作队列中</p>
 <p>其中intentService在5.0系统中需要显示启动</p>
 <p>在之前的例子中我们自己手动维护了一个handleThread去处理耗时操作，intentService已经自带了，然后用户只要是实现onHandleIntent去处理新的业务即可</p>
-<pre><code>/**
- * IntentService从缺省的工作线程中调用本方法，并用启动服务的intent作为参数。
- * 本方法返回后，IntentService将适时终止这个服务。
- */
-
-@Override
-protected void onHandleIntent(@Nullable Intent intent) {
-    //根据Intent的不同进行不同的事务处理
-    String taskName = intent.getExtras().getString(&quot;taskName&quot;);
-    switch (taskName) {
-        case &quot;task1&quot;:
-            Log.d(TAG, &quot;do task1&quot;);
-            break;
-        case &quot;task2&quot;:
-            Log.d(TAG, &quot;do task2&quot;);
-            break;
-        default:
-            break;
-    }
-
-}
-</code></pre><p>以上两种均在demo中有所实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * IntentService从缺省的工作线程中调用本方法，并用启动服务的intent作为参数。</span></span><br><span class="line"><span class="comment"> * 本方法返回后，IntentService将适时终止这个服务。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">	</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onHandleIntent</span><span class="params">(@Nullable Intent intent)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//根据Intent的不同进行不同的事务处理</span></span><br><span class="line">    String taskName = intent.getExtras().getString(<span class="string">"taskName"</span>);</span><br><span class="line">    <span class="keyword">switch</span> (taskName) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"task1"</span>:</span><br><span class="line">            Log.d(TAG, <span class="string">"do task1"</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"task2"</span>:</span><br><span class="line">            Log.d(TAG, <span class="string">"do task2"</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上两种均在demo中有所实现</p>
 <p><strong>可通信Service(bind) </strong></p>
 <blockquote>
 <p>如果一个应用程序组件通过调用bindService()绑定到服务上，bound服务提供了一个客户端/服务器接口，<code>允许组件与服务进行交互、发送请求、获取结果，甚至可以利用进程间通信（IPC）跨进程执行这些操作</code>。绑定服务的生存期和被绑定的应用程序组件一致。多个组件可以同时与一个服务绑定，不过所有的组件解除绑定后，服务也就会被销毁。</p>
@@ -783,25 +738,8 @@ protected void onHandleIntent(@Nullable Intent intent) {
 <li>前台service在下来通知栏有显示通知，但是后台service没有</li>
 <li>前台service优先级较高，不会由于系统内存不足而被回收，而后台service优先级比较低，当系统出现内存不足情况时有可能被回收</li>
 </ul>
-<p>与普通service使用类似，核心是增加构建通知部分的处理，具体可以查看demo中代码</p>
-<pre><code>public int onStartCommand(Intent intent, int flags, int startId) {
-    //API11之后构建Notification的方式
-    Notification.Builder builder = new Notification.Builder(this);
-    Intent frontServiceIntent = new Intent(this, MainActivity.class);
-    PendingIntent frontServicePeningIntent = PendingIntent.getActivity(this, 0, frontServiceIntent, 0);
-    builder.setContentIntent(frontServicePeningIntent)
-            .setContentTitle(&quot;下拉列表中的Title&quot;)
-            .setContentText(&quot;要显示的内容&quot;)
-            .setSmallIcon(R.mipmap.ic_front_small)
-            .setLargeIcon(BitmapFactory.decodeResource(this.getResources(), R.mipmap.ic_front_big))
-            .setWhen(System.currentTimeMillis());
-    Notification notification = builder.getNotification();
-    notification.defaults = Notification.DEFAULT_SOUND;
-    // 参数一：唯一的通知标识；参数二：通知消息。
-    startForeground(110, notification);// 开始前台服务
-    return START_STICKY;
-}
-</code></pre><p><strong>远程service</strong></p>
+<p>与普通service使用类似，核心是增加构建通知部分的处理，具体可以查看demo中代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">onStartCommand</span><span class="params">(Intent intent, <span class="keyword">int</span> flags, <span class="keyword">int</span> startId)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//API11之后构建Notification的方式</span></span><br><span class="line">    Notification.Builder builder = <span class="keyword">new</span> Notification.Builder(<span class="keyword">this</span>);</span><br><span class="line">    Intent frontServiceIntent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, MainActivity.class);</span><br><span class="line">    PendingIntent frontServicePeningIntent = PendingIntent.getActivity(<span class="keyword">this</span>, <span class="number">0</span>, frontServiceIntent, <span class="number">0</span>);</span><br><span class="line">    builder.setContentIntent(frontServicePeningIntent)</span><br><span class="line">            .setContentTitle(<span class="string">"下拉列表中的Title"</span>)</span><br><span class="line">            .setContentText(<span class="string">"要显示的内容"</span>)</span><br><span class="line">            .setSmallIcon(R.mipmap.ic_front_small)</span><br><span class="line">            .setLargeIcon(BitmapFactory.decodeResource(<span class="keyword">this</span>.getResources(), R.mipmap.ic_front_big))</span><br><span class="line">            .setWhen(System.currentTimeMillis());</span><br><span class="line">    Notification notification = builder.getNotification();</span><br><span class="line">    notification.defaults = Notification.DEFAULT_SOUND;</span><br><span class="line">    <span class="comment">// 参数一：唯一的通知标识；参数二：通知消息。</span></span><br><span class="line">    startForeground(<span class="number">110</span>, notification);<span class="comment">// 开始前台服务</span></span><br><span class="line">    <span class="keyword">return</span> START_STICKY;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>远程service</strong></p>
 <p>主要是为了让Service与多个应用程序的组件进行跨进程通信(IPC)，这里涉及到两个概念</p>
 <ul>
 <li>IPC：Inter-Process Communication，即跨进程通信</li>
@@ -812,37 +750,10 @@ protected void onHandleIntent(@Nullable Intent intent) {
 <blockquote>
 <p>注：只有允许不同应用的客户端用 IPC 方式访问服务，并且想要在服务中处理多线程时，才有必要使用 AIDL。 如果您不需要执行跨越不同应用的并发 IPC，就应该通过实现一个 Binder 创建接口；或者，如果您想执行 IPC，但根本不需要处理多线程，则使用 Messenger 类来实现接口。无论如何，在实现 AIDL 之前，请您务必理解绑定服务。</p>
 </blockquote>
-<p>首先新建一个aidl文件</p>
-<pre><code>interface IAidlService {
-
-     void aidlService();
-}
-</code></pre><p>然后make一下，在build/generated/source/aidl文件下生成一个接口文件</p>
-<p>在使用到通信的地方使用这个接口文件中的api，AIDLService1.Stub.asInterface()</p>
-<pre><code>mAidlServiceConnection = new ServiceConnection() {
-
-    //重写onServiceConnected()方法和onServiceDisconnected()方法
-    //在Activity与Service建立关联和解除关联的时候调用
-    @Override
-    public void onServiceDisconnected(ComponentName name) {
-    }
-
-    //在Activity与Service建立关联时调用
-    @Override
-    public void onServiceConnected(ComponentName name, IBinder service) {
-        //使用AIDLService1.Stub.asInterface()方法将传入的IBinder对象传换成了mServerAidlService对象
-        mServerAidlService = IAidlService.Stub.asInterface(service);
-
-        try {
-            //通过该对象调用在MyAIDLService.aidl文件中定义的接口方法,从而实现跨进程通信
-            mServerAidlService.aidlService();
-
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-    }
-};
-</code></pre><p>可以看出二者不在一个线程中</p>
+<p>首先新建一个aidl文件<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IAidlService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">     <span class="function"><span class="keyword">void</span> <span class="title">aidlService</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后make一下，在build/generated/source/aidl文件下生成一个接口文件</p>
+<p>在使用到通信的地方使用这个接口文件中的api，AIDLService1.Stub.asInterface()<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">mAidlServiceConnection = <span class="keyword">new</span> ServiceConnection() &#123;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">//重写onServiceConnected()方法和onServiceDisconnected()方法</span></span><br><span class="line">    <span class="comment">//在Activity与Service建立关联和解除关联的时候调用</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceDisconnected</span><span class="params">(ComponentName name)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">//在Activity与Service建立关联时调用</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceConnected</span><span class="params">(ComponentName name, IBinder service)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//使用AIDLService1.Stub.asInterface()方法将传入的IBinder对象传换成了mServerAidlService对象</span></span><br><span class="line">        mServerAidlService = IAidlService.Stub.asInterface(service);</span><br><span class="line">	</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//通过该对象调用在MyAIDLService.aidl文件中定义的接口方法,从而实现跨进程通信</span></span><br><span class="line">            mServerAidlService.aidlService();</span><br><span class="line">	</span><br><span class="line">        &#125; <span class="keyword">catch</span> (RemoteException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>可以看出二者不在一个线程中</p>
 <p><img src="https://i.imgur.com/u6dBylu.png" alt=""><br><img src="https://i.imgur.com/cbwBY5P.png" alt=""></p>
 <p>具体代码在demo中~</p>
 <h2 id="0x04-一些容易混淆的点"><a href="#0x04-一些容易混淆的点" class="headerlink" title="0x04 一些容易混淆的点"></a>0x04 一些容易混淆的点</h2><p><strong>Service和Thread的区别</strong></p>
@@ -942,8 +853,8 @@ protected void onHandleIntent(@Nullable Intent intent) {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/03/Touch机制/" rel="next" title="Touch机制">
-                <i class="fa fa-chevron-left"></i> Touch机制
+              <a href="/2017/05/22/仿知乎创新广告/" rel="next" title="仿知乎创新广告">
+                <i class="fa fa-chevron-left"></i> 仿知乎创新广告
               </a>
             
           </div>
@@ -1055,7 +966,7 @@ protected void onHandleIntent(@Nullable Intent intent) {
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1077,7 +988,7 @@ protected void onHandleIntent(@Nullable Intent intent) {
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1235,7 +1146,7 @@ var ap = new APlayer({
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">41.9k</span>
+    <span title="Site words total count">44.0k</span>
   
 </div>
 

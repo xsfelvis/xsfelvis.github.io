@@ -134,13 +134,13 @@
 
 
 
-<meta name="description" content="1、clean架构简介clean架构相信大家早有耳闻，毕竟是Bob大叔的心血之作，最近又把http://five.agency/blog/android/ 几篇关于clean 架构的文章拿出来读读加深了对该架构的一些理解。 clean架构又称“洋葱架构”，这个是由于它的架构示意图得名的  删除一些android项目中使用不到的东西加上我们使用的东西看起来如下图  2、核心概念从最抽象的核心到细节">
+<meta name="description" content="1、clean架构简介clean架构相信大家早有耳闻，毕竟是Bob大叔的心血之作，最近又把http://five.agency/blog/android/ 几篇关于clean 架构的文章拿出来读读加深了对该架构的一些理解。clean架构又称“洋葱架构”，这个是由于它的架构示意图得名的删除一些android项目中使用不到的东西加上我们使用的东西看起来如下图  2、核心概念从最抽象的核心到细节的边缘">
 <meta name="keywords" content="clean">
 <meta property="og:type" content="article">
 <meta property="og:title" content="clean架构">
 <meta property="og:url" content="https://xsfelvis.github.io/2018/05/18/关于clean架构在android中的应用/index.html">
 <meta property="og:site_name" content="渡口一艘船">
-<meta property="og:description" content="1、clean架构简介clean架构相信大家早有耳闻，毕竟是Bob大叔的心血之作，最近又把http://five.agency/blog/android/ 几篇关于clean 架构的文章拿出来读读加深了对该架构的一些理解。 clean架构又称“洋葱架构”，这个是由于它的架构示意图得名的  删除一些android项目中使用不到的东西加上我们使用的东西看起来如下图  2、核心概念从最抽象的核心到细节">
+<meta property="og:description" content="1、clean架构简介clean架构相信大家早有耳闻，毕竟是Bob大叔的心血之作，最近又把http://five.agency/blog/android/ 几篇关于clean 架构的文章拿出来读读加深了对该架构的一些理解。clean架构又称“洋葱架构”，这个是由于它的架构示意图得名的删除一些android项目中使用不到的东西加上我们使用的东西看起来如下图  2、核心概念从最抽象的核心到细节的边缘">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/15/16364599d2727324?w=896&h=472&f=png&s=104636">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/15/16364599d36a65e7?w=892&h=467&f=png&s=96377">
@@ -148,10 +148,10 @@
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/15/16364599d7039681?w=665&h=447&f=png&s=107878">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/15/16364599d7eca624?w=888&h=466&f=png&s=49877">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/15/16364599d8d3d3ff?w=892&h=472&f=png&s=76180">
-<meta property="og:updated_time" content="2018-06-04T15:29:17.148Z">
+<meta property="og:updated_time" content="2018-06-06T06:13:38.572Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="clean架构">
-<meta name="twitter:description" content="1、clean架构简介clean架构相信大家早有耳闻，毕竟是Bob大叔的心血之作，最近又把http://five.agency/blog/android/ 几篇关于clean 架构的文章拿出来读读加深了对该架构的一些理解。 clean架构又称“洋葱架构”，这个是由于它的架构示意图得名的  删除一些android项目中使用不到的东西加上我们使用的东西看起来如下图  2、核心概念从最抽象的核心到细节">
+<meta name="twitter:description" content="1、clean架构简介clean架构相信大家早有耳闻，毕竟是Bob大叔的心血之作，最近又把http://five.agency/blog/android/ 几篇关于clean 架构的文章拿出来读读加深了对该架构的一些理解。clean架构又称“洋葱架构”，这个是由于它的架构示意图得名的删除一些android项目中使用不到的东西加上我们使用的东西看起来如下图  2、核心概念从最抽象的核心到细节的边缘">
 <meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/5/15/16364599d2727324?w=896&h=472&f=png&s=104636">
 
 
@@ -389,8 +389,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-04T23:29:17+08:00">
-                2018-06-04
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-06T14:13:38+08:00">
+                2018-06-06
               </time>
             
           </span>
@@ -450,7 +450,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,058
+                  2,056
                 </span>
               
 
@@ -487,38 +487,29 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><h3 id="1、clean架构简介"><a href="#1、clean架构简介" class="headerlink" title="1、clean架构简介"></a>1、clean架构简介</h3><p>clean架构相信大家早有耳闻，毕竟是Bob大叔的心血之作，最近又把<a href="http://five.agency/blog/android/" target="_blank" rel="noopener">http://five.agency/blog/android/</a> 几篇关于clean 架构的文章拿出来读读加深了对该架构的一些理解。</p>
-<p>clean架构又称“洋葱架构”，这个是由于它的架构示意图得名的</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/15/16364599d2727324?w=896&amp;h=472&amp;f=png&amp;s=104636" alt="" title="image.png"></p>
-<p>删除一些android项目中使用不到的东西加上我们使用的东西看起来如下图</p>
+        <script src="/assets/js/APlayer.min.js"> </script><h2 id="1、clean架构简介"><a href="#1、clean架构简介" class="headerlink" title="1、clean架构简介"></a>1、clean架构简介</h2><p>clean架构相信大家早有耳闻，毕竟是Bob大叔的心血之作，最近又把<a href="http://five.agency/blog/android/" target="_blank" rel="noopener">http://five.agency/blog/android/</a> 几篇关于clean 架构的文章拿出来读读加深了对该架构的一些理解。clean架构又称“洋葱架构”，这个是由于它的架构示意图得名的<br><img src="https://user-gold-cdn.xitu.io/2018/5/15/16364599d2727324?w=896&amp;h=472&amp;f=png&amp;s=104636" alt="" title="image.png"><br>删除一些android项目中使用不到的东西加上我们使用的东西看起来如下图</p>
 <p><img src="https://user-gold-cdn.xitu.io/2018/5/15/16364599d36a65e7?w=892&amp;h=467&amp;f=png&amp;s=96377" alt="" title="image.png"></p>
-<h3 id="2、核心概念"><a href="#2、核心概念" class="headerlink" title="2、核心概念"></a>2、核心概念</h3><p>从最抽象的核心到细节的边缘</p>
-<h2 id="Entities"><a href="#Entities" class="headerlink" title="Entities"></a>Entities</h2><p>Entities，即<strong>Domain 对象</strong>或业务对象，是App的核心。 它们代表了APP的主要功能， 它们包含业务逻辑， 他们不会与外在世界的细节进行互动。</p>
-<p>Use cases</p>
-<p>Use case，又名interactors（交互器），又名business services，是Entities的扩展，是业务逻辑的延伸，也就是说。 它们包含的逻辑不仅限于一个实体，而是处理更多的实体。</p>
-<h2 id="Repositories"><a href="#Repositories" class="headerlink" title="Repositories"></a>Repositories</h2><p>Repositories用于持久化Entities。 就这么简单。 它们被定义为接口并用作想要对Entities执行CRUD操作的用例的输出端口。</p>
-<h2 id="Presenters"><a href="#Presenters" class="headerlink" title="Presenters"></a>Presenters</h2><p>如果你熟悉MVP模式，Presenters就会做你期望他们做的事情。 他们处理用户交互，调用适当的业务逻辑，并将数据发送到UI进行渲染。 这里通常有不同类型之间的映射</p>
-<p>大概这几个概念可以帮助我们更好的理解clean 架构，但是核心一点就是越在洋葱里面越是抽象。</p>
-<h3 id="3、clean-架构的核心规则"><a href="#3、clean-架构的核心规则" class="headerlink" title="3、clean 架构的核心规则"></a>3、clean 架构的核心规则</h3><p>首先需要掌握涉及的领域，原文称作“Master of your domain”，就是说当你打开你的工程，除去技术相关，你就应该从宏观上知晓你的app是做什么的，而不要沉浸到细节之中” 为啥需要我们站在这个高度去看待自己的项目呢，因为这也是clean核心所在，该架构越往洋葱里面抽象度越来越高，都是业务逻辑的高度抽象，即”内层包含业务逻辑、外层包含实现细节”</p>
+<h2 id="2、核心概念"><a href="#2、核心概念" class="headerlink" title="2、核心概念"></a>2、核心概念</h2><p>从最抽象的核心到细节的边缘</p>
+<h3 id="Entities"><a href="#Entities" class="headerlink" title="Entities"></a>Entities</h3><ul>
+<li><p>Entities，<br>即<strong>Domain 对象</strong>或业务对象，是App的核心。 它们代表了APP的主要功能， 它们包含业务逻辑， 他们不会与外在世界的细节进行互动。</p>
+</li>
+<li><p>Use case，<br>又名interactors（交互器），又名business services，是Entities的扩展，是业务逻辑的延伸，也就是说。 它们包含的逻辑不仅限于一个实体，而是处理更多的实体。</p>
+</li>
+</ul>
+<h3 id="Repositories"><a href="#Repositories" class="headerlink" title="Repositories"></a>Repositories</h3><p>Repositories用于持久化Entities。 就这么简单。 它们被定义为接口并用作想要对Entities执行CRUD操作的用例的输出端口。</p>
+<h3 id="Presenters"><a href="#Presenters" class="headerlink" title="Presenters"></a>Presenters</h3><p>如果你熟悉MVP模式，Presenters就会做你期望他们做的事情。 他们处理用户交互，调用适当的业务逻辑，并将数据发送到UI进行渲染。 这里通常有不同类型之间的映射<br>大概这几个概念可以帮助我们更好的理解clean 架构，但是核心一点就是越在洋葱里面越是抽象。</p>
+<h2 id="3、clean-架构的核心规则"><a href="#3、clean-架构的核心规则" class="headerlink" title="3、clean 架构的核心规则"></a>3、clean 架构的核心规则</h2><p>首先需要掌握涉及的领域，原文称作“Master of your domain”，就是说当你打开你的工程，除去技术相关，你就应该从宏观上知晓你的app是做什么的，而不要沉浸到细节之中” 为啥需要我们站在这个高度去看待自己的项目呢，因为这也是clean核心所在，该架构越往洋葱里面抽象度越来越高，都是业务逻辑的高度抽象，即”内层包含业务逻辑、外层包含实现细节”</p>
 <p>继而给出了设计出这样特性的clean架构需要具备的技术点</p>
 <p>（1）Dependency rule（依赖原则）</p>
 <p>（2）Abstraction（抽象）</p>
 <p>（3）Communication between layers（层之间的通信）</p>
 <p>下面将一一介绍</p>
-<p>3.1 Dependency rule（依赖原则）</p>
-<p>从最开始的第一幅我们就可以看出箭头是”依赖”,即 外层看到并了解内层，但是内层既看不到也不知道外层，结合前面所强调的 内层包含业务逻辑（抽象），外层包含实现细节。 结合依赖关系规则，业务逻辑既看不到，也不知道实现细节。 通常我们可以通过放在不同的module中去来调整它们之间的依赖关系</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/15/16364599d4727672?w=456&amp;h=405&amp;f=png&amp;s=64878" alt="" title="image.png"></p>
-<p>3.2 Abstraction（抽象）  </p>
-<p>之前也说过当你走向图的中间时，东西变得更加抽象。 这是有道理的：抽象往往比细节更加稳定，就像搭积木一样根基越稳越好。</p>
+<h3 id="3-1-Dependency-rule（依赖原则）"><a href="#3-1-Dependency-rule（依赖原则）" class="headerlink" title="3.1 Dependency rule（依赖原则）"></a>3.1 Dependency rule（依赖原则）</h3><p>从最开始的第一幅我们就可以看出箭头是”依赖”,即 外层看到并了解内层，但是内层既看不到也不知道外层，结合前面所强调的 内层包含业务逻辑（抽象），外层包含实现细节。 结合依赖关系规则，业务逻辑既看不到，也不知道实现细节。 通常我们可以通过放在不同的module中去来调整它们之间的依赖关系<br><img src="https://user-gold-cdn.xitu.io/2018/5/15/16364599d4727672?w=456&amp;h=405&amp;f=png&amp;s=64878" alt="" title="image.png"></p>
+<h3 id="3-2-Abstraction（抽象）"><a href="#3-2-Abstraction（抽象）" class="headerlink" title="3.2 Abstraction（抽象）"></a>3.2 Abstraction（抽象）</h3><p>之前也说过当你走向图的中间时，东西变得更加抽象。 这是有道理的：抽象往往比细节更加稳定，就像搭积木一样根基越稳越好。</p>
 <p>举个例子比如我们可以将抽象接口定义为“加载网络图片”并将其放入内层，业务逻辑就可以使用它来显示图片。 另一方面，我们可以通过实现改接口调用具体的图片加载库glide或者Picasso，然后将该实现放入外层。业务逻辑可以使用加载图片功能而无需知道实现细节的任何内容。这样抵御了变化的风险，日后换成什么方式加载图片，洋葱内部的抽象业务逻辑是不会感知到的</p>
-<p>3.3 Communication between layers（层之间的通信）</p>
-<p>既然已经划分好了层，分离了内容，将业务逻辑放在应用程序的架构中心和架构边缘的实现细节中，一切看起来都很棒。 但是你可能很快遇到了一个有趣的问题。</p>
-<p>如果你的UI是一个实现细节，那么internet也是一个实现细节，业务逻辑介于两者之间，<strong>我们如何从internet获取数据，通过业务逻辑传递它，然后将其发送到屏幕？</strong></p>
-<p>组合和继承的就要发挥功效了</p>
+<h3 id="3-3-Communication-between-layers（层之间的通信）"><a href="#3-3-Communication-between-layers（层之间的通信）" class="headerlink" title="3.3 Communication between layers（层之间的通信）"></a>3.3 Communication between layers（层之间的通信）</h3><p>既然已经划分好了层，分离了内容，将业务逻辑放在应用程序的架构中心和架构边缘的实现细节中，一切看起来都很棒。 但是你可能很快遇到了一个有趣的问题。<br>如果你的UI是一个实现细节，那么internet也是一个实现细节，业务逻辑介于两者之间，<strong>我们如何从internet获取数据，通过业务逻辑传递它，然后将其发送到屏幕？</strong><br>组合和继承的就要发挥功效了</p>
 <p><img src="https://user-gold-cdn.xitu.io/2018/5/15/16364599d7039681?w=665&amp;h=447&amp;f=png&amp;s=107878" alt="" title="image.png"></p>
-<h3 id="4、实践"><a href="#4、实践" class="headerlink" title="4、实践"></a>4、实践</h3><p>下面用代码示意一下，以RSS Reader 为例我们的用户应该能够管理他们的RSS提要订阅，从提要中获取文章并阅读它们。</p>
-<p>这里是数据流问题，用例介于表示层和数据层之间。 我们如何建立层之间的沟通？ 记住那些输入和输出端口？  </p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/15/16364599d7eca624?w=888&amp;h=466&amp;f=png&amp;s=49877" alt="" title="image.png"></p>
+<h2 id="4、实践"><a href="#4、实践" class="headerlink" title="4、实践"></a>4、实践</h2><p>下面用代码示意一下，以RSS Reader 为例我们的用户应该能够管理他们的RSS提要订阅，从提要中获取文章并阅读它们。这里是数据流问题，用例介于表示层和数据层之间。 我们如何建立层之间的沟通？ 记住那些输入和输出端口？<br><img src="https://user-gold-cdn.xitu.io/2018/5/15/16364599d7eca624?w=888&amp;h=466&amp;f=png&amp;s=49877" alt="" title="image.png"></p>
 <p>从上图可以看出我们的 Use Case必须实现输入端口（接口）。 Presenter在 Use Case上调用方法，数据流向 Use Case（feedId）。 Use Case映射feedId提供文章并希望将它们发送回表示层。 它有一个对输出端口（回调）的引用，因为输出端口是在同一层定义的，因此它调用了一个方法。 因此，数据发送到输出端口 - Presenter。</p>
 <p>让我们从domain层开始，创建我们的核心业务模型和逻辑。</p>
 <p>我们的商业模式非常简单：</p>
@@ -537,7 +528,7 @@
 <p>到这里可以看出FeedArticlesPresenter实现了Callback接口，并将其自身传递给use case，它实际上是use case的输出端口，并以这种方式关闭了数据流</p>
 <p><img src="https://user-gold-cdn.xitu.io/2018/5/15/16364599d8d3d3ff?w=892&amp;h=472&amp;f=png&amp;s=76180" alt="" title="image.png"></p>
 <p>谷歌架构项目上也有个 <a href="https://github.com/googlesamples/android-architecture/tree/todo-mvp-clean/" target="_blank" rel="noopener">todo-mvp-clean</a>分支可以看下具体玩法。</p>
-<h3 id="5、小结"><a href="#5、小结" class="headerlink" title="5、小结"></a>5、小结</h3><p>这个跟设计模式中依赖倒置和接口隔离有着密不可分的关系，通过依赖倒置，只依赖于抽象而不是细节，将细节的实现倒置到实现类中，这样洋葱的核心就是清清爽爽的业务逻辑（抽象）；</p>
+<h2 id="5、小结"><a href="#5、小结" class="headerlink" title="5、小结"></a>5、小结</h2><p>这个跟设计模式中依赖倒置和接口隔离有着密不可分的关系，通过依赖倒置，只依赖于抽象而不是细节，将细节的实现倒置到实现类中，这样洋葱的核心就是清清爽爽的业务逻辑（抽象）；</p>
 <p>通常一个良好的架构一般需要满足以下几点：</p>
 <ol>
 <li>Satisfy a multitude of stakeholders.（满足各方利益者）</li>
@@ -546,10 +537,8 @@
 <li>Enable your components to be testable.（使您的组件成为可测试的）</li>
 </ol>
 <p>但是一个架构往往针对特定的场景，架构也是需要慢慢演进的，比如后面的模块化、插件化等等都是业务发展到一定程度，当前架构的弊端慢慢的凸显需要更新。但不管如何变化，一些核心基本点还是相伴相随，比如依赖翻转、面向接口编程、关注点分离等都是我们需要点亮的技能点之一。</p>
-<p>参考</p>
-<p>1、<a href="http://five.agency/blog/android/" target="_blank" rel="noopener">http://five.agency/blog/android/</a>  </p>
-<p>2、<a href="http://five.agency/android-architecture-part-1-every-new-beginning-is-hard/" target="_blank" rel="noopener">http://five.agency/android-architecture-part-1-every-new-beginning-is-hard/</a></p>
-<p>3、<a href="http://five.agency/android-architecture-part-2-clean-architecture/" target="_blank" rel="noopener">http://five.agency/android-architecture-part-2-clean-architecture/</a></p>
+<p>##参考</p>
+<p>1、<a href="http://five.agency/blog/android/" target="_blank" rel="noopener">http://five.agency/blog/android/</a><br>2、<a href="http://five.agency/android-architecture-part-1-every-new-beginning-is-hard/" target="_blank" rel="noopener">http://five.agency/android-architecture-part-1-every-new-beginning-is-hard/</a><br>3、<a href="http://five.agency/android-architecture-part-2-clean-architecture/" target="_blank" rel="noopener">http://five.agency/android-architecture-part-2-clean-architecture/</a></p>
 
       
     </div>
@@ -623,8 +612,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/05/ARouter解析(1)/" rel="prev" title="ARouter解析(1)">
-                ARouter解析(1) <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/05/ARouter解析之路由的秘密/" rel="prev" title="ARouter解析之路由的秘密">
+                ARouter解析之路由的秘密 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -726,7 +715,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -748,7 +737,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -872,7 +861,7 @@ var ap = new APlayer({
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、clean架构简介"><span class="nav-number">1.</span> <span class="nav-text">1、clean架构简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、核心概念"><span class="nav-number">2.</span> <span class="nav-text">2、核心概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Entities"><span class="nav-number"></span> <span class="nav-text">Entities</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Repositories"><span class="nav-number"></span> <span class="nav-text">Repositories</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Presenters"><span class="nav-number"></span> <span class="nav-text">Presenters</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3、clean-架构的核心规则"><span class="nav-number">1.</span> <span class="nav-text">3、clean 架构的核心规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、实践"><span class="nav-number">2.</span> <span class="nav-text">4、实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、小结"><span class="nav-number">3.</span> <span class="nav-text">5、小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、clean架构简介"><span class="nav-number">1.</span> <span class="nav-text">1、clean架构简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、核心概念"><span class="nav-number">2.</span> <span class="nav-text">2、核心概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Entities"><span class="nav-number">2.1.</span> <span class="nav-text">Entities</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Repositories"><span class="nav-number">2.2.</span> <span class="nav-text">Repositories</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Presenters"><span class="nav-number">2.3.</span> <span class="nav-text">Presenters</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、clean-架构的核心规则"><span class="nav-number">3.</span> <span class="nav-text">3、clean 架构的核心规则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Dependency-rule（依赖原则）"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Dependency rule（依赖原则）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Abstraction（抽象）"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 Abstraction（抽象）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-Communication-between-layers（层之间的通信）"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Communication between layers（层之间的通信）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、实践"><span class="nav-number">4.</span> <span class="nav-text">4、实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、小结"><span class="nav-number">5.</span> <span class="nav-text">5、小结</span></a></li></ol></div>
             
 
           </div>
@@ -906,7 +895,7 @@ var ap = new APlayer({
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">41.9k</span>
+    <span title="Site words total count">44.0k</span>
   
 </div>
 
