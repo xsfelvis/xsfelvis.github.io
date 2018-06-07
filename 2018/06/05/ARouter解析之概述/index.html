@@ -134,21 +134,22 @@
 
 
 
-<meta name="description" content="ARouter解析  ARouter概述  路由的秘密  URL跳转  简介这个库非常值得学习，里面涉及到的技术和编程思想都是不错的  APT 编译器注解处理技术 URL的统一管理跳转的方案 ‘服务’的解耦（接口设计）与获取(反射) 多线程处理技术 (CountDownLatch的使用)  拦截器思想、降级策略(（AOP的设计思想）)、分组加载策略 友好的api设计  整体设计 使用原作者的抽象">
+<meta name="description" content="ARouter解析  ARouter概述  路由的秘密  URL跳转  简介这个库非常值得学习，里面涉及到的技术和编程思想都是不错的  APT 编译器注解处理技术 URL的统一管理跳转的方案 ‘服务’的解耦（接口设计）与获取(反射) 多线程处理技术 (CountDownLatch的使用)  拦截器思想、降级策略(（AOP的设计思想）)、分组加载策略 友好的api设计  整体设计 再进一步抽象就是">
 <meta name="keywords" content="ARouter,路由">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ARouter解析之开篇">
 <meta property="og:url" content="https://xsfelvis.github.io/2018/06/05/ARouter解析之概述/index.html">
 <meta property="og:site_name" content="渡口一艘船">
-<meta property="og:description" content="ARouter解析  ARouter概述  路由的秘密  URL跳转  简介这个库非常值得学习，里面涉及到的技术和编程思想都是不错的  APT 编译器注解处理技术 URL的统一管理跳转的方案 ‘服务’的解耦（接口设计）与获取(反射) 多线程处理技术 (CountDownLatch的使用)  拦截器思想、降级策略(（AOP的设计思想）)、分组加载策略 友好的api设计  整体设计 使用原作者的抽象">
+<meta property="og:description" content="ARouter解析  ARouter概述  路由的秘密  URL跳转  简介这个库非常值得学习，里面涉及到的技术和编程思想都是不错的  APT 编译器注解处理技术 URL的统一管理跳转的方案 ‘服务’的解耦（接口设计）与获取(反射) 多线程处理技术 (CountDownLatch的使用)  拦截器思想、降级策略(（AOP的设计思想）)、分组加载策略 友好的api设计  整体设计 再进一步抽象就是">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p927u2n0k.bkt.clouddn.com/ARouter.png">
+<meta property="og:image" content="http://p927u2n0k.bkt.clouddn.com/Arouter核心抽象.png">
 <meta property="og:image" content="http://p927u2n0k.bkt.clouddn.com/37b723fb660fdfcf7cdc09c194c88a8073d8272d.png">
 <meta property="og:image" content="http://p927u2n0k.bkt.clouddn.com/e4d3ec6020479ef2043cfd7e10cfaf33254ac309-1.png">
-<meta property="og:updated_time" content="2018-06-06T15:05:01.966Z">
+<meta property="og:updated_time" content="2018-06-07T07:17:29.989Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ARouter解析之开篇">
-<meta name="twitter:description" content="ARouter解析  ARouter概述  路由的秘密  URL跳转  简介这个库非常值得学习，里面涉及到的技术和编程思想都是不错的  APT 编译器注解处理技术 URL的统一管理跳转的方案 ‘服务’的解耦（接口设计）与获取(反射) 多线程处理技术 (CountDownLatch的使用)  拦截器思想、降级策略(（AOP的设计思想）)、分组加载策略 友好的api设计  整体设计 使用原作者的抽象">
+<meta name="twitter:description" content="ARouter解析  ARouter概述  路由的秘密  URL跳转  简介这个库非常值得学习，里面涉及到的技术和编程思想都是不错的  APT 编译器注解处理技术 URL的统一管理跳转的方案 ‘服务’的解耦（接口设计）与获取(反射) 多线程处理技术 (CountDownLatch的使用)  拦截器思想、降级策略(（AOP的设计思想）)、分组加载策略 友好的api设计  整体设计 再进一步抽象就是">
 <meta name="twitter:image" content="http://p927u2n0k.bkt.clouddn.com/ARouter.png">
 
 
@@ -386,8 +387,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-06T23:05:01+08:00">
-                2018-06-06
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-07T15:17:29+08:00">
+                2018-06-07
               </time>
             
           </span>
@@ -447,7 +448,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  274
+                  320
                 </span>
               
 
@@ -502,11 +503,13 @@
 <li>友好的api设计</li>
 </ol>
 <h1 id="整体设计"><a href="#整体设计" class="headerlink" title="整体设计"></a>整体设计</h1><p><img src="http://p927u2n0k.bkt.clouddn.com/ARouter.png" alt="ARoute"></p>
+<p>再进一步抽象就是<code>“邮票”PostCard信息的完善过程</code>，当信息完全填充就可以具体往哪里跳，携带什么参数</p>
+<p><img src="http://p927u2n0k.bkt.clouddn.com/Arouter核心抽象.png" alt="Arouter核心抽象"></p>
 <p>使用原作者的抽象图，整个ARouter架构如下:</p>
 <p><img src="http://p927u2n0k.bkt.clouddn.com/37b723fb660fdfcf7cdc09c194c88a8073d8272d.png" alt="37b723fb660fdfcf7cdc09c194c88a8073d8272d"></p>
 <p><img src="http://p927u2n0k.bkt.clouddn.com/e4d3ec6020479ef2043cfd7e10cfaf33254ac309-1.png" alt="e4d3ec6020479ef2043cfd7e10cfaf33254ac309"></p>
 <p>其实在Android原生跳转主要是通过intent，主要分为显式和隐式跳转，显示跳转直接导致类之间的耦合，而隐式跳转需要在清单文件中申明，在多模块协作中比较困难,而且二者最终都会调用startActivity，这个环节我们就无法控制了，而ARouter路由可以在跳转中进行如同拦截,跳转失败进行降级的操作。</p>
-<p>下面将分几篇介绍这个开源库,见开篇链接。</p>
+<p>把握好了整体，下面将分几篇介绍这个开源库,见开篇链接。</p>
 
       
     </div>
@@ -572,8 +575,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/05/ARouter解析之路由的秘密/" rel="next" title="ARouter解析之路由的秘密">
-                <i class="fa fa-chevron-left"></i> ARouter解析之路由的秘密
+              <a href="/2018/05/18/关于clean架构在android中的应用/" rel="next" title="clean架构">
+                <i class="fa fa-chevron-left"></i> clean架构
               </a>
             
           </div>
@@ -582,8 +585,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/06/ARouter解析之URL跳转/" rel="prev" title="ARouter解析之URL跳转">
-                ARouter解析之URL跳转 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/05/ARouter解析之路由的秘密/" rel="prev" title="ARouter解析之路由的秘密">
+                ARouter解析之路由的秘密 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
