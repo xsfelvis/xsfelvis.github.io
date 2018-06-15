@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://xsfelvis.github.io/2018/06/11/spi/</loc>
+    <lastmod>2018-06-11T11:20:15.907Z</lastmod>
+    <data>
+        <display>
+        <title>Spi的基本使用</title>
+        <pubTime>2018-06-10T16:00:00.000Z</pubTime>
+        
+        <tag>spi</tag>
+         
+         
+           
+             
+              <breadCrumb title="spi" url="https://xsfelvis.github.io/categories/spi/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://xsfelvis.github.io/2018/06/10/Gradle%E5%9C%A8Android%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%82%B9/</loc>
     <lastmod>2018-06-10T14:25:59.220Z</lastmod>
     <data>
@@ -118,9 +138,9 @@
         <title>谈谈APT和JavaPoet的一些使用技巧和要点</title>
         <pubTime>2018-06-05T16:00:00.000Z</pubTime>
         
-        <tag>APT</tag>
-         
         <tag>JavaPoet</tag>
+         
+        <tag>APT</tag>
          
          
            
