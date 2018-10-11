@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://xsfelvis.github.io/2018/10/11/Jcenter/</loc>
+    <lastmod>2018-10-11T10:22:27.264Z</lastmod>
+    <data>
+        <display>
+        <title>上传Jcenter</title>
+        <pubTime>2018-10-10T16:00:00.000Z</pubTime>
+        
+        <tag>Jcenter</tag>
+         
+         
+           
+             
+              <breadCrumb title="工具" url="https://xsfelvis.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://xsfelvis.github.io/2018/06/11/spi/</loc>
     <lastmod>2018-06-11T11:20:15.907Z</lastmod>
     <data>
@@ -138,9 +158,9 @@
         <title>谈谈APT和JavaPoet的一些使用技巧和要点</title>
         <pubTime>2018-06-05T16:00:00.000Z</pubTime>
         
-        <tag>JavaPoet</tag>
-         
         <tag>APT</tag>
+         
+        <tag>JavaPoet</tag>
          
          
            
