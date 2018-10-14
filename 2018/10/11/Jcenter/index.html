@@ -143,7 +143,7 @@
 <meta property="og:description" content="0x00 前言Jcenter提供了一个方便使用自己开源库的一个平台 在Android中使用 complie引用即可，目前很多文章都是通过gradle-bintray-plugin这个插件，不过bintray-release这个插件更加人性化，本篇将记录使用这个插件如何上传到Jcenter上 0x01 注册bintray.com账号 Step 1  官网注册账号 https://bintray.c">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6968064-d2afdefd754a26a2.png">
-<meta property="og:updated_time" content="2018-10-11T10:22:27.264Z">
+<meta property="og:updated_time" content="2018-10-14T05:58:50.442Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="上传Jcenter">
 <meta name="twitter:description" content="0x00 前言Jcenter提供了一个方便使用自己开源库的一个平台 在Android中使用 complie引用即可，目前很多文章都是通过gradle-bintray-plugin这个插件，不过bintray-release这个插件更加人性化，本篇将记录使用这个插件如何上传到Jcenter上 0x01 注册bintray.com账号 Step 1  官网注册账号 https://bintray.c">
@@ -384,8 +384,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-11T18:22:27+08:00">
-                2018-10-11
+              <time title="更新于" itemprop="dateModified" datetime="2018-10-14T13:58:50+08:00">
+                2018-10-14
               </time>
             
           </span>
@@ -502,7 +502,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">apply plugin: &apos;com.novoda.bintray-release&apos;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//添加</span><br><span class="line">publish &#123;</span><br><span class="line">    artifactId = &apos;complexcriptdsl&apos;</span><br><span class="line">    userOrg = rootProject.userOrg</span><br><span class="line">    groupId = rootProject.groupId</span><br><span class="line">    uploadName = rootProject.uploadName</span><br><span class="line">    publishVersion = rootProject.publishVersion</span><br><span class="line">    desc = rootProject.description</span><br><span class="line">    website = rootProject.website</span><br><span class="line">    licences = rootProject.licences</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="0x03-执行上传"><a href="#0x03-执行上传" class="headerlink" title="0x03 执行上传"></a>0x03 执行上传</h1><p><code>./gradlew bintrayUpload 
 -PbintrayUser = androidxsf (用户名)
--PbintrayKey = 1f8b6d3da641fe0f34d531c1811774c35cdf1852 (APIKey)
+-PbintrayKey = 1f8b6d3da641fe0f34d531c1**** (APIKey)
 -PdryRun = false</code></p>
 <p>此时可以看到我们上传的项目了,你可以点击进去看该库的一些信息，但是注意此时还不能够直接被引用。</p>
 <p>点击进去该库，按照下图，点击Add To jcenter</p>
