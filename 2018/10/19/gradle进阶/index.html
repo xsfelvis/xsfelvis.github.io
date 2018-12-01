@@ -142,7 +142,7 @@
 <meta property="og:site_name" content="渡口一艘船">
 <meta property="og:description" content="简介Groovy 基础 官网 Groovy脚本基础全攻略  Gradle DSL 基础DSL Android DSL 基础ASL 自定义插件开发三种方式   类型 说明     Build script 把插件写在 build.gradle 文件中，一般用于简单的逻辑，只在该 build.gradle 文件中可见   buildSrc 项目 将插件源代码放在 rootProjectDir/bui">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-19T09:57:11.061Z">
+<meta property="og:updated_time" content="2018-10-19T14:12:41.126Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gradle进阶">
 <meta name="twitter:description" content="简介Groovy 基础 官网 Groovy脚本基础全攻略  Gradle DSL 基础DSL Android DSL 基础ASL 自定义插件开发三种方式   类型 说明     Build script 把插件写在 build.gradle 文件中，一般用于简单的逻辑，只在该 build.gradle 文件中可见   buildSrc 项目 将插件源代码放在 rootProjectDir/bui">
@@ -382,7 +382,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-19T17:57:11+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-10-19T22:12:41+08:00">
                 2018-10-19
               </time>
             
@@ -443,7 +443,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,404
+                  1,472
                 </span>
               
 
@@ -530,6 +530,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def preDexTask = project.tasks.findByName(&quot;preDex$&#123;variant.name.capitalize()&#125;&quot;)</span><br><span class="line">def dexTask = project.tasks.findByName(&quot;dex$&#123;variant.name.capitalize()&#125;&quot;)</span><br><span class="line">def proguardTask = project.tasks.findByName(&quot;proguard$&#123;variant.name.capitalize()&#125;&quot;)</span><br></pre></td></tr></table></figure>
 <p>这是nuwa热修复的源码他事先定义好了这些任务，这些任务就是把字节码文件打包成dex文件的任务，上面的代码意思就是获取这些任务的名字。（就是apply plugin: ‘com.android.application’里面的任务）。从上面的代码可以看到，我们定义的任务名称分别是（preDex${variant.name.capitalize()}）（dex${variant.name.capitalize()}）（proguard${variant.name.capitalize()}）（$这个符号就是拼接字符串的意思和kotlin一样</p>
+<h2 id="project-beforeEvaluate-project-afterEvaluate"><a href="#project-beforeEvaluate-project-afterEvaluate" class="headerlink" title="project.beforeEvaluate/project.afterEvaluate"></a>project.beforeEvaluate/project.afterEvaluate</h2><p>这里在普及一个小知识，项目中gradle执行的时候，会先解析setting.gradle,然后是build.gradle,如果想在解析build.gradle之前做点事，可以使用project.beforeEvaluate如果想在解析build.gradle之后做点事可以project.afterEvaluate。</p>
 <h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><h3 id="加载task"><a href="#加载task" class="headerlink" title="加载task"></a>加载task</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">if (!imgDirectories.empty) &#123;</span><br><span class="line">                project.task(type: ImgOptimizerTask, overwrite: true, Constants.TASK_NAME.</span><br><span class="line">                        concat(project.name.capitalize()).concat(variant.buildType.name.capitalize())) &#123;</span><br><span class="line">                    it.group = &quot;optimize&quot;</span><br><span class="line">                    it.description = &quot;Optimize $&#123;variant.buildType.name&#125; images&quot;</span><br><span class="line">                    it.imgDirs = imgDirectories</span><br><span class="line">                    it.triggerSize = ext.triggerSize</span><br><span class="line">                    it.suffix = ext.suffix</span><br><span class="line">                    it.type = ext.type</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
 <p>关于Task的创建参数 参考 <a href="https://docs.gradle.org/current/dsl/org.gradle.api.Project.html#N14C11" target="_blank" rel="noopener">Project</a></p>
 <h3 id="读取列表-列表长度不定"><a href="#读取列表-列表长度不定" class="headerlink" title="读取列表 列表长度不定"></a>读取列表 列表长度不定</h3><p>比如获取一个person的列表</p>
@@ -634,6 +635,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/12/01/Flutter入坑指南/" rel="prev" title="Flutter入坑指南">
+                Flutter入坑指南 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -733,7 +738,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -744,7 +749,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -755,7 +760,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -879,7 +884,7 @@ var ap = new APlayer({
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Groovy-基础"><span class="nav-number">2.</span> <span class="nav-text">Groovy 基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradle-DSL-基础"><span class="nav-number">3.</span> <span class="nav-text">Gradle DSL 基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-DSL-基础"><span class="nav-number">4.</span> <span class="nav-text">Android DSL 基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义插件开发"><span class="nav-number">5.</span> <span class="nav-text">自定义插件开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三种方式"><span class="nav-number">5.1.</span> <span class="nav-text">三种方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核心概念"><span class="nav-number">6.</span> <span class="nav-text">核心概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用操作"><span class="nav-number">7.</span> <span class="nav-text">常用操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载task"><span class="nav-number">7.1.</span> <span class="nav-text">加载task</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读取列表-列表长度不定"><span class="nav-number">7.2.</span> <span class="nav-text">读取列表 列表长度不定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加子插件"><span class="nav-number">7.3.</span> <span class="nav-text">添加子插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hook资源"><span class="nav-number">7.4.</span> <span class="nav-text">hook资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#install-amp-amp-launch-apk"><span class="nav-number">7.5.</span> <span class="nav-text">install &amp;&amp; launch apk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#apk变体"><span class="nav-number">7.6.</span> <span class="nav-text">apk变体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取依赖配置"><span class="nav-number">7.7.</span> <span class="nav-text">获取依赖配置</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Groovy-基础"><span class="nav-number">2.</span> <span class="nav-text">Groovy 基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradle-DSL-基础"><span class="nav-number">3.</span> <span class="nav-text">Gradle DSL 基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-DSL-基础"><span class="nav-number">4.</span> <span class="nav-text">Android DSL 基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义插件开发"><span class="nav-number">5.</span> <span class="nav-text">自定义插件开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三种方式"><span class="nav-number">5.1.</span> <span class="nav-text">三种方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核心概念"><span class="nav-number">6.</span> <span class="nav-text">核心概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#project-beforeEvaluate-project-afterEvaluate"><span class="nav-number">7.</span> <span class="nav-text">project.beforeEvaluate/project.afterEvaluate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用操作"><span class="nav-number">8.</span> <span class="nav-text">常用操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载task"><span class="nav-number">8.1.</span> <span class="nav-text">加载task</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读取列表-列表长度不定"><span class="nav-number">8.2.</span> <span class="nav-text">读取列表 列表长度不定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加子插件"><span class="nav-number">8.3.</span> <span class="nav-text">添加子插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hook资源"><span class="nav-number">8.4.</span> <span class="nav-text">hook资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#install-amp-amp-launch-apk"><span class="nav-number">8.5.</span> <span class="nav-text">install &amp;&amp; launch apk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#apk变体"><span class="nav-number">8.6.</span> <span class="nav-text">apk变体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取依赖配置"><span class="nav-number">8.7.</span> <span class="nav-text">获取依赖配置</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -913,7 +918,7 @@ var ap = new APlayer({
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">58.8k</span>
+    <span title="Site words total count">60.7k</span>
   
 </div>
 
