@@ -137,16 +137,16 @@
 <meta name="description" content="前言网络请求到数据解析是一个app必不可少的流程之一，在flutter官网中目前主要是介绍 自带的Http请求+Json解析 但是也推荐了更好的网路请求到组合的方式 dio 和 json_serializable，本篇文章主要介绍这两个方式的使用，源码在结尾 dio简介package地址 https://pub.flutter-io.cn/packages/dio，添加依赖  dependenc">
 <meta name="keywords" content="Flutter">
 <meta property="og:type" content="article">
-<meta property="og:title" content="dio+json_serializable从请求到网络解析">
+<meta property="og:title" content="dio+json_serializable从网络请求到数据解析">
 <meta property="og:url" content="https://xsfelvis.github.io/2018/12/08/dio+json_serializable请求到解析数据/index.html">
 <meta property="og:site_name" content="渡口一艘船">
 <meta property="og:description" content="前言网络请求到数据解析是一个app必不可少的流程之一，在flutter官网中目前主要是介绍 自带的Http请求+Json解析 但是也推荐了更好的网路请求到组合的方式 dio 和 json_serializable，本篇文章主要介绍这两个方式的使用，源码在结尾 dio简介package地址 https://pub.flutter-io.cn/packages/dio，添加依赖  dependenc">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2018/png/215777/1544266913529-762efea8-b8e9-4d65-b7a1-67599f277055.png">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2018/png/215777/1544267293376-274ccea1-1b3b-457c-8150-04fd795f6909.png">
-<meta property="og:updated_time" content="2018-12-08T11:32:24.448Z">
+<meta property="og:updated_time" content="2018-12-08T12:01:25.280Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dio+json_serializable从请求到网络解析">
+<meta name="twitter:title" content="dio+json_serializable从网络请求到数据解析">
 <meta name="twitter:description" content="前言网络请求到数据解析是一个app必不可少的流程之一，在flutter官网中目前主要是介绍 自带的Http请求+Json解析 但是也推荐了更好的网路请求到组合的方式 dio 和 json_serializable，本篇文章主要介绍这两个方式的使用，源码在结尾 dio简介package地址 https://pub.flutter-io.cn/packages/dio，添加依赖  dependenc">
 <meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2018/png/215777/1544266913529-762efea8-b8e9-4d65-b7a1-67599f277055.png">
 
@@ -184,7 +184,7 @@
 
 
 
-  <title>dio+json_serializable从请求到网络解析 | 渡口一艘船</title>
+  <title>dio+json_serializable从网络请求到数据解析 | 渡口一艘船</title>
   
 
 
@@ -357,7 +357,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">dio+json_serializable从请求到网络解析</h2>
+          <h2 class="post-title" itemprop="name headline">dio+json_serializable从网络请求到数据解析</h2>
         
 
         <div class="post-meta">
@@ -385,7 +385,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-12-08T19:32:24+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-12-08T20:01:25+08:00">
                 2018-12-08
               </time>
             
@@ -421,7 +421,7 @@
 
           
           
-             <span id="/2018/12/08/dio+json_serializable请求到解析数据/" class="leancloud_visitors" data-flag-title="dio+json_serializable从请求到网络解析">
+             <span id="/2018/12/08/dio+json_serializable请求到解析数据/" class="leancloud_visitors" data-flag-title="dio+json_serializable从网络请求到数据解析">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -446,7 +446,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,557
+                  1,571
                 </span>
               
 
@@ -500,7 +500,7 @@
 <p>Uploading multiple files to server by FormData:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">FormData formData = <span class="keyword">new</span> FormData.from(&#123;</span><br><span class="line">   <span class="string">"name"</span>: <span class="string">"wendux"</span>,</span><br><span class="line">   <span class="string">"age"</span>: <span class="number">25</span>,</span><br><span class="line">   <span class="string">"file1"</span>: <span class="keyword">new</span> UploadFileInfo(<span class="keyword">new</span> File(<span class="string">"./upload.txt"</span>), <span class="string">"upload1.txt"</span>),</span><br><span class="line">   <span class="comment">// upload with bytes (List&lt;int&gt;) </span></span><br><span class="line">   <span class="string">"file2"</span>: <span class="keyword">new</span> UploadFileInfo.fromBytes(utf8.encode(<span class="string">"hello world"</span>),<span class="string">"word.txt"</span>),</span><br><span class="line">   <span class="comment">// Pass multiple files within an Array </span></span><br><span class="line">   <span class="string">"files"</span>: [</span><br><span class="line">      <span class="keyword">new</span> UploadFileInfo(<span class="keyword">new</span> File(<span class="string">"./example/upload.txt"</span>), <span class="string">"upload.txt"</span>),</span><br><span class="line">      <span class="keyword">new</span> UploadFileInfo(<span class="keyword">new</span> File(<span class="string">"./example/upload.txt"</span>), <span class="string">"upload.txt"</span>)</span><br><span class="line">    ]</span><br><span class="line">&#125;);</span><br><span class="line">response = await dio.post(<span class="string">"/info"</span>, data: formData)</span><br></pre></td></tr></table></figure>
 <p>更多可以参考作者的<a href="https://juejin.im/post/5b04c954f265da0b9c10fb61" target="_blank" rel="noopener">说明文章</a>以及 <a href="https://github.com/flutterchina/dio/tree/flutter/example" target="_blank" rel="noopener">example</a></p>
-<p>并且由于原生的HHTP不支持charles抓包，这个库可以使用设置代理来达到抓包的目的，ip自己替换</p>
+<p>并且由于flutter原生的网络库http不支持charles抓包，这个库可以使用设置代理来达到抓包的目的，ip自己替换</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dio.onHttpClientCreate = (HttpClient client) &#123;</span><br><span class="line">  client.findProxy = (uri) &#123;</span><br><span class="line">    <span class="comment">//proxy all request to localhost:8888</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"PROXY yourIP:yourPort"</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>这样就可抓包了。</p>
 <h2 id="网络请求封装使用"><a href="#网络请求封装使用" class="headerlink" title="网络请求封装使用"></a>网络请求封装使用</h2><p>简单封装使我们更加容易的使用，核心代码如下</p>
@@ -527,6 +527,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@JsonKey</span>(name: <span class="string">'off-set'</span>)</span><br><span class="line"><span class="keyword">int</span> offset;</span><br></pre></td></tr></table></figure>
 <h1 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h1><p>效果如下图</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2018/png/215777/1544267293376-274ccea1-1b3b-457c-8150-04fd795f6909.png" alt="image.png | left | 250x515.9574468085107"></p>
+<p>接口来自 <a href="http://www.wanandroid.com/blog/show/2" target="_blank" rel="noopener">玩Android的开放接口</a></p>
 <p>代码在<a href="https://github.com/xsfelvis/learnflutter" target="_blank" rel="noopener"> learnflutter</a> 的demo3</p>
 
       
@@ -548,7 +549,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://xsfelvis.github.io/2018/12/08/dio+json_serializable请求到解析数据/" title="dio+json_serializable从请求到网络解析">https://xsfelvis.github.io/2018/12/08/dio+json_serializable请求到解析数据/</a>
+    <a href="https://xsfelvis.github.io/2018/12/08/dio+json_serializable请求到解析数据/" title="dio+json_serializable从网络请求到数据解析">https://xsfelvis.github.io/2018/12/08/dio+json_serializable请求到解析数据/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
