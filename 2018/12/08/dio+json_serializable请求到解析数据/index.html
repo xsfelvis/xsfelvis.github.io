@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta name="baidu-site-verification" content="UqlC4pwKIm" />
+  <meta name="baidu-site-verification" content="d3U0dGeqGw" />
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Flutter," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="渡口一艘船" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="前言网络请求到数据解析是一个app必不可少的流程之一，在flutter官网中目前主要是介绍 自带的Http请求+Json解析 但是也推荐了更好的网路请求到组合的方式 dio 和 json_serializable，本篇文章主要介绍这两个方式的使用，源码在结尾 dio简介package地址 https://pub.flutter-io.cn/packages/dio，添加依赖  dependenc">
+<meta name="keywords" content="Flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dio+json_serializable从请求到网络解析">
+<meta property="og:url" content="https://xsfelvis.github.io/2018/12/08/dio+json_serializable请求到解析数据/index.html">
+<meta property="og:site_name" content="渡口一艘船">
+<meta property="og:description" content="前言网络请求到数据解析是一个app必不可少的流程之一，在flutter官网中目前主要是介绍 自带的Http请求+Json解析 但是也推荐了更好的网路请求到组合的方式 dio 和 json_serializable，本篇文章主要介绍这两个方式的使用，源码在结尾 dio简介package地址 https://pub.flutter-io.cn/packages/dio，添加依赖  dependenc">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2018/png/215777/1544266913529-762efea8-b8e9-4d65-b7a1-67599f277055.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2018/png/215777/1544267293376-274ccea1-1b3b-457c-8150-04fd795f6909.png">
+<meta property="og:updated_time" content="2018-12-08T11:32:24.448Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="dio+json_serializable从请求到网络解析">
+<meta name="twitter:description" content="前言网络请求到数据解析是一个app必不可少的流程之一，在flutter官网中目前主要是介绍 自带的Http请求+Json解析 但是也推荐了更好的网路请求到组合的方式 dio 和 json_serializable，本篇文章主要介绍这两个方式的使用，源码在结尾 dio简介package地址 https://pub.flutter-io.cn/packages/dio，添加依赖  dependenc">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2018/png/215777/1544266913529-762efea8-b8e9-4d65-b7a1-67599f277055.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://xsfelvis.github.io/2018/12/08/dio+json_serializable请求到解析数据/"/>
+
+
+
+
+
+  <title>dio+json_serializable从请求到网络解析 | 渡口一艘船</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-120283281-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2a3365c396bc1892919405bfc6ea04a8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">渡口一艘船</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">不积跬步，无以至千里；不积小流，无以成江海</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xsfelvis.github.io/2018/12/08/dio+json_serializable请求到解析数据/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="云来">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="渡口一艘船">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">dio+json_serializable从请求到网络解析</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-08T00:00:00+08:00">
+                2018-12-08
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-12-08T19:32:24+08:00">
+                2018-12-08
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flutter/" itemprop="url" rel="index">
+                    <span itemprop="name">Flutter</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/12/08/dio+json_serializable请求到解析数据/" class="leancloud_visitors" data-flag-title="dio+json_serializable从请求到网络解析">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,557
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>网络请求到数据解析是一个app必不可少的流程之一，在flutter官网中目前主要是介绍 自带的<a href="https://flutterchina.club/networking/" target="_blank" rel="noopener">Http</a>请求+<a href="https://flutterchina.club/json/" target="_blank" rel="noopener">Json解析</a> 但是也推荐了更好的网路请求到组合的方式 dio 和 json_serializable，本篇文章主要介绍这两个方式的使用，源码在结尾</p>
+<h1 id="dio"><a href="#dio" class="headerlink" title="dio"></a>dio</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>package地址 <a href="https://pub.flutter-io.cn/packages/dio" target="_blank" rel="noopener">https://pub.flutter-io.cn/packages/dio</a>，<br>添加依赖</p>
+<blockquote>
+<p><span data-type="color" style="color:rgb(51, 51, 51)">dependencies:  </span><br>    <strong>dio: </strong><strong><span data-type="color" style="color:rgb(221, 17, 68)">^1.0.9</span></strong><br>支持了<span data-type="color" style="color:rgb(51, 51, 51)"><span data-type="background" style="background-color:rgb(255, 255, 255)">支持Restful API、FormData、拦截器、请求取消、Cookie管理、文件上传/下载、超时等</span></span><br>Performing a <code>GET</code> request: 简单的使用如下</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Response response;</span><br><span class="line">response=await dio.get(<span class="string">"/test?id=12&amp;name=wendu"</span>)</span><br><span class="line">print(response.data.toString());</span><br><span class="line"><span class="comment">// Optionally the request above could also be done as</span></span><br><span class="line">response=await dio.get(<span class="string">"/test"</span>,data:&#123;<span class="string">"id"</span>:<span class="number">12</span>,<span class="string">"name"</span>:<span class="string">"wendu"</span>&#125;)</span><br><span class="line">print(response.data.toString());</span><br></pre></td></tr></table></figure>
+<p>Performing a <code>POST</code> request:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response=await dio.post(<span class="string">"/test"</span>,data:&#123;<span class="string">"id"</span>:<span class="number">12</span>,<span class="string">"name"</span>:<span class="string">"wendu"</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>Performing multiple concurrent requests:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response= await Future.wait([dio.post(<span class="string">"/info"</span>),dio.get(<span class="string">"/token"</span>)]);</span><br></pre></td></tr></table></figure>
+<p>Downloading a file:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response=await dio.download(<span class="string">"https://www.google.cn/"</span>,<span class="string">"./xx.html"</span>)</span><br></pre></td></tr></table></figure>
+<p>Sending FormData:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FormData formData = <span class="keyword">new</span> FormData.from(&#123;</span><br><span class="line">   <span class="string">"name"</span>: <span class="string">"wendux"</span>,</span><br><span class="line">   <span class="string">"age"</span>: <span class="number">25</span>,</span><br><span class="line">&#125;);</span><br><span class="line">response = await dio.post(<span class="string">"/info"</span>, data: formData)</span><br></pre></td></tr></table></figure>
+<p>Uploading multiple files to server by FormData:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">FormData formData = <span class="keyword">new</span> FormData.from(&#123;</span><br><span class="line">   <span class="string">"name"</span>: <span class="string">"wendux"</span>,</span><br><span class="line">   <span class="string">"age"</span>: <span class="number">25</span>,</span><br><span class="line">   <span class="string">"file1"</span>: <span class="keyword">new</span> UploadFileInfo(<span class="keyword">new</span> File(<span class="string">"./upload.txt"</span>), <span class="string">"upload1.txt"</span>),</span><br><span class="line">   <span class="comment">// upload with bytes (List&lt;int&gt;) </span></span><br><span class="line">   <span class="string">"file2"</span>: <span class="keyword">new</span> UploadFileInfo.fromBytes(utf8.encode(<span class="string">"hello world"</span>),<span class="string">"word.txt"</span>),</span><br><span class="line">   <span class="comment">// Pass multiple files within an Array </span></span><br><span class="line">   <span class="string">"files"</span>: [</span><br><span class="line">      <span class="keyword">new</span> UploadFileInfo(<span class="keyword">new</span> File(<span class="string">"./example/upload.txt"</span>), <span class="string">"upload.txt"</span>),</span><br><span class="line">      <span class="keyword">new</span> UploadFileInfo(<span class="keyword">new</span> File(<span class="string">"./example/upload.txt"</span>), <span class="string">"upload.txt"</span>)</span><br><span class="line">    ]</span><br><span class="line">&#125;);</span><br><span class="line">response = await dio.post(<span class="string">"/info"</span>, data: formData)</span><br></pre></td></tr></table></figure>
+<p>更多可以参考作者的<a href="https://juejin.im/post/5b04c954f265da0b9c10fb61" target="_blank" rel="noopener">说明文章</a>以及 <a href="https://github.com/flutterchina/dio/tree/flutter/example" target="_blank" rel="noopener">example</a></p>
+<p>并且由于原生的HHTP不支持charles抓包，这个库可以使用设置代理来达到抓包的目的，ip自己替换</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dio.onHttpClientCreate = (HttpClient client) &#123;</span><br><span class="line">  client.findProxy = (uri) &#123;</span><br><span class="line">    <span class="comment">//proxy all request to localhost:8888</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"PROXY yourIP:yourPort"</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这样就可抓包了。</p>
+<h2 id="网络请求封装使用"><a href="#网络请求封装使用" class="headerlink" title="网络请求封装使用"></a>网络请求封装使用</h2><p>简单封装使我们更加容易的使用，核心代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">_request</span><span class="params">(String url, Function callBack,</span></span></span><br><span class="line"><span class="function"><span class="params">      &#123;String method,</span></span></span><br><span class="line"><span class="function"><span class="params">      Map&lt;String, String&gt; params,</span></span></span><br><span class="line"><span class="function"><span class="params">      Function errorCallBack&#125;)</span> async </span>&#123;</span><br><span class="line"><span class="comment">//    dio.onHttpClientCreate = (HttpClient client) &#123;</span></span><br><span class="line"><span class="comment">//      client.findProxy = (uri) &#123;</span></span><br><span class="line"><span class="comment">//        //proxy all request to localhost:8888</span></span><br><span class="line"><span class="comment">//        return "PROXY 172.23.235.153:8888";</span></span><br><span class="line"><span class="comment">//      &#125;;</span></span><br><span class="line"><span class="comment">//    &#125;;</span></span><br><span class="line">    String errorMsg = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">int</span> statusCode;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      Response response;</span><br><span class="line">      <span class="keyword">if</span> (method == GET) &#123;</span><br><span class="line">        <span class="keyword">if</span> (params != <span class="keyword">null</span> &amp;&amp; params.isNotEmpty) &#123;</span><br><span class="line">          StringBuffer sb = <span class="keyword">new</span> StringBuffer(<span class="string">"?"</span>);</span><br><span class="line">          params.forEach((key, value) &#123;</span><br><span class="line">            sb.write(<span class="string">"$key"</span> + <span class="string">"="</span> + <span class="string">"$value"</span> + <span class="string">"&amp;"</span>);</span><br><span class="line">          &#125;);</span><br><span class="line">          String paramStr = sb.toString();</span><br><span class="line">          paramStr = paramStr.substring(<span class="number">0</span>, paramStr.length - <span class="number">1</span>);</span><br><span class="line">          url += paramStr;</span><br><span class="line">        &#125;</span><br><span class="line">        response = await dio.get(url);</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (method == POST) &#123;</span><br><span class="line">        <span class="keyword">if</span> (params != <span class="keyword">null</span> &amp;&amp; params.isNotEmpty) &#123;</span><br><span class="line">          response = await dio.post(url, data: params);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          response = await dio.post(url);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      statusCode = response.statusCode;</span><br><span class="line">      <span class="keyword">if</span> (statusCode &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        errorMsg = <span class="string">"网络请求错误,状态码:"</span> + statusCode.toString();</span><br><span class="line">        _handError(errorCallBack, errorMsg);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (callBack != <span class="keyword">null</span>) &#123;</span><br><span class="line">        String res2Json  = json.encode(response.data);</span><br><span class="line">        Map&lt;String,dynamic&gt; map=json.decode(res2Json);</span><br><span class="line">        callBack(map[<span class="string">"data"</span>]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (exception) &#123;</span><br><span class="line">      _handError(errorCallBack, exception.toString());</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>详细的可以参考源码<a href="https://github.com/xsfelvis/learnflutter/blob/047fb2c9cc08334c1adcc7b7892ebfe28a2cf13f/lib/demo3/utils/net/HttpCore.dart" target="_blank" rel="noopener">https://github.com/xsfelvis/learnflutter/blob/047fb2c9cc08334c1adcc7b7892ebfe28a2cf13f/lib/demo3/utils/net/HttpCore.dart</a></p>
+<p>使用如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">HttpCore.instance.get(Api.HOME_BANNER, (data) &#123;</span><br><span class="line">  List&lt;BannerData&gt; banners = getBannersList(data);</span><br><span class="line">  setState(() &#123;</span><br><span class="line">    slideData = banners;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;, errorCallBack: (errorMsg) &#123;</span><br><span class="line">  print(<span class="string">"error:"</span> + errorMsg);</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h2><p>在封装网络库的的时候发现 底层 response.data[‘data’]时候当是一个<a href="ttp://www.wanandroid.com/banner/json" target="_blank" rel="noopener">jsonarray</a>时候竟然无法直接取出’data’,”Stirng not subType of Index “错误，原因是 此时拿到的不是一个json数据，没有双引号的假json数据，但是在<a href="http://www.wanandroid.com/article/list/1/json" target="_blank" rel="noopener">jsonobject</a>却可以，解决如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (callBack != <span class="keyword">null</span>) &#123;</span><br><span class="line">  String res2Json  = json.encode(response.data);</span><br><span class="line">  Map&lt;String,dynamic&gt; map=json.decode(res2Json);</span><br><span class="line">  callBack(map[<span class="string">"data"</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="json-serializable"><a href="#json-serializable" class="headerlink" title="json_serializable"></a>json_serializable</h1><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><p>package地址 <a href="https://pub.flutter-io.cn/packages/json_serializable" target="_blank" rel="noopener">https://pub.flutter-io.cn/packages/json_serializable</a><br>添加依赖</p>
+<blockquote>
+<p><span data-type="color" style="color:rgb(51, 51, 51)">dependencies:  </span><br>    <strong>json_serializable: </strong><strong><span data-type="color" style="color:rgb(221, 17, 68)">^2.0.0 </span></strong><br>dev_dependencies<br>    build_runner: ^1.1.2<br>    json_serializable: ^2.0.0</p>
+</blockquote>
+<p>这个是个好东西，之前的相当于json数据一个个通过key解出来（关于自带的json解析可以参考 <a href="https://juejin.im/post/5b5d782ae51d45191c7e7fb3#heading-7" target="_blank" rel="noopener">https://juejin.im/post/5b5d782ae51d45191c7e7fb3#heading-7</a>），不仅耗时而且容易出错，json_serializable 让我们直接反序列化成对象直接使用类似于Gson，而且还提供了<a href="https://caijinglong.github.io/json2dart/index_ch.html" target="_blank" rel="noopener">一个工具</a>来自动帮助我们生成代码，简单快捷而且不容易出错</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>以json</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"data"</span>:&#123;</span><br><span class="line">        <span class="attr">"curPage"</span>:<span class="number">2</span>,</span><br><span class="line">        <span class="attr">"datas"</span>:[</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">"apkLink"</span>:<span class="string">""</span>,</span><br><span class="line">                <span class="attr">"author"</span>:<span class="string">"鸿洋"</span>,</span><br><span class="line">                <span class="attr">"chapterId"</span>:<span class="number">410</span>,</span><br><span class="line">                <span class="attr">"chapterName"</span>:<span class="string">"玉刚说"</span>,</span><br><span class="line">                <span class="attr">"collect"</span>:<span class="literal">false</span>,</span><br><span class="line">                <span class="attr">"courseId"</span>:<span class="number">13</span>,</span><br><span class="line">                <span class="attr">"desc"</span>:<span class="string">""</span>,</span><br><span class="line">                <span class="attr">"envelopePic"</span>:<span class="string">""</span>,</span><br><span class="line">                <span class="attr">"fresh"</span>:<span class="literal">false</span>,</span><br><span class="line">                <span class="attr">"id"</span>:<span class="number">7604</span>,</span><br><span class="line">                <span class="attr">"link"</span>:<span class="string">"https://mp.weixin.qq.com/s/cCZKmqKrdCn63eWTbOuANw"</span>,</span><br><span class="line">                <span class="attr">"niceDate"</span>:<span class="string">"2018-12-03"</span>,</span><br><span class="line">                <span class="attr">"origin"</span>:<span class="string">""</span>,</span><br><span class="line">                <span class="attr">"projectLink"</span>:<span class="string">""</span>,</span><br><span class="line">                <span class="attr">"publishTime"</span>:<span class="number">1543830090000</span>,</span><br><span class="line">                <span class="attr">"superChapterId"</span>:<span class="number">408</span>,</span><br><span class="line">                <span class="attr">"superChapterName"</span>:<span class="string">"公众号"</span>,</span><br><span class="line">                <span class="attr">"tags"</span>:[</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="attr">"name"</span>:<span class="string">"公众号"</span>,</span><br><span class="line">                        <span class="attr">"url"</span>:<span class="string">"/wxarticle/list/410/1"</span></span><br><span class="line">                    &#125;</span><br><span class="line">                ],</span><br><span class="line">                <span class="attr">"title"</span>:<span class="string">"在 Retrofit 和 OkHttp 中使用网络缓存，提高访问效率"</span>,</span><br><span class="line">                <span class="attr">"type"</span>:<span class="number">0</span>,</span><br><span class="line">                <span class="attr">"userId"</span>:<span class="number">-1</span>,</span><br><span class="line">                <span class="attr">"visible"</span>:<span class="number">1</span>,</span><br><span class="line">                <span class="attr">"zan"</span>:<span class="number">0</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">"apkLink"</span>:<span class="string">""</span>,</span><br><span class="line">                <span class="attr">"author"</span>:<span class="string">"鸿洋"</span>,</span><br><span class="line">                <span class="attr">"chapterId"</span>:<span class="number">408</span>,</span><br><span class="line">                <span class="attr">"chapterName"</span>:<span class="string">"鸿洋"</span>,</span><br><span class="line">                <span class="attr">"collect"</span>:<span class="literal">false</span>,</span><br><span class="line">                <span class="attr">"courseId"</span>:<span class="number">13</span>,</span><br><span class="line">                <span class="attr">"desc"</span>:<span class="string">""</span>,</span><br><span class="line">                <span class="attr">"envelopePic"</span>:<span class="string">""</span>,</span><br><span class="line">                <span class="attr">"fresh"</span>:<span class="literal">false</span>,</span><br><span class="line">                <span class="attr">"id"</span>:<span class="number">7605</span>,</span><br><span class="line">                <span class="attr">"link"</span>:<span class="string">"https://mp.weixin.qq.com/s/r3AWeYafyMEc1-g8BWEHBg"</span>,</span><br><span class="line">                <span class="attr">"niceDate"</span>:<span class="string">"2018-12-03"</span>,</span><br><span class="line">                <span class="attr">"origin"</span>:<span class="string">""</span>,</span><br><span class="line">                <span class="attr">"projectLink"</span>:<span class="string">""</span>,</span><br><span class="line">                <span class="attr">"publishTime"</span>:<span class="number">1543766400000</span>,</span><br><span class="line">                <span class="attr">"superChapterId"</span>:<span class="number">408</span>,</span><br><span class="line">                <span class="attr">"superChapterName"</span>:<span class="string">"公众号"</span>,</span><br><span class="line">                <span class="attr">"tags"</span>:[</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="attr">"name"</span>:<span class="string">"公众号"</span>,</span><br><span class="line">                        <span class="attr">"url"</span>:<span class="string">"/wxarticle/list/408/1"</span></span><br><span class="line">                    &#125;</span><br><span class="line">                ],</span><br><span class="line">                <span class="attr">"title"</span>:<span class="string">"非 UI 线程能调用 View.invalidate()？"</span>,</span><br><span class="line">                <span class="attr">"type"</span>:<span class="number">0</span>,</span><br><span class="line">                <span class="attr">"userId"</span>:<span class="number">-1</span>,</span><br><span class="line">                <span class="attr">"visible"</span>:<span class="number">1</span>,</span><br><span class="line">                <span class="attr">"zan"</span>:<span class="number">0</span></span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        <span class="attr">"offset"</span>:<span class="number">20</span>,</span><br><span class="line">        <span class="attr">"over"</span>:<span class="literal">false</span>,</span><br><span class="line">        <span class="attr">"pageCount"</span>:<span class="number">289</span>,</span><br><span class="line">        <span class="attr">"size"</span>:<span class="number">20</span>,</span><br><span class="line">        <span class="attr">"total"</span>:<span class="number">5779</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"errorCode"</span>:<span class="number">0</span>,</span><br><span class="line">    <span class="attr">"errorMsg"</span>:<span class="string">""</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为例，我们首先找到实际数据信息，因为异errorcode 之类的处理已在上面的封装网络请求中处理了，这里需要关注 实际内容传递者 “data”里面的数据，将上面这个data里面的jsonObject，从data 这个key后面包括大括号一起复制到上面的代码生成工具网页里面，截图如下</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2018/png/215777/1544266913529-762efea8-b8e9-4d65-b7a1-67599f277055.png" alt="image.png | left | 747x341"></p>
+<p>然后<span data-type="color" style="color:rgb(51, 51, 51)"><span data-type="background" style="background-color:rgb(255, 255, 255)">当前项目的目录下运行</span></span><br><code>flutter packages pub run build_runner build</code></p>
+<p>然就可以得到news.g.dart文件</p>
+<p>然后在使用中通过获取对象属性的方式就可以直接拿到我们关注的字段了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  获取News数据</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">_getNewsList</span><span class="params">(<span class="keyword">int</span> curpage)</span> </span>&#123;</span><br><span class="line">  var url = Api.HOME_ARTICLE + curpage.toString() + <span class="string">"/json"</span>;</span><br><span class="line">  HttpCore.instance.get(url, (data) &#123;</span><br><span class="line">    News news = News.fromJson(data);</span><br><span class="line">    List&lt;Datas&gt; newsDatas = news.datas;</span><br><span class="line">    setState(() &#123;</span><br><span class="line">      listData = newsDatas;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="自定义字段的处理"><a href="#自定义字段的处理" class="headerlink" title="自定义字段的处理"></a>自定义字段的处理</h4><p><span data-type="color" style="color:rgb(51, 51, 51)"><span data-type="background" style="background-color:rgb(255, 255, 255)">我们可以通过JsonKey自定义参数进行注释并自定义参数来自定义各个字段。例如:是否允许字段为空等。</span></span><strong>注意，这里不加任何JsonKey默认允许空json字段。</strong><br>比如解析字段有个横线，<span data-type="color" style="color:rgb(51, 51, 51)"><span data-type="background" style="background-color:rgb(255, 255, 255)">而dart中只允许字母数字下划线作为变量名。所以我们必须对它进行特殊处理。@JsonKey(name=&quot;Nicehash-CNHeavy&quot;)来解析map，通常自动生成代码的工具已经可以帮助我们解决了</span></span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@JsonKey</span>(name: <span class="string">'off-set'</span>)</span><br><span class="line"><span class="keyword">int</span> offset;</span><br></pre></td></tr></table></figure>
+<h1 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h1><p>效果如下图</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2018/png/215777/1544267293376-274ccea1-1b3b-457c-8150-04fd795f6909.png" alt="image.png | left | 250x515.9574468085107"></p>
+<p>代码在<a href="https://github.com/xsfelvis/learnflutter" target="_blank" rel="noopener"> learnflutter</a> 的demo3</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    云来
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xsfelvis.github.io/2018/12/08/dio+json_serializable请求到解析数据/" title="dio+json_serializable从请求到网络解析">https://xsfelvis.github.io/2018/12/08/dio+json_serializable请求到解析数据/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Flutter/" rel="tag"># Flutter</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/01/Flutter入坑指南/" rel="next" title="Flutter入坑指南">
+                <i class="fa fa-chevron-left"></i> Flutter入坑指南
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzA1My8xMzU4OQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="云来" />
+            
+              <p class="site-author-name" itemprop="name">云来</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+			<!--my custom code begin-->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
+			<script type="text/javascript">
+			  $("#sidebar").hover(function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 1});
+			  },function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 0});
+			  });
+			</script>
+			<div id="mydivshow" class="mydivshow">
+			<!--my custom code end-->
+			
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/xsfelvis" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/XSF50717" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-csdn"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/5643754060b27f7a018bd10d" target="_blank" title="掘金">
+                    
+                      <i class="fa fa-fw fa-juejin"></i>掘金</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:xsfelvis@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://juejin.im/timeline" title="稀土掘金" target="_blank">稀土掘金</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://gank.io/" title="干货集中营" target="_blank">干货集中营</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wanandroid.com/tools" title="玩Android" target="_blank">玩Android</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://tech.meituan.com/" title="美团点评" target="_blank">美团点评</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.androidblog.cn/about/" title="酷站" target="_blank">酷站</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://pingguohe.net/" title="苹果核" target="_blank">苹果核</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <div id="player1" class="aplayer"></div>
+<script src="/js/src/APlayer.min.js"></script>
+<script type="text/javascript">
+var ap = new APlayer({
+    element: document.getElementById('player1'),                       // Optional, player element
+    narrow: false,                                                     // Optional, narrow style
+    autoplay: false,                                                    // Optional, autoplay song(s), not supported by mobile browsers
+    showlrc: 0,                                                        // Optional, show lrc, can be 0, 1, 2, see: ###With lrc
+    mutex: true,                                                       // Optional, pause other players when this player playing
+    theme: '#e6d0b2',                                                  // Optional, theme color, default: #b7daff
+    mode: 'random',                                                    // Optional, play mode, can be `random` `single` `circulation`(loop) `order`(no loop), default: `circulation`
+    preload: 'metadata',                                               // Optional, the way to load music, can be 'none' 'metadata' 'auto', default: 'auto'
+    listmaxheight: '513px',                                             // Optional, max height of play list
+    music: {                                                           // Required, music info, see: ###With playlist
+        title: 'Summertime Sadness',                                          // Required, music title
+        author: 'cover',                          // Required, music author
+        url: 'http://www.170mv.com/kw/other.web.rb01.sycdn.kuwo.cn/resource/n2/71/36/4211820203.mp3',  // Required, music url
+        pic: '/images/music.jpg',  // Optional, music picture
+    }
+});
+</script>
+        </div>
+		<!--my custom code begin-->
+		</div>
+		<!--my custom code end-->
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dio"><span class="nav-number">2.</span> <span class="nav-text">dio</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络请求封装使用"><span class="nav-number">2.2.</span> <span class="nav-text">网络请求封装使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坑"><span class="nav-number">2.3.</span> <span class="nav-text">坑</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#json-serializable"><span class="nav-number">3.</span> <span class="nav-text">json_serializable</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介-1"><span class="nav-number">3.0.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">3.0.2.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">3.0.3.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义字段的处理"><span class="nav-number">3.0.3.1.</span> <span class="nav-text">自定义字段的处理</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实践"><span class="nav-number">4.</span> <span class="nav-text">实践</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">云来</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">62.2k</span>
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("QFKdnKcTHhFexYDWSA4tMBzH-gzGzoHsz", "wq2r6eiGoNMmUhgBsA7hAO9a");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.3"></script>
+
+
+  <script src="/js/src/Aplayer-Controler.js"></script>
+<div id="AP-controler"></div>
+<script type="text/javascript">
+var myapc=new APlayer_Controler({
+		APC_dom:$('#AP-controler'),
+		aplayer:ap, //此为绑定的aplayer对象
+		attach_right:false,
+		position:{top:'300px',bottom:''},
+		fixed:true,
+		btn_width:100,
+		btn_height:120,
+		img_src:['http://oty1v077k.bkt.clouddn.com/bukagirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/jumpgirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/pentigirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/%E8%90%8C1.gif'],
+		img_style:{repeat:'no-repeat',position:'center',size:'contain'},
+		ctrls_color:'rgba(173,255,47,0.8)',
+		ctrls_hover_color:'rgba(255,140,0,0.7)',
+		tips_on:true,
+		tips_width:140,
+		tips_height:25,
+		tips_color:'rgba(255,255,255,0.6)',
+		tips_content:{},
+		timeout:30
+	});
+</script>
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+
+
+</body>
+</html>
