@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xsfelvis.github.io/about/index.html</loc>
+    
+    <lastmod>2019-02-18T07:49:48.724Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xsfelvis.github.io/2019/01/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%9B%BE%E5%86%8C/</loc>
     
     <lastmod>2019-01-29T10:28:55.472Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>https://xsfelvis.github.io/2019/01/12/%20Flutter%E4%B8%AD%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92/</loc>
     
     <lastmod>2019-01-12T12:29:44.649Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xsfelvis.github.io/about/index.html</loc>
-    
-    <lastmod>2018-12-15T06:55:26.031Z</lastmod>
     
   </url>
   
