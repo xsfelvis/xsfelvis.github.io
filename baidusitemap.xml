@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://xsfelvis.github.io/2019/04/19/EasyAdapter/</loc>
+    <lastmod>2019-04-19T03:14:43.952Z</lastmod>
+    <data>
+        <display>
+        <title>EasyAdapter</title>
+        <pubTime>2019-04-18T16:00:00.000Z</pubTime>
+        
+        <tag>Adapter</tag>
+         
+         
+           
+             
+              <breadCrumb title="工具" url="https://xsfelvis.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://xsfelvis.github.io/2019/02/22/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</loc>
     <lastmod>2019-02-22T14:49:21.165Z</lastmod>
     <data>
@@ -94,7 +114,7 @@
     <data>
         <display>
         <title>flutter中的路由</title>
-        <pubTime>2018-12-15T06:41:34.032Z</pubTime>
+        <pubTime>2018-12-15T06:42:34.365Z</pubTime>
         
         <tag>路由</tag>
          

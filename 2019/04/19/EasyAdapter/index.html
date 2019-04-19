@@ -121,7 +121,7 @@
 
 
 
-  <meta name="keywords" content="Android,知乎广告," />
+  <meta name="keywords" content="Adapter," />
 
 
 
@@ -134,20 +134,20 @@
 
 
 
-<meta name="description" content="1、效果描述知乎看到的一种非常有特色的广告展现方式，即在列表页，某一个Item显示背后部分广告图，随着列表滚动，会逐渐展示全部图片。    2、实现 2.1 实现思路  在需要列表滚动时候，改变图片的显示部分 有两个核心点  捕获列表滚动变化的dy，不管是ListView还是RecyclerView都可以做到  图片显示部分变化，可以利用canvas.translate   方案一： 自定义vi">
-<meta name="keywords" content="Android,知乎广告">
+<meta name="description" content="常规写法的探讨常规的写法，为了使用 RecyclerView，必须指定一个 adapter 和 一个 LayoutManager。其中自定义的 adapter 必须继承自 RecyclerView.Adapter，其中必须实现几个接口：  public ItemViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType)在这个接">
+<meta name="keywords" content="Adapter">
 <meta property="og:type" content="article">
-<meta property="og:title" content="仿知乎创新广告">
-<meta property="og:url" content="https://xsfelvis.github.io/2017/05/22/仿知乎创新广告/index.html">
+<meta property="og:title" content="EasyAdapter">
+<meta property="og:url" content="https://xsfelvis.github.io/2019/04/19/EasyAdapter/index.html">
 <meta property="og:site_name" content="渡口一艘船">
-<meta property="og:description" content="1、效果描述知乎看到的一种非常有特色的广告展现方式，即在列表页，某一个Item显示背后部分广告图，随着列表滚动，会逐渐展示全部图片。    2、实现 2.1 实现思路  在需要列表滚动时候，改变图片的显示部分 有两个核心点  捕获列表滚动变化的dy，不管是ListView还是RecyclerView都可以做到  图片显示部分变化，可以利用canvas.translate   方案一： 自定义vi">
+<meta property="og:description" content="常规写法的探讨常规的写法，为了使用 RecyclerView，必须指定一个 adapter 和 一个 LayoutManager。其中自定义的 adapter 必须继承自 RecyclerView.Adapter，其中必须实现几个接口：  public ItemViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType)在这个接">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://rishiqing-file.oss-cn-beijing.aliyuncs.com/1513259506589GIF.gif?Expires=1526540309&OSSAccessKeyId=JZJNf7zIXqCHwLpT&Signature=ygBAc9kD0a1kMYiqKL2fEAMtals%3D">
-<meta property="og:updated_time" content="2018-06-06T06:38:54.760Z">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/215777/1555579402657-55755ccb-5f54-4923-91d6-20fb836904bb.png#align=left&display=inline&height=616&name=image.png&originHeight=1232&originWidth=1600&size=209351&status=done&width=800">
+<meta property="og:updated_time" content="2019-04-19T03:14:43.952Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="仿知乎创新广告">
-<meta name="twitter:description" content="1、效果描述知乎看到的一种非常有特色的广告展现方式，即在列表页，某一个Item显示背后部分广告图，随着列表滚动，会逐渐展示全部图片。    2、实现 2.1 实现思路  在需要列表滚动时候，改变图片的显示部分 有两个核心点  捕获列表滚动变化的dy，不管是ListView还是RecyclerView都可以做到  图片显示部分变化，可以利用canvas.translate   方案一： 自定义vi">
-<meta name="twitter:image" content="https://rishiqing-file.oss-cn-beijing.aliyuncs.com/1513259506589GIF.gif?Expires=1526540309&OSSAccessKeyId=JZJNf7zIXqCHwLpT&Signature=ygBAc9kD0a1kMYiqKL2fEAMtals%3D">
+<meta name="twitter:title" content="EasyAdapter">
+<meta name="twitter:description" content="常规写法的探讨常规的写法，为了使用 RecyclerView，必须指定一个 adapter 和 一个 LayoutManager。其中自定义的 adapter 必须继承自 RecyclerView.Adapter，其中必须实现几个接口：  public ItemViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType)在这个接">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/png/215777/1555579402657-55755ccb-5f54-4923-91d6-20fb836904bb.png#align=left&display=inline&height=616&name=image.png&originHeight=1232&originWidth=1600&size=209351&status=done&width=800">
 
 
 
@@ -177,13 +177,13 @@
 
 
 
-  <link rel="canonical" href="https://xsfelvis.github.io/2017/05/22/仿知乎创新广告/"/>
+  <link rel="canonical" href="https://xsfelvis.github.io/2019/04/19/EasyAdapter/"/>
 
 
 
 
 
-  <title>仿知乎创新广告 | 渡口一艘船</title>
+  <title>EasyAdapter | 渡口一艘船</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xsfelvis.github.io/2017/05/22/仿知乎创新广告/">
+    <link itemprop="mainEntityOfPage" href="https://xsfelvis.github.io/2019/04/19/EasyAdapter/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="云来">
@@ -356,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">仿知乎创新广告</h2>
+          <h2 class="post-title" itemprop="name headline">EasyAdapter</h2>
         
 
         <div class="post-meta">
@@ -368,8 +368,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-22T00:00:00+08:00">
-                2017-05-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-19T00:00:00+08:00">
+                2019-04-19
               </time>
             
 
@@ -384,8 +384,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-06T14:38:54+08:00">
-                2018-06-06
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-19T11:14:43+08:00">
+                2019-04-19
               </time>
             
           </span>
@@ -403,8 +403,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/实践/" itemprop="url" rel="index">
-                    <span itemprop="name">实践</span>
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
                   </a>
                 </span>
 
@@ -420,7 +420,7 @@
 
           
           
-             <span id="/2017/05/22/仿知乎创新广告/" class="leancloud_visitors" data-flag-title="仿知乎创新广告">
+             <span id="/2019/04/19/EasyAdapter/" class="leancloud_visitors" data-flag-title="EasyAdapter">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -445,7 +445,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  517
+                  634
                 </span>
               
 
@@ -461,7 +461,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -482,48 +482,54 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><h3 id="1、效果描述"><a href="#1、效果描述" class="headerlink" title="1、效果描述"></a>1、效果描述</h3><p>知乎看到的一种非常有特色的广告展现方式，即在列表页，某一个Item显示背后部分广告图，随着列表滚动，会逐渐展示全部图片。  </p>
-<p><img src="https://rishiqing-file.oss-cn-beijing.aliyuncs.com/1513259506589GIF.gif?Expires=1526540309&amp;OSSAccessKeyId=JZJNf7zIXqCHwLpT&amp;Signature=ygBAc9kD0a1kMYiqKL2fEAMtals%3D" alt="" title="GIF.gif"></p>
-<h3 id="2、实现"><a href="#2、实现" class="headerlink" title="2、实现"></a>2、实现</h3><ul>
-<li>2.1 实现思路</li>
+        <script src="/assets/js/APlayer.min.js"> </script><h2 id="常规写法的探讨"><a href="#常规写法的探讨" class="headerlink" title="常规写法的探讨"></a>常规写法的探讨</h2><p>常规的写法，为了使用 <code>RecyclerView</code>，必须指定一个 <code>adapter</code> 和 一个 <code>LayoutManager</code>。其中自定义的 <code>adapter</code> 必须继承自 <code>RecyclerView.Adapter</code>，其中必须实现几个接口：</p>
+<ul>
+<li><p>public ItemViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType)<br>在这个接口当中根据类别创建 <code>ViewHolder</code> 和 inflate <code>layout</code>，要是有多个item需要写一堆if-else</p>
+</li>
+<li><p>public void onBindViewHolder(ItemViewHolder viewHolder, int position)或者</p>
+<pre><code>public void onBindViewHolder(TRealViewHolder holder, int position, List&lt;Object&gt; payloads)&lt;br /&gt;
+</code></pre><p><br>在这个接口当中根据位置 <code>position</code> 取出对应的数据，并用于刷新 <code>viewHolder</code> 里面的 <code>UI</code>。<br></p>
+</li>
+<li><p>public int getItemCount()<br>在这个接口当中根据位置保存的数据数量指定列表控件 <code>item</code> 的数量<br></p>
+</li>
 </ul>
-<p>在需要列表滚动时候，改变图片的显示部分</p>
-<p>有两个核心点</p>
+<p><strong>因此可以看出</strong></p>
 <ol>
-<li><p>捕获列表滚动变化的dy，不管是ListView还是RecyclerView都可以做到</p>
-</li>
-<li><p>图片显示部分变化，可以利用canvas.translate</p>
-</li>
+<li>👆以上几个接口的套路都是固定的，可以做一层统一的封装</li>
+<li>其次 <code>onCreateViewHolder</code> 和 <code>onBindViewHolder</code> 还不足以清晰直观的表达 <code>itemView</code> 是创建还是复用<br></li>
+<li><code>Model</code> 和 <code>ViewHolder</code> 之间的映射关系没有做硬性规定</li>
 </ol>
-<p>方案一：</p>
-<p>自定义view，自己去绘制bitmap，对外暴露setDy（dy），然后根据dy做canvas.translate偏移重绘即可</p>
-<p>方案二：(更优)</p>
-<p>利用Drawable本身就是可以绘制的，直接利用drawable去完成，当然还是要结合canvas.translate</p>
-<p>注意super.onDrawer的调用时机</p>
-<h3 id="3、涉及到的技术点"><a href="#3、涉及到的技术点" class="headerlink" title="3、涉及到的技术点"></a>3、涉及到的技术点</h3><ul>
-<li>3.1 ImageView:ScaleType</li>
+<p><a name="8a483843"></a></p>
+<h2 id="针对改进"><a href="#针对改进" class="headerlink" title="针对改进"></a>针对改进</h2><ul>
+<li>注解的方式加载布局         </li>
+<li>将数据和视图分离</li>
+<li>更加清晰的holder复用</li>
 </ul>
-<blockquote>
-<p>不进行缩放:</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATRIX </span><br><span class="line">CENTER : 不改变原图大小从ImageView的左上角开始绘制，超过ImageView部分不再显示。</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>等比例缩放</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CENTER_CROP: 对原图居中显示后进行等比放缩处理，使原图最小边等于ImageView的相应边。</span><br><span class="line"></span><br><span class="line">CENTER_INSIDE: 若原图宽高小于ImageView宽高，这原图不做处理居中显示，否则按比例放缩原图宽(高)是之等于ImageView的宽(高)。 </span><br><span class="line"></span><br><span class="line">FIT_START: 对原图按比例放缩使之等于ImageView的宽高，若原图高大于宽则左对齐否则上对齐。 </span><br><span class="line"></span><br><span class="line">FIT_CENTER: 对原图按比例放缩使之等于ImageView的宽高使之居中显示。 </span><br><span class="line"></span><br><span class="line">FIT_END: 对原图按比例放缩使之等于ImageView的宽高，若原图高大于宽则右对齐否则下对齐。</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>不等比例缩放</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FIT_XY： 对原图宽高进行放缩，该放缩不保持原比例来填充满ImageView。</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>图片信息可能丢失</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MATRIX </span><br><span class="line">CENTER ： 不缩放就有可能丢失 </span><br><span class="line"></span><br><span class="line">CENTER_CROP</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>图片过小时不会放大的情况</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">不缩放肯定就不会放大 MATRIX </span><br><span class="line">CENTER</span><br><span class="line"></span><br><span class="line">CENTER_INSIDE</span><br></pre></td></tr></table></figure>
-<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><p><a href="http://mp.weixin.qq.com/s/BHbmtfUzg3XTaGrGcX5-bg" target="_blank" rel="noopener">http://mp.weixin.qq.com/s/BHbmtfUzg3XTaGrGcX5-bg</a>  </p>
+<p><a name="a491b1bc"></a></p>
+<h3 id="1、注解的方式加载布局"><a href="#1、注解的方式加载布局" class="headerlink" title="1、注解的方式加载布局"></a>1、注解的方式加载布局</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EasyViewHolderAnnotation</span>(resId = R.layout.item_infoone)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InfoViewViewHolderOne</span> <span class="keyword">extends</span> <span class="title">BaseEasyViewHolder</span>&lt;<span class="title">ItemOneData</span>&gt; </span>&#123;</span><br><span class="line">   </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">InfoViewViewHolderOne</span><span class="params">(Context context, View itemView, RecyclerView recyclerView)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, itemView, recyclerView);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inflate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//初始化控件</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">refresh</span><span class="params">(EasyAdapterItem&lt;ItemOneData&gt; tAdapterItem)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (tAdapterItem == <span class="keyword">null</span> || tAdapterItem.getDataModel() == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ItemOneData model = tAdapterItem.getDataModel();</span><br><span class="line">        <span class="comment">//使用datamodel刷新 UI</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a name="d3ba7598"></a></p>
+<h3 id="2、数据与视图分离"><a href="#2、数据与视图分离" class="headerlink" title="2、数据与视图分离"></a>2、数据与视图分离</h3><p>举个例子 上面的InfoViewViewHolderOne需要使用 ItemDataModel的数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InfoViewHolderItemOne</span> <span class="keyword">implements</span> <span class="title">EasyAdapterItem</span>&lt;<span class="title">ItemOneData</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ItemOneData mItemOneData;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">InfoViewHolderItemOne</span><span class="params">(ItemOneData goodInfo)</span> </span>&#123;</span><br><span class="line">        mItemOneData = goodInfo;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getViewType</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> VIEW_TYPE_INFO_ONE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ItemOneData <span class="title">getDataModel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mItemOneData;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>绑定是通过一个map来进行数据数据绑定，这样复用更加清晰</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> SparseArray&lt;Class&lt;? extends BaseEasyViewHolder&gt;&gt; viewHolders = <span class="keyword">new</span> SparseArray&lt;Class&lt;? extends BaseEasyViewHolder&gt;&gt;() &#123;</span><br><span class="line">        &#123;</span><br><span class="line">            put(ViewItemType.VIEW_TYPE_INFO_ONE, InfoViewViewHolderOne.class);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<p><a name="4b30c109"></a></p>
+<h2 id="整体设计"><a href="#整体设计" class="headerlink" title="整体设计"></a>整体设计</h2><p><img src="https://cdn.nlark.com/yuque/0/2019/png/215777/1555579402657-55755ccb-5f54-4923-91d6-20fb836904bb.png#align=left&amp;display=inline&amp;height=616&amp;name=image.png&amp;originHeight=1232&amp;originWidth=1600&amp;size=209351&amp;status=done&amp;width=800" alt="image.png"></p>
+<p><a name="ecff77a8"></a></p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>结合示例代码</p>
+<p>1、定义 <code>ViewItemType</code> 类型枚举值:<br>2、定义具体 <code>InfoViewViewHolderOne</code> class和对应数据 <code>ItemOneData</code> 类型<br>3、绑定holder和viewitemType</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> SparseArray&lt;Class&lt;? extends BaseEasyViewHolder&gt;&gt; viewHolders = <span class="keyword">new</span> SparseArray&lt;Class&lt;? extends BaseEasyViewHolder&gt;&gt;() &#123;</span><br><span class="line">        &#123;</span><br><span class="line">            put(ViewItemType.VIEW_TYPE_INFO_ONE, InfoViewViewHolderOne.class);</span><br><span class="line">            put(ViewItemType.VIEW_TYPE_INFO_TWO, InfoViewViewHolderTwo.class);</span><br><span class="line">        &#125;</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
+<p>4、初始化 数据源 List<easyadapteritem> mTAdapterItems</easyadapteritem></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> List&lt;EasyAdapterItem&gt; mAdapterItems = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br></pre></td></tr></table></figure>
+<p>5、将Adapter设置给 RecyclerView</p>
+<p><a name="0ba75d5d"></a></p>
+<h2 id="技术点"><a href="#技术点" class="headerlink" title="技术点"></a>技术点</h2><ul>
+<li>泛型、抽象</li>
+<li>注解</li>
+<li>反射</li>
+</ul>
+<p><a name="9415a826"></a></p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>由于使用到了反射去创建viewHolder，因此继承BaseEasyViewHolder时候注意防止混淆</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">-keep <span class="class"><span class="keyword">class</span> <span class="title">me</span>.<span class="title">xsfdev</span>.<span class="title">easyadapterlib</span>.<span class="title">base</span>.** </span>&#123;*;&#125;</span><br><span class="line">-keep <span class="class"><span class="keyword">class</span> * <span class="keyword">extends</span> <span class="title">me</span>.<span class="title">xsfdev</span>.<span class="title">easyadapterlib</span>.<span class="title">base</span>.<span class="title">BaseEasyViewHolder</span></span>&#123;*;&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -544,7 +550,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://xsfelvis.github.io/2017/05/22/仿知乎创新广告/" title="仿知乎创新广告">https://xsfelvis.github.io/2017/05/22/仿知乎创新广告/</a>
+    <a href="https://xsfelvis.github.io/2019/04/19/EasyAdapter/" title="EasyAdapter">https://xsfelvis.github.io/2019/04/19/EasyAdapter/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -559,9 +565,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android/" rel="tag"># Android</a>
-          
-            <a href="/tags/知乎广告/" rel="tag"># 知乎广告</a>
+            <a href="/tags/Adapter/" rel="tag"># Adapter</a>
           
         </div>
       
@@ -589,8 +593,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/07/编译期注解之APT/" rel="next" title="编译期注解处理之APT">
-                <i class="fa fa-chevron-left"></i> 编译期注解处理之APT
+              <a href="/2019/02/22/深入理解动态代理/" rel="next" title="深入理解动态代理">
+                <i class="fa fa-chevron-left"></i> 深入理解动态代理
               </a>
             
           </div>
@@ -598,10 +602,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/31/Service/" rel="prev" title="Service">
-                Service <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -848,7 +848,7 @@ var ap = new APlayer({
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、效果描述"><span class="nav-number">1.</span> <span class="nav-text">1、效果描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、实现"><span class="nav-number">2.</span> <span class="nav-text">2、实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、涉及到的技术点"><span class="nav-number">3.</span> <span class="nav-text">3、涉及到的技术点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考："><span class="nav-number">4.</span> <span class="nav-text">参考：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常规写法的探讨"><span class="nav-number">1.</span> <span class="nav-text">常规写法的探讨</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#针对改进"><span class="nav-number">2.</span> <span class="nav-text">针对改进</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、注解的方式加载布局"><span class="nav-number">2.1.</span> <span class="nav-text">1、注解的方式加载布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、数据与视图分离"><span class="nav-number">2.2.</span> <span class="nav-text">2、数据与视图分离</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整体设计"><span class="nav-number">3.</span> <span class="nav-text">整体设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">4.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#技术点"><span class="nav-number">5.</span> <span class="nav-text">技术点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">6.</span> <span class="nav-text">最后</span></a></li></ol></div>
             
 
           </div>
