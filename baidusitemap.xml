@@ -4,6 +4,66 @@
 
     
   <url>
+    <loc>https://xsfelvis.github.io/2019/05/02/gradle%E6%8F%92%E4%BB%B6%E8%B0%83%E8%AF%95/</loc>
+    <lastmod>2019-05-02T15:17:35.004Z</lastmod>
+    <data>
+        <display>
+        <title>Gradle插件调试</title>
+        <pubTime>2019-05-01T16:00:00.000Z</pubTime>
+        
+        <tag>Gradle插件</tag>
+         
+         
+           
+             
+              <breadCrumb title="Gradle插件" url="https://xsfelvis.github.io/categories/Gradle%E6%8F%92%E4%BB%B6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://xsfelvis.github.io/2019/05/02/gradle%E6%8F%92%E4%BB%B6%E4%B9%8BTransform/</loc>
+    <lastmod>2019-05-02T15:15:46.294Z</lastmod>
+    <data>
+        <display>
+        <title>Gradle插件之Transform</title>
+        <pubTime>2019-05-01T16:00:00.000Z</pubTime>
+        
+        <tag>Gradle插件</tag>
+         
+         
+           
+             
+              <breadCrumb title="Gradle插件" url="https://xsfelvis.github.io/categories/Gradle%E6%8F%92%E4%BB%B6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://xsfelvis.github.io/2019/05/02/Gradle%E6%8F%92%E4%BB%B6%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/</loc>
+    <lastmod>2019-05-02T15:14:17.388Z</lastmod>
+    <data>
+        <display>
+        <title>Gradle插件从入门到进阶</title>
+        <pubTime>2019-05-01T16:00:00.000Z</pubTime>
+        
+        <tag>Gradle插件</tag>
+         
+         
+           
+             
+              <breadCrumb title="Gradle插件" url="https://xsfelvis.github.io/categories/Gradle%E6%8F%92%E4%BB%B6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://xsfelvis.github.io/2019/05/02/Android%E4%B8%AD%E7%9A%84aop/</loc>
     <lastmod>2019-05-01T17:38:50.937Z</lastmod>
     <data>

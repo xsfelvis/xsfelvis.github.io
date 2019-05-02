@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta name="baidu-site-verification" content="UqlC4pwKIm" />
+  <meta name="baidu-site-verification" content="d3U0dGeqGw" />
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Gradle插件," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="渡口一艘船" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Gradle插件之Tranform Transform修改一个class 得知道我们什么时候编译完成，并且要在class文件被转化成dex文件之前去修改，从1.5.0-beta1开始，android的gradle插件引入了com.android.build.api.transform.Transform，可以点击 transform-api 查看相关内容。  使用场景 我们需要对编译class文">
+<meta name="keywords" content="Gradle插件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gradle插件之Transform">
+<meta property="og:url" content="https://xsfelvis.github.io/2019/05/02/gradle插件之Transform/index.html">
+<meta property="og:site_name" content="渡口一艘船">
+<meta property="og:description" content="Gradle插件之Tranform Transform修改一个class 得知道我们什么时候编译完成，并且要在class文件被转化成dex文件之前去修改，从1.5.0-beta1开始，android的gradle插件引入了com.android.build.api.transform.Transform，可以点击 transform-api 查看相关内容。  使用场景 我们需要对编译class文">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/215777/1555769721615-be6bac1c-aeff-47a3-9d0c-bf6db7fd8775.png#align=left&display=inline&height=104&name=image.png&originHeight=156&originWidth=1124&size=16432&status=done&width=746">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/215777/1555848259413-5ed9a54b-2990-4465-a686-608d10df0bc6.png#align=left&display=inline&height=487&name=image.png&originHeight=1090&originWidth=900&size=187409&status=done&width=402">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/215777/1555849076995-f0db2b0e-4364-4855-9ba2-cf10f41ebf19.png#align=left&display=inline&height=364&name=image.png&originHeight=500&originWidth=900&size=27014&status=done&width=655">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/215777/1555849200722-f3b34aa4-c62b-48c8-8b53-5d4df9346e75.png#align=left&display=inline&height=584&name=image.png&originHeight=977&originWidth=900&size=182619&status=done&width=538">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/215777/1555849323746-c58b3668-9b0a-4299-9ece-2a898afbcc38.png#align=left&display=inline&height=491&name=image.png&originHeight=923&originWidth=900&size=184623&status=done&width=479">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/215777/1555851854048-d84acc5a-90a3-47f4-b239-75ee4d05dd06.png#align=left&display=inline&height=407&name=image.png&originHeight=491&originWidth=900&size=37044&status=done&width=746">
+<meta property="og:updated_time" content="2019-05-02T15:15:46.294Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gradle插件之Transform">
+<meta name="twitter:description" content="Gradle插件之Tranform Transform修改一个class 得知道我们什么时候编译完成，并且要在class文件被转化成dex文件之前去修改，从1.5.0-beta1开始，android的gradle插件引入了com.android.build.api.transform.Transform，可以点击 transform-api 查看相关内容。  使用场景 我们需要对编译class文">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/png/215777/1555769721615-be6bac1c-aeff-47a3-9d0c-bf6db7fd8775.png#align=left&display=inline&height=104&name=image.png&originHeight=156&originWidth=1124&size=16432&status=done&width=746">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://xsfelvis.github.io/2019/05/02/gradle插件之Transform/"/>
+
+
+
+
+
+  <title>Gradle插件之Transform | 渡口一艘船</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-120283281-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2a3365c396bc1892919405bfc6ea04a8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">渡口一艘船</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">不积跬步，无以至千里；不积小流，无以成江海</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xsfelvis.github.io/2019/05/02/gradle插件之Transform/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="云来">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="渡口一艘船">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Gradle插件之Transform</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-02T00:00:00+08:00">
+                2019-05-02
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-05-02T23:15:46+08:00">
+                2019-05-02
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Gradle插件/" itemprop="url" rel="index">
+                    <span itemprop="name">Gradle插件</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/05/02/gradle插件之Transform/" class="leancloud_visitors" data-flag-title="Gradle插件之Transform">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,374
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><h1 id="Gradle插件之Tranform"><a href="#Gradle插件之Tranform" class="headerlink" title="Gradle插件之Tranform"></a>Gradle插件之Tranform</h1><p><a name="Transform"></a></p>
+<h1 id="Transform"><a href="#Transform" class="headerlink" title="Transform"></a>Transform</h1><p>修改一个class 得知道我们什么时候编译完成，并且要在class文件被转化成dex文件之前去修改，从1.5.0-beta1开始，android的gradle插件引入了com.android.build.api.transform.Transform，可以点击 <a href="http://tools.android.com/tech-docs/new-build-system/transform-api" target="_blank" rel="noopener">transform-api </a>查看相关内容。</p>
+<p><a name="7efcb0ce"></a></p>
+<h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><ul>
+<li>我们需要对编译class文件做自定义的处理。</li>
+<li>读取编译产生的class文件，做一些其他事情，</li>
+</ul>
+<p><a name="7f77168f"></a></p>
+<h1 id="Transform原理"><a href="#Transform原理" class="headerlink" title="Transform原理"></a>Transform原理</h1><p><a name="4a9fe82c"></a></p>
+<h2 id="Tranform原理介绍"><a href="#Tranform原理介绍" class="headerlink" title="Tranform原理介绍"></a>Tranform原理介绍</h2><ul>
+<li>从 Android Gradle 1.5.0-beta1 开始，引入了 <code>com.android.build.api.transform.Transform</code>，其实 <code>Transform</code> 也是一个 task，<strong>每新建一个 <code>Transform</code>，都有一个新的 <code>task</code> 和它对应</strong>。</li>
+</ul>
+<p>在1.5以下，preDex这个task会将依赖的module 编译后的class打成jar，然后Dex这个tasj则会将所有的class打包成dex<br>1.5以上，preDex和Dex这两个task已经消失，取而代之的是 TransfromClassesWithDexForDebug</p>
+<ul>
+<li>在 .java 文件 —-&gt; .class 文件 —-&gt; .dex 文件的过程中，是通过一个一个的 task 执行完成其中的每一个步骤的。<code>Trasnform</code> 注册之后，其执行的时机是在项目被打包成 dex 文件之前，正是操纵字节码的时机，多个 <code>Transform</code> 之间是串行执行的，执行流程如下图所示：</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/215777/1555769721615-be6bac1c-aeff-47a3-9d0c-bf6db7fd8775.png#align=left&amp;display=inline&amp;height=104&amp;name=image.png&amp;originHeight=156&amp;originWidth=1124&amp;size=16432&amp;status=done&amp;width=746" alt="image.png"></p>
+<p>每一个Tranform 都有一个输入一个输出，上一个Transform的输出是下一个transform的输入</p>
+<p><strong>Tips:输出地址不是由你任意指定的。而是根据输入的内容、作用范围等由<code>TransformOutputProvider</code>生成</strong>，比如，你要获取输出路径：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String dest = outputProvider.getContentLocation(directoryInput.name,</span><br><span class="line">              directoryInput.contentTypes, directoryInput.scopes, Format.DIRECTORY)</span><br></pre></td></tr></table></figure>
+<p><a name="e1ae164d"></a></p>
+<h2 id="Tranform原理之数据流动："><a href="#Tranform原理之数据流动：" class="headerlink" title="Tranform原理之数据流动："></a>Tranform原理之数据流动：</h2><p><img src="https://cdn.nlark.com/yuque/0/2019/png/215777/1555848259413-5ed9a54b-2990-4465-a686-608d10df0bc6.png#align=left&amp;display=inline&amp;height=487&amp;name=image.png&amp;originHeight=1090&amp;originWidth=900&amp;size=187409&amp;status=done&amp;width=402" alt="image.png"><br><br><br>每个Tranform其实都是一个gradle task，Android编译器中的TaskManager将每个Tranform串联起来，第一个tranform接收来自javac编译的结果，以及已经拉取到本地的第三方依赖(jar、aar)，还有resource 资源(这里的resource指的是asset目录下的资源)这些编译的中间产物，在tranform组成的链条上流动，每个tranform节点可以对class进行处理再传递给下一个tranform，我们常见的混淆、Desugar等逻辑，都是封装在一个个tranform中，而我们定义的tranform会插入到这个tranform链条的自前面。<br><br><br>上图指的是<strong>消费型</strong> 即当前的tranform需要将消费类型输出给下一个tranform，另一种是<strong>引用型</strong>，当前tranform可以读取这些输入而不需要输出给下一个tranform类型，比如instant run 就是这种方式，检查两次编译间的diff<br>TaskManager#createPostCompilationTasks</p>
+<p><a name="8308cf04"></a></p>
+<h2 id="Tranfrom原理之数据过滤机制"><a href="#Tranfrom原理之数据过滤机制" class="headerlink" title="Tranfrom原理之数据过滤机制"></a>Tranfrom原理之数据过滤机制</h2><p><a name="ContenType"></a></p>
+<h3 id="ContenType"><a href="#ContenType" class="headerlink" title="ContenType"></a>ContenType</h3><p>数据输入可以通过Scope和ContentType两个维度过滤<br><img src="https://cdn.nlark.com/yuque/0/2019/png/215777/1555849076995-f0db2b0e-4364-4855-9ba2-cf10f41ebf19.png#align=left&amp;display=inline&amp;height=364&amp;name=image.png&amp;originHeight=500&amp;originWidth=900&amp;size=27014&amp;status=done&amp;width=655" alt="image.png"><br><br><br>ContentType，顾名思义，就是数据类型，在插件开发中，我们一般只能使用CLASSES和RESOURCES两种类型，注意，其中的CLASSES已经包含了class文件和jar文件<br><img src="https://cdn.nlark.com/yuque/0/2019/png/215777/1555849200722-f3b34aa4-c62b-48c8-8b53-5d4df9346e75.png#align=left&amp;display=inline&amp;height=584&amp;name=image.png&amp;originHeight=977&amp;originWidth=900&amp;size=182619&amp;status=done&amp;width=538" alt="image.png"><br><br><br><br><br>从图中可以看到，除了CLASSES和RESOURCES，还有一些我们开发过程无法使用的类型，比如DEX文件，这些隐藏类型在一个独立的枚举类ExtendedContentType中，这些类型只能给Android编译器使用。另外，我们一般使用TransformManager中提供的几个常用的ContentType集合和Scope集合，如果是要处理所有class和jar的字节码，ContentType我们一般使用<strong>TransformManager.CONTENT_CLASS。</strong><br><a name="Scope"></a></p>
+<h3 id="Scope"><a href="#Scope" class="headerlink" title="Scope"></a>Scope</h3><p><img src="https://cdn.nlark.com/yuque/0/2019/png/215777/1555849323746-c58b3668-9b0a-4299-9ece-2a898afbcc38.png#align=left&amp;display=inline&amp;height=491&amp;name=image.png&amp;originHeight=923&amp;originWidth=900&amp;size=184623&amp;status=done&amp;width=479" alt="image.png"><br><br><br>TransformManager有几个常用的Scope集合方便开发者使用。<br>如果是要处理所有class字节码，Scope我们一般使用<strong>TransformManager.SCOPE_FULL_PROJECT</strong>。<br></p>
+<p>集成Tranform类实现以下几个方法</p>
+<ul>
+<li>String getName()</li>
+</ul>
+<p>该方法表示当前Transform在task列表中的名字，返回值最终经过一系列的拼接，具体拼接实现在TransformManager的getTaskNamePrefix()方法中，拼接格式：transform${InputType1}And${InputType2}And${InputTypeN}And${name}For${flavor}${BuildType}<br> </p>
+<ul>
+<li>Set<qualifiedcontent.contenttype> getInputTypes()</qualifiedcontent.contenttype></li>
+</ul>
+<p>指定输入类型，可以指定要处理文件的类型</p>
+<ul>
+<li>Set<qualifiedcontent.scope> getScopes()</qualifiedcontent.scope></li>
+</ul>
+<p>指定Transform的作用范围</p>
+<ul>
+<li>boolean isIncremental()</li>
+</ul>
+<p>该方法表示当前Transform是否支持增量编译</p>
+<ul>
+<li><p>void transform(Context context, Collection<transforminput> inputs,</transforminput></p>
+<pre><code>Collection&lt;TransformInput&gt; referencedInputs,&lt;br /&gt;                  TransformOutputProvider outputProvider, boolean isIncremental)
+</code></pre></li>
+</ul>
+<p>其中    <em>// Transform的inputs有两种类型，一种是目录，一种是jar包，要分开遍历</em><br>_<br>在app-&gt;build-&gt;intermediates-&gt;transforms中，可以看到所有的Transform，包括我们刚才自定义的Transform。<br><a name="69d9bbc4"></a></p>
+<h2 id="核心api"><a href="#核心api" class="headerlink" title="核心api"></a>核心api</h2><p><a name="46552165"></a></p>
+<h3 id="如何获取class文件-TransformInvocation"><a href="#如何获取class文件-TransformInvocation" class="headerlink" title="如何获取class文件 TransformInvocation"></a>如何获取class文件 TransformInvocation</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Set&lt;QualifiedContent.ContentType&gt; getInputTypes() &#123;</span><br><span class="line">        <span class="keyword">return</span> TransformManager.CONTENT_CLASS;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Set&lt;? <span class="keyword">super</span> QualifiedContent.Scope&gt; getScopes() &#123;</span><br><span class="line">        <span class="keyword">return</span> TransformManager.SCOPE_FULL_PROJECT;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isIncremental</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>配置 Transform 的输入类型为 Class， 作用域为全工程。 这样在 transform(TransformInvocation transformInvocation) 方法中， transformInvocation.inputs 会传入工程内所有的 class 文件。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">TransformInvocation</span> </span>&#123;</span><br><span class="line"><span class="comment">// 返回transform运行的上下文，在android gradle plugin中有唯一的实现类TransformTask</span></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="function">Context <span class="title">getContext</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">// 获取transform的输入</span></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="function">Collection&lt;TransformInput&gt; <span class="title">getInputs</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Returns the referenced-only inputs which are not consumed by this transformation.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the referenced-only inputs.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@NonNull</span> <span class="function">Collection&lt;TransformInput&gt; <span class="title">getReferencedInputs</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Returns the list of secondary file changes since last. Only secondary files that this</span></span><br><span class="line"><span class="comment">     * transform can handle incrementally will be part of this change set.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the list of changes impacting a &#123;<span class="doctag">@link</span> SecondaryInput&#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@NonNull</span> <span class="function">Collection&lt;SecondaryInput&gt; <span class="title">getSecondaryInputs</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">//TransformOutputProvider用于删除输出目录或者创建文件对应的生成目录</span></span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="function">TransformOutputProvider <span class="title">getOutputProvider</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">// transform过程是否支持增量编译</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isIncremental</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看出TransformInvovation包含了输入输出相关信息，<br><strong>其输出内容是由TransformOutProvider来做处理，TransformOutputProvider#getContentLocation()方法可以获取文件的输出目录</strong>，如果目录存在的话直接返回，如果不存在就会重新创建一个在执行编译过程中会生成对应的目录，<br>例如在<strong>/app/build/intermediates/transforms目录下生成了一个名为<code>ajx</code>的目录</strong>，这个名称就是根据自定义的Transform类<code>getName()</code>方法返回的字符串来的。</p>
+<p>inputs 包含两个部分：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">TransformInput</span> </span>&#123;</span><br><span class="line">    <span class="function">Collection&lt;JarInput&gt; <span class="title">getJarInputs</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">Collection&lt;DirectoryInput&gt; <span class="title">getDirectoryInputs</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>看接口方法可知，包含了 jar 包和目录。子 module 的 java 文件在编译过程中也会生成一个 jar 包然后编译到主工程中</p>
+<p><a name="850ef8b8"></a></p>
+<h3 id="Transform的输入输出"><a href="#Transform的输入输出" class="headerlink" title="Transform的输入输出"></a>Transform的输入输出</h3><p>可以通过<code>TransformInvocation</code>来获取输入,同时也获得了输出的功能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public void transform(TransformInvocation invocation) &#123;</span><br><span class="line">        for (TransformInput input : invocation.getInputs()) &#123;</span><br><span class="line">            input.getJarInputs().parallelStream().forEach(jarInput -&gt; &#123;</span><br><span class="line">            File src = jarInput.getFile();</span><br><span class="line">            JarFile jarFile = new JarFile(file);</span><br><span class="line">            Enumeration&lt;JarEntry&gt; entries = jarFile.entries();</span><br><span class="line">            while (entries.hasMoreElements()) &#123;</span><br><span class="line">                JarEntry entry = entries.nextElement();</span><br><span class="line">                //处理</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>我们在做完自定义的处理后，如果想自己输出一些东西怎么办？ 比如一个class文件,就可以通过<code>TransformOutputProvider</code>来完成。比如下面这段代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">File dest = invocation.getOutputProvider().getContentLocation(</span><br><span class="line">&quot;susion&quot;, </span><br><span class="line">TransformManager.CONTENT_CLASS, </span><br><span class="line">ImmutableSet.of(QualifiedContent.Scope.PROJECT), </span><br><span class="line">Format.DIRECTORY);</span><br></pre></td></tr></table></figure>
+<p>这段代码就是在本工程(<code>ImmutableSet.of(QualifiedContent.Scope.PROJECT)</code>)下产生一个目录(<code>Format.DIRECTORY</code>), 目录的名字是(<code>susion</code>),里面的内容是<code>TransformManager.CONTENT_CLASS</code>。<br>创建这个文件夹后，我们就可以向其中写入一些内容，比如class文件。</p>
+<p><a name="bbde7594"></a></p>
+<h3 id="Transform-与-Gradle-Task-之间的关系？"><a href="#Transform-与-Gradle-Task-之间的关系？" class="headerlink" title="Transform 与 Gradle Task 之间的关系？"></a>Transform 与 Gradle Task 之间的关系？</h3><p>Gradle 包中有一个 TransformManager 的类，用来管理所有的 Transform。 在里面找到了这样的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public &lt;T extends Transform&gt; Optional&lt;AndroidTask&lt;TransformTask&gt;&gt; addTransform(TaskFactory taskFactory, TransformVariantScope scope, T transform, ConfigActionCallback&lt;T&gt; callback) &#123;</span><br><span class="line">                ...</span><br><span class="line">                this.transforms.add(transform);</span><br><span class="line">                AndroidTask task1 = this.taskRegistry.create(taskFactory, new ConfigAction(scope.getFullVariantName(), taskName, transform, inputStreams, referencedStreams, outputStream, this.recorder, callback));</span><br><span class="line">                ...</span><br><span class="line">                return Optional.ofNullable(task1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>addTransform 方法在执行过程中，会将 Transform 包装成一个 AndroidTask 对象。<br>所以可以理解为<strong>一个 Transform 就是一个 Task</strong></p>
+<p><a name="bdd31b98"></a></p>
+<h3 id="如何得到文件的增量"><a href="#如何得到文件的增量" class="headerlink" title="如何得到文件的增量"></a>如何得到文件的增量</h3><p>再回到 TransformInput 这个接口，输入源分为 JarInput 和 DirectoryInput<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">JarInput</span> <span class="keyword">extends</span> <span class="title">QualifiedContent</span> </span>&#123;</span><br><span class="line">    <span class="function">Status <span class="title">getStatus</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Status 是一个枚举：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Status &#123;</span><br><span class="line">    NOTCHANGED,</span><br><span class="line">    ADDED,</span><br><span class="line">    CHANGED,</span><br><span class="line">    REMOVED;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>所以在输入源中， 获取了 JarInput 的对象时，可以同时得到每个 jar 的变更状态。需要注意的是：比如先 clean 再编译时， jar 的状态是 NOTCHANGED<br>再看看 DirectoryInput：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">DirectoryInput</span> <span class="keyword">extends</span> <span class="title">QualifiedContent</span> </span>&#123;</span><br><span class="line">    <span class="function">Map&lt;File, Status&gt; <span class="title">getChangedFiles</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>changedFiles 是一个 Map，其中会包含所有变更后的文件，以及每个文件对应的状态。同样需要注意的是：先 clean 再编译时， changedFiles 是空的。<br>所以在处理增量时，只需要根据每个文件的状态进行相应的处理即可，不需要每次所有流程都重新来一遍。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomTransform</span> <span class="keyword">extends</span> <span class="title">Transform</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"CustomTransform"</span>;</span><br><span class="line">    <span class="keyword">public</span> CustomTransform() &#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String getName() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"CustomTransform"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> transform(TransformInvocation transformInvocation) <span class="keyword">throws</span> TransformException, InterruptedException, IOException &#123;</span><br><span class="line">        <span class="keyword">super</span>.transform(transformInvocation);</span><br><span class="line">        <span class="comment">//当前是否是增量编译</span></span><br><span class="line">        <span class="keyword">boolean</span> isIncremental = transformInvocation.isIncremental();</span><br><span class="line">        <span class="comment">//消费型输入，可以从中获取jar包和class文件夹路径。需要输出给下一个任务</span></span><br><span class="line">        Collection&lt;TransformInput&gt; inputs = transformInvocation.getInputs();</span><br><span class="line">        <span class="comment">//引用型输入，无需输出。</span></span><br><span class="line">        Collection&lt;TransformInput&gt; referencedInputs = transformInvocation.getReferencedInputs();</span><br><span class="line">        <span class="comment">//OutputProvider管理输出路径，如果消费型输入为空，你会发现OutputProvider == null</span></span><br><span class="line">        TransformOutputProvider outputProvider = transformInvocation.getOutputProvider();</span><br><span class="line">        <span class="keyword">for</span>(TransformInput <span class="string">input :</span> inputs) &#123;</span><br><span class="line">            <span class="keyword">for</span>(JarInput <span class="string">jarInput :</span> input.getJarInputs()) &#123;</span><br><span class="line">                File dest = outputProvider.getContentLocation(</span><br><span class="line">                        jarInput.getFile().getAbsolutePath(),</span><br><span class="line">                        jarInput.getContentTypes(),</span><br><span class="line">                        jarInput.getScopes(),</span><br><span class="line">                        Format.JAR);</span><br><span class="line">                <span class="comment">//将修改过的字节码copy到dest，就可以实现编译期间干预字节码的目的了        </span></span><br><span class="line">                FileUtils.copyFile(jarInput.getFile(), dest);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(DirectoryInput <span class="string">directoryInput :</span> input.getDirectoryInputs()) &#123;</span><br><span class="line">                File dest = outputProvider.getContentLocation(directoryInput.getName(),</span><br><span class="line">                        directoryInput.getContentTypes(), directoryInput.getScopes(),</span><br><span class="line">                        Format.DIRECTORY);</span><br><span class="line">                <span class="comment">//将修改过的字节码copy到dest，就可以实现编译期间干预字节码的目的了        </span></span><br><span class="line">                FileUtils.copyDirectory(directoryInput.getFile(), dest);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Set&lt;QualifiedContent.ContentType&gt; getInputTypes() &#123;</span><br><span class="line">        <span class="keyword">return</span> TransformManager.CONTENT_CLASS;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Set&lt;? super QualifiedContent.Scope&gt; getScopes() &#123;</span><br><span class="line">        return TransformManager.SCOPE_FULL_PROJECT;</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public Set&lt;QualifiedContent.ContentType&gt; getOutputTypes() &#123;</span><br><span class="line">        return super.getOutputTypes();</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public Set&lt;? super QualifiedContent.Scope&gt; getReferencedScopes() &#123;</span><br><span class="line">        return TransformManager.EMPTY_SCOPES;</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public Map&lt;String, Object&gt; getParameterInputs() &#123;</span><br><span class="line">        return super.getParameterInputs();</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public boolean isCacheable() &#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override </span><br><span class="line">    public boolean isIncremental() &#123;</span><br><span class="line">        return true; //是否开启增量编译</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a name="05ff7704"></a></p>
+<h3 id="关于是否支持增量-编译"><a href="#关于是否支持增量-编译" class="headerlink" title="关于是否支持增量 编译"></a>关于是否支持增量 编译</h3><p>Transform 的 <code>isIncremental()</code> 方法表示是否支持增量编译，返回true的话表示支持，</p>
+<p>这个时候可以根据 <code>com.android.build.api.transform.TransformInput</code> 来获得更改、移除或者添加的文件目录或者jar包。</p>
+<p>JarInput有一个方法是<code>getStatus()</code>来获取 <code>com.android.build.api.transform.Status</code>。Status是一个枚举类，包含了NOTCHANGED、ADDED、CHANGED、REMOVED，所以可以根据JarInput的status来对它进行相应的处理，比如添加或者移除。<br>DirectoryInput有一个方法<code>getChangedFiles()</code>开获取一个Map<file, status="">集合，所以可以遍历这个Map集合，然后根据File对应的Status来对File进行处理。<br><strong>如果不支持增量编译，就在处理.class之前把之前的输出目录中的文件删除。</strong></file,></p>
+<p><a name="88eb9faf"></a></p>
+<h2 id="Tranform的优化：增量与并发"><a href="#Tranform的优化：增量与并发" class="headerlink" title="Tranform的优化：增量与并发"></a>Tranform的优化：增量与并发</h2><p>果直接这样使用，会大大拖慢编译时间，为了解决这个问题，摸索了一段时间后，也借鉴了Android编译器中Desugar等几个Transform的实现，发现我们可以使用增量编译，并且上面transform方法遍历处理每个jar/class的流程，其实可以并发处理，加上一般编译流程都是在PC上，所以我们可以尽量敲诈机器的资源。<br>想要开启增量编译，我们需要重写Transform的这个接口，返回true。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">boolean</span> isIncremental() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>虽然开启了增量编译，但也并非每次编译过程都是支持增量的，毕竟一次clean build完全没有增量的基础，所以，我们需要检查当前编译是否是增量编译。</p>
+<p>1、如果不是增量编译，则清空output目录，然后按照前面的方式，逐个class/jar处理<br>2、如果是增量编译，则要检查每个文件的Status，Status分四种，并且对这四种文件的操作也不尽相同<br><em><img src="https://cdn.nlark.com/yuque/0/2019/png/215777/1555851854048-d84acc5a-90a3-47f4-b239-75ee4d05dd06.png#align=left&amp;display=inline&amp;height=407&amp;name=image.png&amp;originHeight=491&amp;originWidth=900&amp;size=37044&amp;status=done&amp;width=746" alt="image.png"></em></p>
+<p>NOTCHANGED: 当前文件不需处理，甚至复制操作都不用；<br><br>ADDED、CHANGED: 正常处理，输出给下一个任务；<br><br>REMOVED: 移除outputProvider获取路径对应的文件。</p>
+<p>代码如下所述</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">transform</span><span class="params">(TransformInvocation transformInvocation)</span></span>&#123;</span><br><span class="line">    Collection&lt;TransformInput&gt; inputs = transformInvocation.getInputs();</span><br><span class="line">    TransformOutputProvider outputProvider = transformInvocation.getOutputProvider();</span><br><span class="line">    <span class="keyword">boolean</span> isIncremental = transformInvocation.isIncremental();</span><br><span class="line">    <span class="comment">//如果非增量，则清空旧的输出内容</span></span><br><span class="line">    <span class="keyword">if</span>(!isIncremental) &#123;</span><br><span class="line">        outputProvider.deleteAll();</span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="keyword">for</span>(TransformInput input : inputs) &#123;</span><br><span class="line">        <span class="keyword">for</span>(JarInput jarInput : input.getJarInputs()) &#123;</span><br><span class="line">            Status status = jarInput.getStatus();</span><br><span class="line">            File dest = outputProvider.getContentLocation(</span><br><span class="line">                    jarInput.getName(),</span><br><span class="line">                    jarInput.getContentTypes(),</span><br><span class="line">                    jarInput.getScopes(),</span><br><span class="line">                    Format.JAR);</span><br><span class="line">            <span class="keyword">if</span>(isIncremental &amp;&amp; !emptyRun) &#123;</span><br><span class="line">                <span class="keyword">switch</span>(status) &#123;</span><br><span class="line">                    <span class="keyword">case</span> NOTCHANGED:</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> ADDED:</span><br><span class="line">                    <span class="keyword">case</span> CHANGED:</span><br><span class="line">                        transformJar(jarInput.getFile(), dest, status);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> REMOVED:</span><br><span class="line">                        <span class="keyword">if</span> (dest.exists()) &#123;</span><br><span class="line">                            FileUtils.forceDelete(dest);</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                transformJar(jarInput.getFile(), dest, status);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(DirectoryInput directoryInput : input.getDirectoryInputs()) &#123;</span><br><span class="line">            File dest = outputProvider.getContentLocation(directoryInput.getName(),</span><br><span class="line">                    directoryInput.getContentTypes(), directoryInput.getScopes(),</span><br><span class="line">                    Format.DIRECTORY);</span><br><span class="line">            FileUtils.forceMkdir(dest);</span><br><span class="line">            <span class="keyword">if</span>(isIncremental &amp;&amp; !emptyRun) &#123;</span><br><span class="line">                String srcDirPath = directoryInput.getFile().getAbsolutePath();</span><br><span class="line">                String destDirPath = dest.getAbsolutePath();</span><br><span class="line">                Map&lt;File, Status&gt; fileStatusMap = directoryInput.getChangedFiles();</span><br><span class="line">                <span class="keyword">for</span> (Map.Entry&lt;File, Status&gt; changedFile : fileStatusMap.entrySet()) &#123;</span><br><span class="line">                    Status status = changedFile.getValue();</span><br><span class="line">                    File inputFile = changedFile.getKey();</span><br><span class="line">                    String destFilePath = inputFile.getAbsolutePath().replace(srcDirPath, destDirPath);</span><br><span class="line">                    File destFile = <span class="keyword">new</span> File(destFilePath);</span><br><span class="line">                    <span class="keyword">switch</span> (status) &#123;</span><br><span class="line">                        <span class="keyword">case</span> NOTCHANGED:</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        <span class="keyword">case</span> REMOVED:</span><br><span class="line">                            <span class="keyword">if</span>(destFile.exists()) &#123;</span><br><span class="line">                                FileUtils.forceDelete(destFile);</span><br><span class="line">                            &#125;</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        <span class="keyword">case</span> ADDED:</span><br><span class="line">                        <span class="keyword">case</span> CHANGED:</span><br><span class="line">                            FileUtils.touch(destFile);</span><br><span class="line">                            transformSingleFile(inputFile, destFile, srcDirPath);</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                transformDir(directoryInput.getFile(), dest);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><a name="7b4a9adb"></a></p>
+<h2 id="注册tranfrom操作"><a href="#注册tranfrom操作" class="headerlink" title="注册tranfrom操作"></a>注册tranfrom操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">project.android.registerTransform(<span class="keyword">new</span> ToastTransform())</span><br></pre></td></tr></table></figure>
+<p><a name="8032e5c2"></a></p>
+<h1 id="操作字节码-Javassit"><a href="#操作字节码-Javassit" class="headerlink" title="操作字节码 Javassit"></a>操作字节码 Javassit</h1><p>要修改class字节码，我们要是自己手动改二进制文件，有点困难，好在有Javassist这个库，可以让我们直接修改编译后的class二进制代码。<br>要使用到Javassist，我们得在buildsrc模块下的build.gradle添加依赖包：<br>compile ‘org.javassist:javassist:3.20.0-GA’</p>
+<ul>
+<li>ClassPool 对象</li>
+</ul>
+<p>通过该对象可以获取已经编译好的类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ClassPool pool = ClassPool.getDefault();</span><br><span class="line">CtClass cc = pool.get(<span class="string">"com.hc.MyClass"</span>);</span><br><span class="line">cc.setSuperclass(pool.get(<span class="string">"com.hc.ParentClass"</span>));</span><br><span class="line">cc.writeFile();</span><br></pre></td></tr></table></figure>
+<p>面代码就实现了修改<code>MyClass</code>类的父类为<code>ParentClass</code>.</p>
+<p><a name="d17a0f0b"></a></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://cloud.tencent.com/developer/article/1378925" target="_blank" rel="noopener">一起玩转</a><a href="https://cloud.tencent.com/developer/article/1378925" target="_blank" rel="noopener">Android</a><a href="https://cloud.tencent.com/developer/article/1378925" target="_blank" rel="noopener">项目中的字节码（</a><a href="https://cloud.tencent.com/developer/article/1378925" target="_blank" rel="noopener">Transform</a><a href="https://cloud.tencent.com/developer/article/1378925" target="_blank" rel="noopener">篇)</a></li>
+<li><a href="">通过自定义</a><a href="">Gradle</a><a href="">插件修改编译后的</a><a href="">class</a><a href="https://blog.csdn.net/huachao1001/article/details/51819972" target="_blank" rel="noopener">文件</a></li>
+<li><a href="https://www.jianshu.com/p/031b62d02607" target="_blank" rel="noopener">Gradle Transform API </a><a href="https://www.jianshu.com/p/031b62d02607" target="_blank" rel="noopener">的基本使用</a></li>
+<li><a href="http://lijiankun24.com/%E7%83%AD%E4%BF%AE%E5%A4%8D%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A1%86%E6%9E%B6%E9%9B%8F%E5%BD%A2%EF%BC%88%E4%B8%89%EF%BC%89/" target="_blank" rel="noopener">热修复之自定义热修复框架雏形（三）</a></li>
+<li><a href="https://www.jianshu.com/p/dfc4681f8090" target="_blank" rel="noopener">Android AOP三剑客之Javassist</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    云来
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xsfelvis.github.io/2019/05/02/gradle插件之Transform/" title="Gradle插件之Transform">https://xsfelvis.github.io/2019/05/02/gradle插件之Transform/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Gradle插件/" rel="tag"># Gradle插件</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/02/gradle插件调试/" rel="next" title="Gradle插件调试">
+                <i class="fa fa-chevron-left"></i> Gradle插件调试
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzA1My8xMzU4OQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="云来" />
+            
+              <p class="site-author-name" itemprop="name">云来</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+			<!--my custom code begin-->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
+			<script type="text/javascript">
+			  $("#sidebar").hover(function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 1});
+			  },function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 0});
+			  });
+			</script>
+			<div id="mydivshow" class="mydivshow">
+			<!--my custom code end-->
+			
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/xsfelvis" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/XSF50717" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-csdn"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/5643754060b27f7a018bd10d" target="_blank" title="掘金">
+                    
+                      <i class="fa fa-fw fa-juejin"></i>掘金</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:xsfelvis@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://juejin.im/timeline" title="稀土掘金" target="_blank">稀土掘金</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://gank.io/" title="干货集中营" target="_blank">干货集中营</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wanandroid.com/tools" title="玩Android" target="_blank">玩Android</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://tech.meituan.com/" title="美团点评" target="_blank">美团点评</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.androidblog.cn/about/" title="酷站" target="_blank">酷站</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://pingguohe.net/" title="苹果核" target="_blank">苹果核</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <div id="player1" class="aplayer"></div>
+<script src="/js/src/APlayer.min.js"></script>
+<script type="text/javascript">
+var ap = new APlayer({
+    element: document.getElementById('player1'),                       // Optional, player element
+    narrow: false,                                                     // Optional, narrow style
+    autoplay: false,                                                    // Optional, autoplay song(s), not supported by mobile browsers
+    showlrc: 0,                                                        // Optional, show lrc, can be 0, 1, 2, see: ###With lrc
+    mutex: true,                                                       // Optional, pause other players when this player playing
+    theme: '#e6d0b2',                                                  // Optional, theme color, default: #b7daff
+    mode: 'random',                                                    // Optional, play mode, can be `random` `single` `circulation`(loop) `order`(no loop), default: `circulation`
+    preload: 'metadata',                                               // Optional, the way to load music, can be 'none' 'metadata' 'auto', default: 'auto'
+    listmaxheight: '513px',                                             // Optional, max height of play list
+    music: {                                                           // Required, music info, see: ###With playlist
+        title: 'Summertime Sadness',                                          // Required, music title
+        author: 'cover',                          // Required, music author
+        url: 'http://www.170mv.com/kw/other.web.rb01.sycdn.kuwo.cn/resource/n2/71/36/4211820203.mp3',  // Required, music url
+        pic: '/images/music.jpg',  // Optional, music picture
+    }
+});
+</script>
+        </div>
+		<!--my custom code begin-->
+		</div>
+		<!--my custom code end-->
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Gradle插件之Tranform"><span class="nav-number">1.</span> <span class="nav-text">Gradle插件之Tranform</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Transform"><span class="nav-number">2.</span> <span class="nav-text">Transform</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用场景"><span class="nav-number">3.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Transform原理"><span class="nav-number">4.</span> <span class="nav-text">Transform原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tranform原理介绍"><span class="nav-number">4.1.</span> <span class="nav-text">Tranform原理介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tranform原理之数据流动："><span class="nav-number">4.2.</span> <span class="nav-text">Tranform原理之数据流动：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tranfrom原理之数据过滤机制"><span class="nav-number">4.3.</span> <span class="nav-text">Tranfrom原理之数据过滤机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ContenType"><span class="nav-number">4.3.1.</span> <span class="nav-text">ContenType</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scope"><span class="nav-number">4.3.2.</span> <span class="nav-text">Scope</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核心api"><span class="nav-number">4.4.</span> <span class="nav-text">核心api</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何获取class文件-TransformInvocation"><span class="nav-number">4.4.1.</span> <span class="nav-text">如何获取class文件 TransformInvocation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transform的输入输出"><span class="nav-number">4.4.2.</span> <span class="nav-text">Transform的输入输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transform-与-Gradle-Task-之间的关系？"><span class="nav-number">4.4.3.</span> <span class="nav-text">Transform 与 Gradle Task 之间的关系？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何得到文件的增量"><span class="nav-number">4.4.4.</span> <span class="nav-text">如何得到文件的增量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于是否支持增量-编译"><span class="nav-number">4.4.5.</span> <span class="nav-text">关于是否支持增量 编译</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tranform的优化：增量与并发"><span class="nav-number">4.5.</span> <span class="nav-text">Tranform的优化：增量与并发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注册tranfrom操作"><span class="nav-number">4.6.</span> <span class="nav-text">注册tranfrom操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作字节码-Javassit"><span class="nav-number">5.</span> <span class="nav-text">操作字节码 Javassit</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">云来</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">101.8k</span>
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("QFKdnKcTHhFexYDWSA4tMBzH-gzGzoHsz", "wq2r6eiGoNMmUhgBsA7hAO9a");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.3"></script>
+
+
+  <script src="/js/src/Aplayer-Controler.js"></script>
+<div id="AP-controler"></div>
+<script type="text/javascript">
+var myapc=new APlayer_Controler({
+		APC_dom:$('#AP-controler'),
+		aplayer:ap, //此为绑定的aplayer对象
+		attach_right:false,
+		position:{top:'300px',bottom:''},
+		fixed:true,
+		btn_width:100,
+		btn_height:120,
+		img_src:['http://oty1v077k.bkt.clouddn.com/bukagirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/jumpgirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/pentigirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/%E8%90%8C1.gif'],
+		img_style:{repeat:'no-repeat',position:'center',size:'contain'},
+		ctrls_color:'rgba(173,255,47,0.8)',
+		ctrls_hover_color:'rgba(255,140,0,0.7)',
+		tips_on:true,
+		tips_width:140,
+		tips_height:25,
+		tips_color:'rgba(255,255,255,0.6)',
+		tips_content:{},
+		timeout:30
+	});
+</script>
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+
+
+</body>
+</html>
