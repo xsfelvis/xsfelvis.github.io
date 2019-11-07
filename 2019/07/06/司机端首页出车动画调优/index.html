@@ -134,13 +134,13 @@
 
 
 
-<meta name="description" content="记首页出车动画的一次调优 1、背景国际化司机端 机器参差不齐，拉美司机端 机型都是非常低端，特别是巴西，拉取omega数据统计 内存2G及以下，占比70%+，而澳洲司机端都是高端三星机器平均内存都是4G以上，因而我们必须得”压榨”我们的代码，吝啬的分配cpu以及内存。  2、发现问题 介入卡顿优化之后，发现有个Top3的ANR以及一些相关卡顿    【ANR】at com.sdu.didi.co">
+<meta name="description" content="记首页出车动画的一次调优1、背景国际化司机端 机器参差不齐，拉美司机端 机型都是非常低端，特别是巴西，拉取omega数据统计 内存2G及以下，占比70%+，而澳洲司机端都是高端三星机器平均内存都是4G以上，因而我们必须得”压榨”我们的代码，吝啬的分配cpu以及内存。 2、发现问题 介入卡顿优化之后，发现有个Top3的ANR以及一些相关卡顿    【ANR】at com.sdu.didi.comp">
 <meta name="keywords" content="业务">
 <meta property="og:type" content="article">
 <meta property="og:title" content="记拉美司机端首页出车动画的一次调优">
 <meta property="og:url" content="https://xsfelvis.github.io/2019/07/06/司机端首页出车动画调优/index.html">
 <meta property="og:site_name" content="渡口一艘船">
-<meta property="og:description" content="记首页出车动画的一次调优 1、背景国际化司机端 机器参差不齐，拉美司机端 机型都是非常低端，特别是巴西，拉取omega数据统计 内存2G及以下，占比70%+，而澳洲司机端都是高端三星机器平均内存都是4G以上，因而我们必须得”压榨”我们的代码，吝啬的分配cpu以及内存。  2、发现问题 介入卡顿优化之后，发现有个Top3的ANR以及一些相关卡顿    【ANR】at com.sdu.didi.co">
+<meta property="og:description" content="记首页出车动画的一次调优1、背景国际化司机端 机器参差不齐，拉美司机端 机型都是非常低端，特别是巴西，拉取omega数据统计 内存2G及以下，占比70%+，而澳洲司机端都是高端三星机器平均内存都是4G以上，因而我们必须得”压榨”我们的代码，吝啬的分配cpu以及内存。 2、发现问题 介入卡顿优化之后，发现有个Top3的ANR以及一些相关卡顿    【ANR】at com.sdu.didi.comp">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/215777/1557567776245-c75cd9ca-2c07-44e5-82be-a5d017002363.png#align=left&display=inline&height=620&name=image.png&originHeight=1990&originWidth=1110&size=2521781&status=done&width=346">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/215777/1557567788487-342f7f68-9aa2-4bfb-9424-a74c2a7a2f22.png#align=left&display=inline&height=241&name=image.png&originHeight=289&originWidth=894&size=94748&status=done&width=746">
@@ -149,10 +149,10 @@
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/215777/1557543949230-c0dc0486-c6c5-4d76-80da-9992ea02c83d.png#align=left&display=inline&height=351&originHeight=351&originWidth=1682&status=done&width=1682">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/215777/1557566168403-92c9f6da-8976-4c25-9ee4-15ae93c71f44.png#align=left&display=inline&height=381&originHeight=381&originWidth=1674&status=done&width=1674">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/215777/1562423420946-3ba0e117-0095-43fe-b809-70fd8c6aca1d.png#align=left&display=inline&height=183&name=image.png&originHeight=188&originWidth=184&size=23203&status=done&width=179">
-<meta property="og:updated_time" content="2019-07-06T14:52:51.359Z">
+<meta property="og:updated_time" content="2019-07-10T06:10:35.082Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记拉美司机端首页出车动画的一次调优">
-<meta name="twitter:description" content="记首页出车动画的一次调优 1、背景国际化司机端 机器参差不齐，拉美司机端 机型都是非常低端，特别是巴西，拉取omega数据统计 内存2G及以下，占比70%+，而澳洲司机端都是高端三星机器平均内存都是4G以上，因而我们必须得”压榨”我们的代码，吝啬的分配cpu以及内存。  2、发现问题 介入卡顿优化之后，发现有个Top3的ANR以及一些相关卡顿    【ANR】at com.sdu.didi.co">
+<meta name="twitter:description" content="记首页出车动画的一次调优1、背景国际化司机端 机器参差不齐，拉美司机端 机型都是非常低端，特别是巴西，拉取omega数据统计 内存2G及以下，占比70%+，而澳洲司机端都是高端三星机器平均内存都是4G以上，因而我们必须得”压榨”我们的代码，吝啬的分配cpu以及内存。 2、发现问题 介入卡顿优化之后，发现有个Top3的ANR以及一些相关卡顿    【ANR】at com.sdu.didi.comp">
 <meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/png/215777/1557567776245-c75cd9ca-2c07-44e5-82be-a5d017002363.png#align=left&display=inline&height=620&name=image.png&originHeight=1990&originWidth=1110&size=2521781&status=done&width=346">
 
 
@@ -390,8 +390,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-06T22:52:51+08:00">
-                2019-07-06
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-10T14:10:35+08:00">
+                2019-07-10
               </time>
             
           </span>
@@ -488,9 +488,7 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><h1 id="记首页出车动画的一次调优"><a href="#记首页出车动画的一次调优" class="headerlink" title="记首页出车动画的一次调优"></a>记首页出车动画的一次调优</h1><p><a name="AHRGJ"></a></p>
-<h1 id="1、背景"><a href="#1、背景" class="headerlink" title="1、背景"></a>1、背景</h1><p>国际化司机端 机器参差不齐，拉美司机端 机型都是非常低端，特别是巴西，拉取omega数据统计 内存2G及以下，占比70%+，而澳洲司机端都是高端三星机器平均内存都是4G以上，因而我们必须得”压榨”我们的代码，吝啬的分配cpu以及内存。</p>
-<p><a name="peH6Q"></a></p>
+        <script src="/assets/js/APlayer.min.js"> </script><h1 id="记首页出车动画的一次调优"><a href="#记首页出车动画的一次调优" class="headerlink" title="记首页出车动画的一次调优"></a>记首页出车动画的一次调优</h1><h1 id="1、背景"><a href="#1、背景" class="headerlink" title="1、背景"></a>1、背景</h1><p>国际化司机端 机器参差不齐，拉美司机端 机型都是非常低端，特别是巴西，拉取omega数据统计 内存2G及以下，占比70%+，而澳洲司机端都是高端三星机器平均内存都是4G以上，因而我们必须得”压榨”我们的代码，吝啬的分配cpu以及内存。</p>
 <h1 id="2、发现问题"><a href="#2、发现问题" class="headerlink" title="2、发现问题"></a>2、发现问题</h1><p> <br>介入卡顿优化之后，发现有个Top3的ANR以及一些相关卡顿</p>
 <table>
 <thead>
@@ -505,15 +503,11 @@
 </tbody>
 </table>
 <p> <br>在拉美一些配置一般的机型上容易出现，大多是内存只有1G和2G的机型,根据omenga信息可以定位到ANR是由于首页出车动画在波纹属性动画刷新的时候会卡顿，卡顿严重了就ANR了，而且首页出车动画基本是一直在跑着的，确实影响用户体验</p>
-<p><a name="WetJc"></a></p>
-<h1 id="3、分析问题"><a href="#3、分析问题" class="headerlink" title="3、分析问题"></a>3、分析问题</h1><p><a name="5L7YM"></a></p>
-<h3 id="分析代码"><a href="#分析代码" class="headerlink" title="分析代码"></a>分析代码</h3><p><img src="https://cdn.nlark.com/yuque/0/2019/png/215777/1557567776245-c75cd9ca-2c07-44e5-82be-a5d017002363.png#align=left&amp;display=inline&amp;height=620&amp;name=image.png&amp;originHeight=1990&amp;originWidth=1110&amp;size=2521781&amp;status=done&amp;width=346" alt="image.png"><br> <br>看了下代码</p>
+<h1 id="3、分析问题"><a href="#3、分析问题" class="headerlink" title="3、分析问题"></a>3、分析问题</h1><h3 id="分析代码"><a href="#分析代码" class="headerlink" title="分析代码"></a>分析代码</h3><p><img src="https://cdn.nlark.com/yuque/0/2019/png/215777/1557567776245-c75cd9ca-2c07-44e5-82be-a5d017002363.png#align=left&amp;display=inline&amp;height=620&amp;name=image.png&amp;originHeight=1990&amp;originWidth=1110&amp;size=2521781&amp;status=done&amp;width=346" alt="image.png"><br> <br>看了下代码</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2019/png/215777/1557567788487-342f7f68-9aa2-4bfb-9424-a74c2a7a2f22.png#align=left&amp;display=inline&amp;height=241&amp;name=image.png&amp;originHeight=289&amp;originWidth=894&amp;size=94748&amp;status=done&amp;width=746" alt="image.png"></p>
 <p><img src="https://cdn.nlark.com/yuque/0/2019/png/215777/1562422446957-50c23054-2271-45a8-8e4b-616f6fd69dba.png#align=left&amp;display=inline&amp;height=176&amp;name=image.png&amp;originHeight=179&amp;originWidth=169&amp;size=16921&amp;status=done&amp;width=166" alt="image.png"></p>
 <p>嗯，不卡才怪呢，之前的同学为了实现这个无限循环的波纹动效，<strong>通过自定义一个圆点view，然后通过属性动画改变这个圆点的宽高、透明度，然后在动画变化时requestLayout</strong>，这个效果是实现了，但是性能是极差的，属性动画这些操作都是主线程去执行的 在高端机型是可能性能hold住但是拉美的手机上有的直接就扛不住了，看来需要压榨一下我们的代码了。</p>
-<p><a name="4L8FY"></a></p>
-<h1 id="4、解决问题"><a href="#4、解决问题" class="headerlink" title="4、解决问题"></a>4、解决问题</h1><p><a name="2TTaV"></a></p>
-<h2 id="SurfaceView"><a href="#SurfaceView" class="headerlink" title="SurfaceView"></a>SurfaceView</h2><p>Android中 View是通过刷新来重绘视图，系统通过发出<code>VSYNC</code>信号来进行屏幕的重绘，刷新的时间间隔是<code>16ms</code>,如果我们可以在16ms以内将绘制工作完成，则没有任何问题，<strong>如果我们绘制过程逻辑很复杂，并且我们的界面更新还非常频繁，这时候就会造成界面的卡顿</strong>，影响用户体验，为此Android提供了<code>SurfaceView</code>来解决这一问题</p>
+<h1 id="4、解决问题"><a href="#4、解决问题" class="headerlink" title="4、解决问题"></a>4、解决问题</h1><h2 id="SurfaceView"><a href="#SurfaceView" class="headerlink" title="SurfaceView"></a>SurfaceView</h2><p>Android中 View是通过刷新来重绘视图，系统通过发出<code>VSYNC</code>信号来进行屏幕的重绘，刷新的时间间隔是<code>16ms</code>,如果我们可以在16ms以内将绘制工作完成，则没有任何问题，<strong>如果我们绘制过程逻辑很复杂，并且我们的界面更新还非常频繁，这时候就会造成界面的卡顿</strong>，影响用户体验，为此Android提供了<code>SurfaceView</code>来解决这一问题</p>
 <p>SurfaceView 继承自View，是 Android 中一种比较特殊的视图（View），</p>
 <ul>
 <li>它跟普通View最大的区别是它有自己的Surface，在WMS中有对应的WindowState，在SurfaceFlinger中有Layer</li>
@@ -530,13 +524,11 @@
 <p><img src="https://cdn.nlark.com/yuque/0/2019/png/215777/1562422851868-fbe4d81d-00ee-4af3-9f14-d7f31c97f4e1.png#align=left&amp;display=inline&amp;height=405&amp;name=image.png&amp;originHeight=498&amp;originWidth=829&amp;size=28427&amp;status=done&amp;width=675" alt="image.png"></p>
 <p>如果当前画面需要不停绘制或者数据处理量较大时，为避免 UI 线程堵塞，就用 SurfaceView 代替 View。<br>SurfaceView拥有独立的绘图表面，即它不与其宿主窗口共享同一个绘图表面，由于拥有独立的绘图表面，因此SurfaceView的UI就可以在一个独立的线程中进行行绘制，由于不占用主线程资源,使得它可以实现大多复杂而高效的界面绘制，如视频播放 <strong>VideoView</strong> 和OpenGl es的 <strong>GLSurfaceView</strong><br><strong>直播软件的 不停地点赞动效、天气软件的全屏雨雪动效、游戏中的流水、云之类的变化等等</strong></p>
 <p>使用SurfaceView一顿操作之后 <br>使用 HandlerThread + SurfaceView一顿操作后 我们使用一台小米2s(内存2G)来看下效果，<br><br><br></p>
-<p><a name="xcJX9"></a></p>
-<h1 id="5、效果"><a href="#5、效果" class="headerlink" title="5、效果"></a>5、效果</h1><p><strong>前置条件： 小米2s 内存2G、只运行2个软件（司机端、模拟定位软件）、打开app后置于首页出车页面无其他操作</strong><br>**<br><a name="CtNKr"></a></p>
-<h2 id="优化前首页cpu消耗"><a href="#优化前首页cpu消耗" class="headerlink" title="优化前首页cpu消耗"></a>优化前首页cpu消耗</h2><p><img src="https://cdn.nlark.com/yuque/0/2019/png/215777/1557543949230-c0dc0486-c6c5-4d76-80da-9992ea02c83d.png#align=left&amp;display=inline&amp;height=351&amp;originHeight=351&amp;originWidth=1682&amp;status=done&amp;width=1682" alt=""> <br>可以看出 基本在30%左右，一会儿手机就开始发烫了<br><br><a name="Gydvl"></a></p>
+<h1 id="5、效果"><a href="#5、效果" class="headerlink" title="5、效果"></a>5、效果</h1><p><strong>前置条件： 小米2s 内存2G、只运行2个软件（司机端、模拟定位软件）、打开app后置于首页出车页面无其他操作</strong><br>**</p>
+<h2 id="优化前首页cpu消耗"><a href="#优化前首页cpu消耗" class="headerlink" title="优化前首页cpu消耗"></a>优化前首页cpu消耗</h2><p><img src="https://cdn.nlark.com/yuque/0/2019/png/215777/1557543949230-c0dc0486-c6c5-4d76-80da-9992ea02c83d.png#align=left&amp;display=inline&amp;height=351&amp;originHeight=351&amp;originWidth=1682&amp;status=done&amp;width=1682" alt=""> <br>可以看出 基本在30%左右，一会儿手机就开始发烫了<br> </p>
 <h2 id="使用surfaceview优化后cpu消耗"><a href="#使用surfaceview优化后cpu消耗" class="headerlink" title="使用surfaceview优化后cpu消耗"></a>使用surfaceview优化后cpu消耗</h2><p><img src="https://cdn.nlark.com/yuque/0/2019/png/215777/1557566168403-92c9f6da-8976-4c25-9ee4-15ae93c71f44.png#align=left&amp;display=inline&amp;height=381&amp;originHeight=381&amp;originWidth=1674&amp;status=done&amp;width=1674" alt=""><br> <br>可以看出从cpu消耗从 <strong> 30%直降到 10%不到</strong>! 达到预期效果</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2019/png/215777/1562423420946-3ba0e117-0095-43fe-b809-70fd8c6aca1d.png#align=left&amp;display=inline&amp;height=183&amp;name=image.png&amp;originHeight=188&amp;originWidth=184&amp;size=23203&amp;status=done&amp;width=179" alt="image.png"></p>
-<p><a name="vfBbm"></a></p>
-<h1 id="4、一些思考"><a href="#4、一些思考" class="headerlink" title="4、一些思考"></a>4、一些思考</h1><p>1、在做业务的同时得保持技术的思考，不光可以反哺业务，而且不会迷失在业务的汪洋大海中<br>2、需要”折腾”，以改过为能，不以无过为贵，改的越多犯错概率确实会高，但是我们不是有阿波罗开关嘛<br>3、做国际化司机端coding得多一点点性能的考虑，国内的Android手机其实很好了，有时候并不会在意一些性能开销，这跟国际化业务是有点区别的<br>4、能落实到业务中的技术才是好技术，不然可能会成为”屠龙术”</p>
+<h1 id="4、一些思考"><a href="#4、一些思考" class="headerlink" title="4、一些思考"></a>4、一些思考</h1><p>1、在做业务的同时得保持技术的思考，不光可以反哺业务，而且不会迷失在业务的汪洋大海中<br><br>2、需要”折腾”，以改过为能，不以无过为贵，改的越多犯错概率确实会高，但是我们不是有阿波罗开关嘛<br><br>3、做国际化司机端coding得多一点点性能的考虑，国内的Android手机其实很好了，有时候并不会在意一些性能开销，这跟国际化业务是有点区别的<br><br>4、能落实到业务中的技术才是好技术，不然可能会成为”屠龙术”</p>
 
       
     </div>
@@ -600,8 +592,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/02/gradle插件之Transform/" rel="next" title="Gradle插件之Transform">
-                <i class="fa fa-chevron-left"></i> Gradle插件之Transform
+              <a href="/2019/05/02/Android中的aop/" rel="next" title="Android中的AOP">
+                <i class="fa fa-chevron-left"></i> Android中的AOP
               </a>
             
           </div>
@@ -609,6 +601,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/06/司机端首页出车动画调优的副本/" rel="prev" title="idleHandler">
+                idleHandler <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -709,7 +705,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -889,7 +885,7 @@ var ap = new APlayer({
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">103.2k</span>
+    <span title="Site words total count">103.9k</span>
   
 </div>
 

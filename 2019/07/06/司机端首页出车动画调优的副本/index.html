@@ -121,7 +121,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="业务," />
 
 
 
@@ -134,16 +134,20 @@
 
 
 
-<meta name="description" content="爱生活,爱技术">
-<meta property="og:type" content="website">
-<meta property="og:title" content="渡口一艘船">
-<meta property="og:url" content="https://xsfelvis.github.io/tags/AOP/index.html">
+<meta name="description" content="idleHandler #最近在做一些性能优化方面工作，发现idleHandler这么个神器，挺有意思的  什么是idleHandlerAndroid是基于Looper消息循环的系统，我们通过Handler向Looper包含的MessageQueue投递Message，在MessageQueue中我们可以看到这样的一个接口 1234567891011121314/**    * Callback">
+<meta name="keywords" content="业务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="idleHandler">
+<meta property="og:url" content="https://xsfelvis.github.io/2019/07/06/司机端首页出车动画调优的副本/index.html">
 <meta property="og:site_name" content="渡口一艘船">
-<meta property="og:description" content="爱生活,爱技术">
+<meta property="og:description" content="idleHandler #最近在做一些性能优化方面工作，发现idleHandler这么个神器，挺有意思的  什么是idleHandlerAndroid是基于Looper消息循环的系统，我们通过Handler向Looper包含的MessageQueue投递Message，在MessageQueue中我们可以看到这样的一个接口 1234567891011121314/**    * Callback">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/215777/1573022913230-0ad6c1e0-456a-4963-9fd9-398986d7e08b.png#align=left&display=inline&height=80&name=image.png&originHeight=159&originWidth=959&search=&size=32550&status=done&width=479.5">
+<meta property="og:updated_time" content="2019-11-07T13:02:59.376Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="渡口一艘船">
-<meta name="twitter:description" content="爱生活,爱技术">
+<meta name="twitter:title" content="idleHandler">
+<meta name="twitter:description" content="idleHandler #最近在做一些性能优化方面工作，发现idleHandler这么个神器，挺有意思的  什么是idleHandlerAndroid是基于Looper消息循环的系统，我们通过Handler向Looper包含的MessageQueue投递Message，在MessageQueue中我们可以看到这样的一个接口 1234567891011121314/**    * Callback">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/png/215777/1573022913230-0ad6c1e0-456a-4963-9fd9-398986d7e08b.png#align=left&display=inline&height=80&name=image.png&originHeight=159&originWidth=959&search=&size=32550&status=done&width=479.5">
 
 
 
@@ -173,13 +177,13 @@
 
 
 
-  <link rel="canonical" href="https://xsfelvis.github.io/tags/AOP/"/>
+  <link rel="canonical" href="https://xsfelvis.github.io/2019/07/06/司机端首页出车动画调优的副本/"/>
 
 
 
 
 
-  <title>标签: AOP | 渡口一艘船</title>
+  <title>idleHandler | 渡口一艘船</title>
   
 
 
@@ -217,7 +221,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -321,54 +325,286 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>AOP<small>标签</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xsfelvis.github.io/2019/07/06/司机端首页出车动画调优的副本/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="云来">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="渡口一艘船">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/05/02/Android中的aop/" itemprop="url">
-              
-                <span itemprop="name">Android中的AOP</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">idleHandler</h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-05-02T00:00:00+08:00"
-              content="2019-05-02" >
-          05-02
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-06T00:00:00+08:00">
+                2019-07-06
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-11-07T21:02:59+08:00">
+                2019-11-07
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/业务/" itemprop="url" rel="index">
+                    <span itemprop="name">业务</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/07/06/司机端首页出车动画调优的副本/" class="leancloud_visitors" data-flag-title="idleHandler">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  665
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><h1 id="idleHandler"><a href="#idleHandler" class="headerlink" title="idleHandler"></a>idleHandler</h1><p><a name="3eOYT"></a></p>
+<p>#<br>最近在做一些性能优化方面工作，发现idleHandler这么个神器，挺有意思的</p>
+<p><a name="QU9Pr"></a></p>
+<h1 id="什么是idleHandler"><a href="#什么是idleHandler" class="headerlink" title="什么是idleHandler"></a>什么是idleHandler</h1><p>Android是基于Looper消息循环的系统，我们通过Handler向Looper包含的MessageQueue投递Message，在MessageQueue中我们可以看到这样的一个接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Callback interface for discovering when a thread is going to block</span></span><br><span class="line"><span class="comment">    * waiting for more messages.</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">interface</span> <span class="title">IdleHandler</span> </span>&#123;</span><br><span class="line">       <span class="comment">/**</span></span><br><span class="line"><span class="comment">        * Called when the message queue has run out of messages and will now</span></span><br><span class="line"><span class="comment">        * wait for more.  Return true to keep your idle handler active, false</span></span><br><span class="line"><span class="comment">        * to have it removed.  This may be called if there are still messages</span></span><br><span class="line"><span class="comment">        * pending in the queue, but they are all scheduled to be dispatched</span></span><br><span class="line"><span class="comment">        * after the current time.</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">       <span class="function"><span class="keyword">boolean</span> <span class="title">queueIdle</span><span class="params">()</span></span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>从信息描述可以看到在Looper里面的Messsage暂时处理完了，这个时候会回调这个接口，即 ”idle“，</p>
+<p><a name="f5MlL"></a></p>
+<h1 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h1><p>如果返回false用完就会移除这个接口，相当与使用一次，后面这个消息就从队列移除了<br>返回true就会保留，在下次Looper空闲时继续处理。比如在主线程return true，就会出现一直轮询</p>
+<p><a name="AR9d2"></a></p>
+<h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>从上面可以看出，这个仅仅是在消息队列暂时处理完会调用这个回调，那么就有下面两种场景可以使用</p>
+<p><a name="TBK2I"></a></p>
+<h2 id="UI线程-即主线程"><a href="#UI线程-即主线程" class="headerlink" title="UI线程 即主线程"></a>UI线程 即主线程</h2><p>用法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Looper.myQueue().addIdleHandler(<span class="keyword">new</span> MessageQueue.IdleHandler() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">queueIdle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="comment">/*dosometing*/</span></span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<p><a name="bUILY"></a></p>
+<h3 id="actvity中UI绘制完全结束时机"><a href="#actvity中UI绘制完全结束时机" class="headerlink" title="actvity中UI绘制完全结束时机"></a>actvity中UI绘制完全结束时机</h3><p><img src="https://cdn.nlark.com/yuque/0/2019/png/215777/1573022913230-0ad6c1e0-456a-4963-9fd9-398986d7e08b.png#align=left&amp;display=inline&amp;height=80&amp;name=image.png&amp;originHeight=159&amp;originWidth=959&amp;search=&amp;size=32550&amp;status=done&amp;width=479.5" alt="image.png"></p>
+<p>onStart是用户可见，onResume是用户可交互，此时绘制不一定完成了，而idler等到这些都完成了，再去执行自己，因此 我们获取一些宽高可以在这里做。</p>
+<p><a name="xzDKq"></a></p>
+<h3 id="提升性能"><a href="#提升性能" class="headerlink" title="提升性能"></a>提升性能</h3><p>在做性能优化时候，可以错开执行消息队列，将一些耗时操作放到这里执行，比如我们国际化司机端，首页有个Google地图，还有一些出车文字滚动和波纹动画之类的，此时就可以将出车动画放在idleHanlder中，让底图先渲染。</p>
+<p><a name="51Pk7"></a></p>
+<h2 id="自定义Looper-如HandlerThread"><a href="#自定义Looper-如HandlerThread" class="headerlink" title="自定义Looper 如HandlerThread"></a>自定义Looper 如HandlerThread</h2><p>除了主线程之外，我们也可以自定义自己的Looper去处理，这时候可以让自己Looper关联上idlerHandler在Looper消息处理完时再去处理其他的东西，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MessageQueue messageQueue = handlerThread.getLooper().getQueue();</span><br><span class="line">       messageQueue.addIdleHandler(<span class="keyword">new</span> MessageQueue.IdleHandler() &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">queueIdle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            </span><br><span class="line">               <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br></pre></td></tr></table></figure>
+<p>比如在单线程异步场景中，多次快速数据，但是只需要显示一次，就可以使用这种方式</p>
+<p><a name="Ao5cv"></a></p>
+<h1 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h1><p>要是有强时序性的操作最好不好放到这里处理，容易出问题</p>
+<p><a name="7mY5M"></a></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://wetest.qq.com/lab/view/352.html" target="_blank" rel="noopener">https://wetest.qq.com/lab/view/352.html</a></li>
+<li><a href="https://www.jianshu.com/p/adab1564d16b" target="_blank" rel="noopener">https://www.jianshu.com/p/adab1564d16b</a></li>
+<li><a href="https://www.jianshu.com/p/a1d945c4f5a6" target="_blank" rel="noopener">https://www.jianshu.com/p/a1d945c4f5a6</a></li>
+<li><a href="https://www.wanandroid.com/wenda/show/8723" target="_blank" rel="noopener">https://www.wanandroid.com/wenda/show/8723</a></li>
+</ul>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    云来
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xsfelvis.github.io/2019/07/06/司机端首页出车动画调优的副本/" title="idleHandler">https://xsfelvis.github.io/2019/07/06/司机端首页出车动画调优的副本/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/业务/" rel="tag"># 业务</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/06/司机端首页出车动画调优/" rel="next" title="记拉美司机端首页出车动画的一次调优">
+                <i class="fa fa-chevron-left"></i> 记拉美司机端首页出车动画的一次调优
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -376,6 +612,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzA1My8xMzU4OQ=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -398,8 +643,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -568,6 +822,22 @@ var ap = new APlayer({
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#idleHandler"><span class="nav-number">1.</span> <span class="nav-text">idleHandler</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是idleHandler"><span class="nav-number">2.</span> <span class="nav-text">什么是idleHandler</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#返回值"><span class="nav-number">3.</span> <span class="nav-text">返回值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#作用"><span class="nav-number">4.</span> <span class="nav-text">作用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UI线程-即主线程"><span class="nav-number">4.1.</span> <span class="nav-text">UI线程 即主线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#actvity中UI绘制完全结束时机"><span class="nav-number">4.1.1.</span> <span class="nav-text">actvity中UI绘制完全结束时机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提升性能"><span class="nav-number">4.1.2.</span> <span class="nav-text">提升性能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义Looper-如HandlerThread"><span class="nav-number">4.2.</span> <span class="nav-text">自定义Looper 如HandlerThread</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意点"><span class="nav-number">5.</span> <span class="nav-text">注意点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -715,6 +985,10 @@ var ap = new APlayer({
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -744,6 +1018,17 @@ var ap = new APlayer({
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
@@ -905,26 +1190,6 @@ var ap = new APlayer({
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
   
 
 
