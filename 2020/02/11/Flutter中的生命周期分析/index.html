@@ -121,7 +121,7 @@
 
 
 
-  <meta name="keywords" content="路由,Flutter," />
+  <meta name="keywords" content="Flutter," />
 
 
 
@@ -134,18 +134,21 @@
 
 
 
-<meta name="description" content="前言路由是native中应用的比较多，特别是组件化的工程中，更是用来解耦的利器，比较常用的有阿里的ARouter等，路由这一思想也是借鉴前端而来，比如web中页面跳转就是一个url就到了一个新的页面，Flutter既然是新一代的跨端方案，而且从RN借鉴了不少思想，路由当然也是必不可少的，本篇将了解下Flutter的路由 Flutter的路由在Flutter中支持所有路由场景，push、pop页面">
-<meta name="keywords" content="路由,Flutter">
+<meta name="description" content="本篇主要介绍Flutter中的相关生命周期 分为 widget生命周期、app生命周期 Widget生命周期 flutter中widget主要分为 StatelessWidget 和 StatefulWidget 两种 二者生命周期不太一样 StatelessWidget(无状态)如果一个控件自身状态不会去改变，创建了就直接显示，不会有色值、大小或者其他属性的变化，这种widget一般都是继承">
+<meta name="keywords" content="Flutter">
 <meta property="og:type" content="article">
-<meta property="og:title" content="flutter中的路由">
-<meta property="og:url" content="https://xsfelvis.github.io/2018/12/15/2018-12-15flutter中的路由/index.html">
+<meta property="og:title" content="Flutter 中的生命周期分析">
+<meta property="og:url" content="https://xsfelvis.github.io/2020/02/11/Flutter中的生命周期分析/index.html">
 <meta property="og:site_name" content="渡口一艘船">
-<meta property="og:description" content="前言路由是native中应用的比较多，特别是组件化的工程中，更是用来解耦的利器，比较常用的有阿里的ARouter等，路由这一思想也是借鉴前端而来，比如web中页面跳转就是一个url就到了一个新的页面，Flutter既然是新一代的跨端方案，而且从RN借鉴了不少思想，路由当然也是必不可少的，本篇将了解下Flutter的路由 Flutter的路由在Flutter中支持所有路由场景，push、pop页面">
+<meta property="og:description" content="本篇主要介绍Flutter中的相关生命周期 分为 widget生命周期、app生命周期 Widget生命周期 flutter中widget主要分为 StatelessWidget 和 StatefulWidget 两种 二者生命周期不太一样 StatelessWidget(无状态)如果一个控件自身状态不会去改变，创建了就直接显示，不会有色值、大小或者其他属性的变化，这种widget一般都是继承">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-15T06:42:34.365Z">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/215777/1581404440636-88675e5e-f6ac-4084-b7c8-facd8b9d53fb.png#align=left&display=inline&height=262&name=image.png&originHeight=524&originWidth=1000&size=148840&status=done&style=none&width=500">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/215777/1581404518916-572c7fbd-6949-466d-8fc3-ef9f7e1a1108.png#align=left&display=inline&height=340&name=image.png&originHeight=679&originWidth=720&size=245566&status=done&style=none&width=360">
+<meta property="og:updated_time" content="2020-02-11T08:45:15.323Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="flutter中的路由">
-<meta name="twitter:description" content="前言路由是native中应用的比较多，特别是组件化的工程中，更是用来解耦的利器，比较常用的有阿里的ARouter等，路由这一思想也是借鉴前端而来，比如web中页面跳转就是一个url就到了一个新的页面，Flutter既然是新一代的跨端方案，而且从RN借鉴了不少思想，路由当然也是必不可少的，本篇将了解下Flutter的路由 Flutter的路由在Flutter中支持所有路由场景，push、pop页面">
+<meta name="twitter:title" content="Flutter 中的生命周期分析">
+<meta name="twitter:description" content="本篇主要介绍Flutter中的相关生命周期 分为 widget生命周期、app生命周期 Widget生命周期 flutter中widget主要分为 StatelessWidget 和 StatefulWidget 两种 二者生命周期不太一样 StatelessWidget(无状态)如果一个控件自身状态不会去改变，创建了就直接显示，不会有色值、大小或者其他属性的变化，这种widget一般都是继承">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2020/png/215777/1581404440636-88675e5e-f6ac-4084-b7c8-facd8b9d53fb.png#align=left&display=inline&height=262&name=image.png&originHeight=524&originWidth=1000&size=148840&status=done&style=none&width=500">
 
 
 
@@ -175,13 +178,13 @@
 
 
 
-  <link rel="canonical" href="https://xsfelvis.github.io/2018/12/15/2018-12-15flutter中的路由/"/>
+  <link rel="canonical" href="https://xsfelvis.github.io/2020/02/11/Flutter中的生命周期分析/"/>
 
 
 
 
 
-  <title>flutter中的路由 | 渡口一艘船</title>
+  <title>Flutter 中的生命周期分析 | 渡口一艘船</title>
   
 
 
@@ -337,7 +340,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xsfelvis.github.io/2018/12/15/2018-12-15flutter中的路由/">
+    <link itemprop="mainEntityOfPage" href="https://xsfelvis.github.io/2020/02/11/Flutter中的生命周期分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="云来">
@@ -354,7 +357,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">flutter中的路由</h2>
+          <h2 class="post-title" itemprop="name headline">Flutter 中的生命周期分析</h2>
         
 
         <div class="post-meta">
@@ -366,8 +369,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-15T14:42:34+08:00">
-                2018-12-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-11T00:00:00+08:00">
+                2020-02-11
               </time>
             
 
@@ -382,8 +385,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-12-15T14:42:34+08:00">
-                2018-12-15
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-11T16:45:15+08:00">
+                2020-02-11
               </time>
             
           </span>
@@ -418,7 +421,7 @@
 
           
           
-             <span id="/2018/12/15/2018-12-15flutter中的路由/" class="leancloud_visitors" data-flag-title="flutter中的路由">
+             <span id="/2020/02/11/Flutter中的生命周期分析/" class="leancloud_visitors" data-flag-title="Flutter 中的生命周期分析">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -443,7 +446,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  916
+                  1,096
                 </span>
               
 
@@ -459,7 +462,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  5
                 </span>
               
             </div>
@@ -480,36 +483,84 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>路由是native中应用的比较多，特别是组件化的工程中，更是用来解耦的利器，比较常用的有阿里的ARouter等，路由这一思想也是借鉴前端而来，比如web中页面跳转就是一个url就到了一个新的页面，Flutter既然是新一代的跨端方案，而且从RN借鉴了不少思想，路由当然也是必不可少的，本篇将了解下Flutter的路由</p>
-<h1 id="Flutter的路由"><a href="#Flutter的路由" class="headerlink" title="Flutter的路由"></a>Flutter的路由</h1><p>在Flutter中支持所有路由场景，<span data-type="color" style="color:rgb(47, 47, 47)"><span data-type="background" style="background-color:rgb(255, 255, 255)">push、pop页面，页面间的参数传递等等。flutter里面的路由可以分成两种，</span></span></p>
+        <script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>本篇主要介绍Flutter中的相关生命周期 分为 widget生命周期、app生命周期</p>
+<h1 id="Widget生命周期"><a href="#Widget生命周期" class="headerlink" title="Widget生命周期"></a>Widget生命周期</h1></blockquote>
+<p>flutter中widget主要分为 StatelessWidget 和 StatefulWidget 两种 二者生命周期不太一样</p>
+<h2 id="StatelessWidget-无状态"><a href="#StatelessWidget-无状态" class="headerlink" title="StatelessWidget(无状态)"></a>StatelessWidget(无状态)</h2><p>如果一个控件自身状态不会去改变，创建了就直接显示，不会有色值、大小或者其他属性的变化，这种widget一般都是继承自StatelessWidget，常见的有Container、ScrollView等，生命周期只有 <strong>build</strong></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Frog</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> Frog(&#123; Key key &#125;) : <span class="keyword">super</span>(key: key);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Container(color: <span class="keyword">const</span> Color(<span class="number">0xFF2DBD3A</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>build是用来创建widget的，但是因为build在每次刷新时候都会调用，通常需要把业务逻辑写到构造函数中</p>
+<h2 id="StatefulWidget-有状态"><a href="#StatefulWidget-有状态" class="headerlink" title="StatefulWidget (有状态)"></a>StatefulWidget (有状态)</h2><p>需要持有状态 State，这里面包含了一系列生命周期方法<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">YellowBird</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> YellowBird(&#123; Key key &#125;) : <span class="keyword">super</span>(key: key);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  _YellowBirdState createState() =&gt; <span class="keyword">new</span> _YellowBirdState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_YellowBirdState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">YellowBird</span>&gt; </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Container(color: <span class="keyword">const</span> Color(<span class="number">0xFFFFE306</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>官网示意图如下<br><img src="https://cdn.nlark.com/yuque/0/2020/png/215777/1581404440636-88675e5e-f6ac-4084-b7c8-facd8b9d53fb.png#align=left&amp;display=inline&amp;height=262&amp;name=image.png&amp;originHeight=524&amp;originWidth=1000&amp;size=148840&amp;status=done&amp;style=none&amp;width=500" alt="image.png"></p>
+<p>在网上看到一个更加下详细的</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/215777/1581404518916-572c7fbd-6949-466d-8fc3-ef9f7e1a1108.png#align=left&amp;display=inline&amp;height=340&amp;name=image.png&amp;originHeight=679&amp;originWidth=720&amp;size=245566&amp;status=done&amp;style=none&amp;width=360" alt="image.png"></p>
+<p>大致可以划分3个阶段：</p>
 <ul>
-<li><span data-type="color" style="color:rgb(47, 47, 47)"><span data-type="background" style="background-color:rgb(255, 255, 255)">一种是直接注册，不能传递参数，可以称 为静态路由</span></span></li>
-<li><span data-type="color" style="color:rgb(47, 47, 47)"><span data-type="background" style="background-color:rgb(255, 255, 255)">一种要自己构造实例，可以传递参数，可以称为 动态路由。</span></span></li>
+<li>初始化</li>
 </ul>
-<h2 id="静态路由"><a href="#静态路由" class="headerlink" title="静态路由"></a>静态路由</h2><p>在<span data-type="color" style="color:rgb(52, 73, 94)">创建时就已经明确知道了要跳转的页面和值，</span><span data-type="color" style="color:rgb(47, 47, 47)"><span data-type="background" style="background-color:rgb(255, 255, 255)">在新建一个MD风格的App的时候，可以传入一个routes参数来定义路由。但是这里定义的路由是静态的，它不可以向下一个页面传递参数</span></span></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@override</span></span><br><span class="line"><span class="function">Widget <span class="title">build</span><span class="params">(BuildContext context)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> MaterialApp(</span><br><span class="line">    title: <span class="string">'Flutter Demo'</span>,</span><br><span class="line">    theme: <span class="keyword">new</span> ThemeData(</span><br><span class="line">      primarySwatch: Colors.blue,</span><br><span class="line">    ),</span><br><span class="line">    <span class="comment">//注册路由表</span></span><br><span class="line">    routes: &#123;</span><br><span class="line">      <span class="string">"router/static_page"</span>: (context) =&gt; StaticRoute(),</span><br><span class="line">    &#125;,</span><br><span class="line">    home: <span class="keyword">new</span> MyHomePage(title: <span class="string">'Flutter Demo Home Page'</span>),</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>通过routes这个属性注册好跳转的页面即key-value，上面的代码中 </p>
-<p>key：router/static_page    value: StaticRouter<br>然后使用的时候使用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FlatButton(</span><br><span class="line">  child: Text(<span class="string">"open static router"</span>),</span><br><span class="line">  textColor: Colors.blue,</span><br><span class="line">  onPressed: () &#123;</span><br><span class="line">    Navigator.pushNamed(context, <span class="string">"router/static_page"</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h2 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h2><p><span data-type="color" style="color:rgb(47, 47, 47)"><span data-type="background" style="background-color:rgb(255, 255, 255)">当需要向下一个页面传递参数时，要用到所谓的动态路由，自己生成页面对象，所以可以传递自己想要的参数。</span></span></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">FlatButton(</span><br><span class="line">  child: Text(<span class="string">"open dynamic router"</span>),</span><br><span class="line">  textColor: Colors.blue,</span><br><span class="line">  onPressed: () &#123;</span><br><span class="line">    Navigator.push(context, MaterialPageRoute(</span><br><span class="line">        builder: (context) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">new</span> EchoRoute(<span class="string">"传入跳转参数"</span>);</span><br><span class="line">        &#125;));</span><br><span class="line">    或者</span><br><span class="line">    Navigator.of（(context).push(MaterialPageRoute(</span><br><span class="line">        builder: (context) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">new</span> EchoRoute(<span class="string">"传入跳转参数"</span>);</span><br><span class="line">        &#125;));</span><br><span class="line">  &#125;,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h2 id="点击返回"><a href="#点击返回" class="headerlink" title="点击返回"></a>点击返回</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> RaisedButton(</span><br><span class="line">  child: <span class="keyword">new</span> Text(<span class="string">"点我返回"</span>),</span><br><span class="line">  onPressed: () &#123;</span><br><span class="line">    Navigator.of(context).pop();</span><br><span class="line">  &#125;,</span><br><span class="line">  color: Colors.blue,</span><br><span class="line">  highlightColor: Colors.lightBlue,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>我们可以在前一个页面接受第二个页面的返回值<br>在第一个页面跳转时候加上futrue来接收<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">FlatButton(</span><br><span class="line">  child: Text(<span class="string">"open dynamic router"</span>),</span><br><span class="line">  textColor: Colors.blue,</span><br><span class="line">  onPressed: () &#123;</span><br><span class="line">    Future future = Navigator.push(context,</span><br><span class="line">        MaterialPageRoute(builder: (context) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> EchoRoute(<span class="string">"传入跳转参数"</span>);</span><br><span class="line">    &#125;));</span><br><span class="line">    <span class="comment">//接收动态页面返回时传回的值</span></span><br><span class="line">    future.then((value) &#123;</span><br><span class="line">      showDialog(</span><br><span class="line">          context: context,</span><br><span class="line">          child: <span class="keyword">new</span> AlertDialog(</span><br><span class="line">            title: <span class="keyword">new</span> Text(value),</span><br><span class="line">          ));</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
-<p>在EchoRoute页面 返回时使用带参数的pop方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> RaisedButton(</span><br><span class="line">                child: <span class="keyword">new</span> Text(<span class="string">"点我返回"</span>),</span><br><span class="line">                onPressed: () &#123;</span><br><span class="line"><span class="comment">//                  Navigator.of(context).pop();</span></span><br><span class="line">                  Navigator.of(context).pop(<span class="string">"我是来自dymamic 关闭的返回值"</span>);</span><br><span class="line">                &#125;,</span><br><span class="line">                color: Colors.blue,</span><br><span class="line">                highlightColor: Colors.lightBlue,</span><br><span class="line">              )</span><br></pre></td></tr></table></figure></p>
-<p>这样就会在关闭EchoRoute回到跳转前页面时弹出dialog收到EchoRoute传来的参数</p>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p><span data-type="color" style="color:rgb(51, 51, 51)"><span data-type="background" style="background-color:rgb(255, 255, 255)">Navigator的职责是负责管理Route的，管理方式就是利用一个栈不停压入弹出，当然也可以直接替换其中某一个Route。而Route作为一个管理单元，主要负责创建对应的界面，响应Navigator压入路由和弹出路由</span></span></p>
-<p>入栈：</p>
+<p>构造函数 &gt; initState &gt; didChangeDependencies &gt; Widget build , 此时页面加载完成。</p>
 <ul>
-<li>使用Navigator.of(context).pushName(“path“)或者Navigator.pushName(context,“path“)可以进行静态路由的跳转前提是需要在route属性里面注册</li>
-<li>使用push(Route)可以进行态路由的跳转，动态路由可以传入未知数据</li>
+<li>状态变化</li>
+<li>组件移除</li>
 </ul>
-<p>出栈</p>
-<ul>
-<li>使用pop()可以进行路由的出栈并且可以传递参数</li>
-<li>可以使用Future接收上个页面返回的值。</li>
+<p>组件移除，例如页面销毁的时候会依次执行：deactivate &gt; dispose</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>调用次数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>createState</td>
+<td>createState 是 StatefulWidget 里创建 State 的方法，当要创建新的 StatefulWidget 的时候，会立即执行 createState，而且只执行一次</td>
+<td>1次</td>
+</tr>
+<tr>
+<td>initState</td>
+<td>initState 是 StatefulWidget 创建完后调用的第一个方法，而且只执行一次，类似于 Android 的 onCreate、iOS 的 viewDidLoad()，所以在这里 View 并没有渲染，但是这时 StatefulWidget 已经被加载到渲染树里了，这时 StatefulWidget 的 <strong>mount</strong>的值会变为 true，直到 <strong>dispose</strong>调用的时候才会变为 false。可以在 <strong>initState</strong>里做一些初始化的操作。</td>
+<td>1次</td>
+</tr>
+<tr>
+<td><strong>didChangeDependencies</strong></td>
+<td>1、当 StatefulWidget 第一次创建的时候，<strong>didChangeDependencies</strong>方法会在 <strong>initState</strong>方法之后立即调用，之后当 StatefulWidget 刷新的时候，就不会调用了，<br>2、或者你的 StatefulWidget 依赖的 InheritedWidget 发生变化之后，<strong>didChangeDependencies</strong>才会调用，所以 <strong>didChangeDependencies</strong>有可能会被调用多次。</td>
+<td>1次或多次</td>
+</tr>
+<tr>
+<td>build</td>
+<td>在 StatefulWidget 第一次创建的时候，<strong>build</strong>方法会在 <strong>didChangeDependencies</strong>方法之后立即调用，另外一种会调用 <strong>build</strong>方法的场景是，每当 UI 需要重新渲染的时候(<strong>setState</strong>触发)，<strong>build</strong>都会被调用，所以 <strong>build</strong>会被多次调用，然后 返回要渲染的 Widget。千万不要在 <strong>build</strong>里做除了创建 Widget 之外的操作，因为这个会影响 UI 的渲染效率</td>
+<td>多次</td>
+</tr>
+<tr>
+<td><strong>didUpdateWidget</strong></td>
+<td>祖先节点rebuild widget时调用，当组件改变状态时就会调用,<br>需要注意的是，涉及到controller的变更，需要在这个函数中移除老的<strong>controller</strong>的监听，并创建新<strong>controller</strong>的监听。<br></td>
+<td>1次或多次</td>
+</tr>
+<tr>
+<td><strong>deactivate</strong></td>
+<td>当要将 State 对象从渲染树中移除的时候，就会调用 <strong>deactivate</strong>生命周期，这标志着 StatefulWidget 将要销毁，但是有时候 State 不会被销毁，而是重新插入到渲染树种</td>
+<td>1次或多次</td>
+</tr>
+<tr>
+<td><strong>dispose</strong></td>
+<td>当 View 不需要再显示，从渲染树中移除的时候，State 就会永久的从渲染树中移除，就会调用 <strong>dispose</strong>生命周期，这时候就可以在 <strong>dispose</strong>里做一些取消监听、动画的操作，和 <strong>initState</strong>是相反的</td>
+<td>1次</td>
+</tr>
+</tbody>
+</table>
+<p>这里补充一个，<strong>addPostFrameCallback，</strong>是 StatefulWidge 渲染结束的回调，只会被调用一次，之后 StatefulWidget 需要刷新 UI 也不会被调用，<strong>addPostFrameCallback</strong>的使用方法是在 <strong>initState</strong>里添加回调：<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'package:flutter/scheduler.dart'</span>;</span><br><span class="line"><span class="meta">@override</span></span><br><span class="line"><span class="keyword">void</span> initState() &#123;</span><br><span class="line">  <span class="keyword">super</span>.initState();</span><br><span class="line">  SchedulerBinding.instance.addPostFrameCallback((_) =&gt; &#123;&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="App生命周期"><a href="#App生命周期" class="headerlink" title="App生命周期"></a>App生命周期</h1><p>在 window.dart中有枚举类 AppLifecycleState</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> AppLifecycleState &#123;</span><br><span class="line">  resumed,</span><br><span class="line">  </span><br><span class="line">  inactive,</span><br><span class="line">  </span><br><span class="line">  paused,</span><br><span class="line"></span><br><span class="line">  suspending,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果想要知道Flutter App的生命周期，比如前台、后台就需要使用<strong>WidgetsBindingObserver </strong>使用方法如下</p>
+<p>State的类mix WidgetsBindingObserver，覆写<strong>didChangeAppLifecycleState</strong><br><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_MyHomePageState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">MyHomePage</span>&gt; <span class="title">with</span> <span class="title">WidgetsBindingObserver</span> </span>&#123;</span><br><span class="line">    <span class="meta">@override</span></span><br><span class="line">  	<span class="keyword">void</span> initState()&#123;</span><br><span class="line">    <span class="keyword">super</span>.initState();</span><br><span class="line">    WidgetsBinding.instance.addObserver(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  	<span class="meta">@override</span></span><br><span class="line">  	<span class="keyword">void</span> dispose() &#123;</span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> implement dispose</span></span><br><span class="line">    <span class="keyword">super</span>.dispose();</span><br><span class="line">    WidgetsBinding.instance.removeObserver(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> didChangeAppLifecycleState(AppLifecycleState state) &#123;</span><br><span class="line">    <span class="keyword">super</span>.didChangeAppLifecycleState(state);</span><br><span class="line">    <span class="keyword">if</span> (state == AppLifecycleState.paused) &#123;</span><br><span class="line">      <span class="comment">// went to Background</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (state == AppLifecycleState.resumed) &#123;</span><br><span class="line">      <span class="comment">// came back to Foreground</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://www.cnblogs.com/lxlx1798/p/11176322.html" target="_blank" rel="noopener">https://www.cnblogs.com/lxlx1798/p/11176322.html</a></li>
+<li><a href="https://www.jianshu.com/p/f39cf2f7ad78" target="_blank" rel="noopener">https://www.jianshu.com/p/f39cf2f7ad78</a></li>
+<li><a href="https://blog.csdn.net/u011272795/article/details/82695920" target="_blank" rel="noopener">https://blog.csdn.net/u011272795/article/details/82695920</a></li>
 </ul>
-<p>代码在 <a href="https://github.com/xsfelvis/learnflutter/blob/e7bd2e29c1b39c8ea19e06bfebb6e7d55b9ab42a/lib/demo4/demo4main.dart" target="_blank" rel="noopener">https://github.com/xsfelvis/learnflutter/blob/e7bd2e29c1b39c8ea19e06bfebb6e7d55b9ab42a/lib/demo4/demo4main.dart</a></p>
-<p># </p>
 
       
     </div>
@@ -530,7 +581,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://xsfelvis.github.io/2018/12/15/2018-12-15flutter中的路由/" title="flutter中的路由">https://xsfelvis.github.io/2018/12/15/2018-12-15flutter中的路由/</a>
+    <a href="https://xsfelvis.github.io/2020/02/11/Flutter中的生命周期分析/" title="Flutter 中的生命周期分析">https://xsfelvis.github.io/2020/02/11/Flutter中的生命周期分析/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -544,8 +595,6 @@
     <footer class="post-footer">
       
         <div class="post-tags">
-          
-            <a href="/tags/路由/" rel="tag"># 路由</a>
           
             <a href="/tags/Flutter/" rel="tag"># Flutter</a>
           
@@ -575,8 +624,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/08/dio+json_serializable请求到解析数据/" rel="next" title="dio+json_serializable从网络请求到数据解析">
-                <i class="fa fa-chevron-left"></i> dio+json_serializable从网络请求到数据解析
+              <a href="/2020/02/10/Flutter UI渲染分析/" rel="next" title="Flutter UI渲染分析">
+                <i class="fa fa-chevron-left"></i> Flutter UI渲染分析
               </a>
             
           </div>
@@ -584,10 +633,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/12/ Flutter中消息传递/" rel="prev" title="Flutter中消息传递">
-                Flutter中消息传递 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -834,7 +879,7 @@ var ap = new APlayer({
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Flutter的路由"><span class="nav-number">2.</span> <span class="nav-text">Flutter的路由</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#静态路由"><span class="nav-number">2.1.</span> <span class="nav-text">静态路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态路由"><span class="nav-number">2.2.</span> <span class="nav-text">动态路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#点击返回"><span class="nav-number">2.3.</span> <span class="nav-text">点击返回</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Widget生命周期"><span class="nav-number">1.</span> <span class="nav-text">Widget生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#StatelessWidget-无状态"><span class="nav-number">1.1.</span> <span class="nav-text">StatelessWidget(无状态)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StatefulWidget-有状态"><span class="nav-number">1.2.</span> <span class="nav-text">StatefulWidget (有状态)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#App生命周期"><span class="nav-number">2.</span> <span class="nav-text">App生命周期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
